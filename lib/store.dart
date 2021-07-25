@@ -10,8 +10,6 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:warp_api/warp_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
 import 'package:convert/convert.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 
@@ -498,14 +496,7 @@ abstract class _PriceStore with Store {
 
   @action
   Future<void> fetchZecPrice() async {
-    final base = "api.binance.com";
-    final uri = Uri.https(base, '/api/v3/avgPrice', {'symbol': 'ZECUSDT'});
-    final rep = await http.get(uri);
-    if (rep.statusCode == 200) {
-      final json = convert.jsonDecode(rep.body) as Map<String, dynamic>;
-      final price = double.parse(json['price']);
-      zecPrice = price;
-    }
+    zecPrice = await WarpApi.getCurrentPrice();
   }
 }
 

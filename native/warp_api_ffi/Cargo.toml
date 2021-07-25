@@ -8,7 +8,7 @@ edition = "2018"
 
 [lib]
 name = "warp_api_ffi"
-crate-type = ["rlib"]
+crate-type = ["cdylib"]
 
 [dependencies]
 sync = { path = "../zcash-sync" }

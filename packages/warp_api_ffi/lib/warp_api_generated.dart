@@ -260,6 +260,24 @@ class NativeLibrary {
       _lookup<ffi.NativeFunction<_c_set_lwd_url>>('set_lwd_url');
   late final _dart_set_lwd_url _set_lwd_url =
       _set_lwd_url_ptr.asFunction<_dart_set_lwd_url>();
+
+  double get_current_price() {
+    return _get_current_price();
+  }
+
+  late final _get_current_price_ptr =
+      _lookup<ffi.NativeFunction<_c_get_current_price>>('get_current_price');
+  late final _dart_get_current_price _get_current_price =
+      _get_current_price_ptr.asFunction<_dart_get_current_price>();
+
+  void dummy_export() {
+    return _dummy_export();
+  }
+
+  late final _dummy_export_ptr =
+      _lookup<ffi.NativeFunction<_c_dummy_export>>('dummy_export');
+  late final _dart_dummy_export _dummy_export =
+      _dummy_export_ptr.asFunction<_dart_dummy_export>();
 }
 
 typedef _c_init_wallet = ffi.Void Function(
@@ -411,3 +429,11 @@ typedef _c_set_lwd_url = ffi.Void Function(
 typedef _dart_set_lwd_url = void Function(
   ffi.Pointer<ffi.Int8> url,
 );
+
+typedef _c_get_current_price = ffi.Double Function();
+
+typedef _dart_get_current_price = double Function();
+
+typedef _c_dummy_export = ffi.Void Function();
+
+typedef _dart_dummy_export = void Function();

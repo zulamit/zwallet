@@ -48,4 +48,6 @@ char *shield_taddr(uint32_t account);
 
 void set_lwd_url(char *url);
 
-void dummy_export();
+double get_current_price(void);
+
+void dummy_export(void);

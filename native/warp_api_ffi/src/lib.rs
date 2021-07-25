@@ -125,4 +125,9 @@ pub unsafe extern "C" fn set_lwd_url(url: *mut c_char) {
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn get_current_price() -> f64 {
+    api::get_current_price()
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn dummy_export() {}

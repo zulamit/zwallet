@@ -242,3 +242,12 @@ pub fn set_lwd_url(url: &str) {
     let mut wallet = WALLET.get().unwrap().lock().unwrap();
     log_result(wallet.set_lwd_url(url));
 }
+
+pub fn get_current_price() -> f64 {
+    let r = Runtime::new().unwrap();
+    r.block_on(async {
+        let wallet = WALLET.get().unwrap().lock().unwrap();
+        let res = sync::get_price_zec(&wallet.ld_url).await;
+        log_result(res)
+    })
+}

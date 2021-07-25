@@ -139,8 +139,12 @@ class WarpApi {
     return txId;
   }
 
-  static updateLWD(String url) {
+  static void updateLWD(String url) {
     warp_api_lib.set_lwd_url(url.toNativeUtf8().cast<Int8>());
+  }
+
+  static Future<double> getCurrentPrice() async {
+    return await compute(getCurrentPriceIsolateFn, null);
   }
 }
 
@@ -176,4 +180,8 @@ int mempoolSyncIsolateFn(Null _dummy) {
 String shieldTAddrIsolateFn(int account) {
   final txId = warp_api_lib.shield_taddr(account);
   return txId.cast<Utf8>().toDartString();
+}
+
+double getCurrentPriceIsolateFn(Null _dummy) {
+  return warp_api_lib.get_current_price();
 }
