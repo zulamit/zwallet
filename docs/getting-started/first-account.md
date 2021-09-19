@@ -45,3 +45,8 @@ does not contain a valid value, the "ADD" button is disabled.
 You do not need to save them because they can be derived from your seed phrase. They are provided
 in case you need to use another app that does not support seed phrases.
 
+![Account Manager](img/IMG_0037.PNG)
+
+Once you close the Backup page, you will return to the Account Manager. 
+
+1. Tap on the new account name
