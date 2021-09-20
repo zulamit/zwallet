@@ -26,6 +26,15 @@ You may have to scroll the footer to the left if your screen is too small.
 11. Sort by Address / Contact Name
 12. Sort by Memo
 
+## Transaction Details
+
+Tap on a transaction to show the transactions details
+
+![Details](img/IMG_0082.PNG)
+![Details](img/IMG_0083.PNG)
+
+1. Opens the transaction in an external block explorer
+
 
 ## Notes
 
