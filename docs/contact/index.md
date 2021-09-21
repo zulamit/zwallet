@@ -17,7 +17,7 @@ Contacts are a convenient way to organize your frequently used addresses.
 5. Long press to edit the name
 6. Swipe left/right to delete
 
-## Notes
+## Remarks
 
 - On the Send page, you can enter a contact name instead of an address
 - Wherever the app displays an address, it will display a contact name

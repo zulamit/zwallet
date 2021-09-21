@@ -18,7 +18,7 @@ schedules a transaction immediately.
 2. By default, shield when you make a payment. It can be overridden 
 in the "advanced options" of the Send page
 
-## Notes
+## Remarks
 
 - If you set a low threshold, it may make a lot of transactions
 - However, if the threshold is high, your transparent balance could remain

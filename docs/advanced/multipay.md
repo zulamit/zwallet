@@ -39,7 +39,7 @@ After pressing the button "Send"
 
 1. Confirm and send the transaction
 
-## Notes
+## Remarks
 
 - Multipay does not support using Fiat currency or zats yet
 - Contacts are replaced by their addresses

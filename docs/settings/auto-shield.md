@@ -13,7 +13,7 @@ The app will create a separate transaction
 payment will include a transfer from your transparent address to your
 shielded address
 
-## Notes
+## Remarks
 
 - A value of 0 for option 1 means no automatic shielding
 - With the option 2, the recipient of the payment can infer that the 

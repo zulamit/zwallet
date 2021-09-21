@@ -13,7 +13,7 @@ can know which transactions belong to you
 2. When checked, your account balance will be hidden on the account page if 
 you device is tilted forward or is put down
 
-## Notes
+## Remarks
 
 - Running your personal deployment of `lightwalletd` is the best way to keep
 all of your information private

@@ -36,7 +36,7 @@ Tap on a transaction to show the transactions details
 1. Opens the transaction in an external block explorer
 
 
-## Notes
+## Remarks
 
 Transactions to Transparent addresses are not included in the history.
 

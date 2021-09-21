@@ -7,9 +7,11 @@ nav_order: 0
 <p align="center">
     <h1 align="center">Y/ZWallet</h1>
     <p align="center">The fastest, most advanced, shielded wallet for Zcash and Ycash</p>
+	<div align="center"><img src="IMG_0115.PNG"></div>
 </p>
 
 ---
+
 
 ## Download 
 
@@ -21,6 +23,7 @@ nav_order: 0
 - Fastest synchronization of all the wallets on the market
 - Supports every feature of *shielded zcash*
 - Track your wallet performance and expenditures
+- Watch-only and Cold Wallet
 
 [More features](features)
 
@@ -39,10 +42,11 @@ Please follow this [link](getting-started)
 
    It depends on the hardware but for average phones, Y/ZWallet scans the entire blockchain
    (as of Sep 2021) in around 1-3 minutes. At the end, your account balances are 
-   fully available to spend.
+   fully available to spend. The reference wallet SDK is 100x slower.
    
-3. Why the name Y/ZWallet? There are different versions of the app for Ycash and Zcash. 
+3. Why the name Y/ZWallet? 
 
+   There are different versions of the app for Ycash and Zcash. 
    A single version that supports both coins may be implemented in the future.
    
 4. Is it open source?
@@ -51,13 +55,13 @@ Please follow this [link](getting-started)
    
 5. Why is it not listed on the Zcash website?
 
-   It is pending review by the Zcash team.
+   The source code is pending review by the Zcash team.
    However, it has been reviewed by the Ycash team and is listed on the Ycash 
    Foundation website.
    
 6. Does it collect data?
 
-   *No user data is collected at all*. The wallet only connects to a `lightwalletd` server
+   *Absolutely no user data is collected*. The wallet only connects to a `lightwalletd` server
    (by default the officially sponsored server) and CoinGecko for market prices.
 
 7. Can it connect to any lightwalletd?

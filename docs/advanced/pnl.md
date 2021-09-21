@@ -34,7 +34,7 @@ based on [the average cost method](https://en.wikipedia.org/wiki/Average_cost_me
 6. Tap/Hold to browse the chart
 7. Adjust the time range in the Settings page
 
-## Notes
+## Remarks
 
 - The app uses the daily price data from CoinGecko. There is only
 one price per day and therefore it will not take intraday movements

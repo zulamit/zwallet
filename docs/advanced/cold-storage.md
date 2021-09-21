@@ -83,7 +83,7 @@ Then copy `tx.raw` back to USB drive (or Cloud storage)
 2. Pick up the raw transaction file from storage
 3. Wait for the tx id
 
-## Notes
+## Remarks
 
 - USB drive is safer that Cloud storage but in any case, the files
 do not contain any information that could be used to reveal your secret key

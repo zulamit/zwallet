@@ -20,6 +20,6 @@ Open the account manager by selecting "Accounts" in the app menu.
 To return to the account page, select an account by tapping on its name. Or press the back button,
 if you don't want to change the current selection.
 
-## Note
+## Remarks
 
 There needs to be at least one account. The last account cannot be deleted

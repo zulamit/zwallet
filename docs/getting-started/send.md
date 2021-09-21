@@ -20,7 +20,7 @@ nav_order: 4
 7. Show/Collapse advanced options
 8. Tap to send.
 
-## Note
+## Remarks
 
 The spendable balance exclude the network fee of 0.01 mZEC. 
 Notes may not be spendable if they were received recently.
