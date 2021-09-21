@@ -26,3 +26,5 @@ unshielded for a long time
 - Each transaction costs 0.01 mZEC (or mYEC)
 - You can manually shield by tapping the button "Shield Transparent Balance"
 on the Transparent Account page
+- With option 2, the recipient of the payment can infer that the 
+transparent address belongs to you
