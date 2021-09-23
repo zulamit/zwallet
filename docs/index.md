@@ -17,8 +17,8 @@ nav_order: 0
 
 ### YWallet
 
-- [Google Play Store](https://play.google.com/store/apps/details?id=me.hanh.ywallet)
-- [Apple App Store](https://apps.apple.com/us/app/ywallet/id1583859229)
+<a href="https://play.google.com/store/apps/details?id=me.hanh.ywallet"><img style="height:74px" src="google-play-badge.png"></a>
+<a href="https://apps.apple.com/us/app/ywallet/id1583859229"><img style="height:50px;margin-bottom:12px" src="apple-store-badge.svg"></a>
 
 ### ZWallet
 
