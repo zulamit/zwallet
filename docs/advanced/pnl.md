@@ -17,11 +17,11 @@ spend 0.5 ZEC when 1 ZEC=150 USD, your wallet performance will be:
 
 If later 1 ZEC=180 USD,
 
-- your realized profit doesn't change since you didn't do any transaction
-- your unrealized profit becomes 0.5 x (180-140) since the market price
+- Your realized profit doesn't change since you didn't do any transaction
+- Your unrealized profit becomes 0.5 x (180-140) since the market price
 increased
 
-The app tracks the wallet in and out flows and evaluates profit and loss
+The app tracks wallet in and outflows and evaluates profit and loss
 based on [the average cost method](https://en.wikipedia.org/wiki/Average_cost_method).
 
 ![PnL](img/IMG_0068.PNG)
@@ -32,11 +32,11 @@ based on [the average cost method](https://en.wikipedia.org/wiki/Average_cost_me
 4. Total P/L (Realized + Unrealized)
 5. Quantity and table (scroll right)
 6. Tap/Hold to browse the chart
-7. Adjust the time range in the Settings page
+7. Adjust the time range on the Settings page
 
 ## Remarks
 
-- The app uses the daily price data from CoinGecko. There is only
+- The app uses daily price data from CoinGecko. There is only
 one price per day and therefore it will not take intraday movements
 into consideration
 - The historical price it uses could be different from your actual 

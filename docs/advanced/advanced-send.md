@@ -16,6 +16,6 @@ of 0.01 mZEC or 0.01 mYEC, and the recipient receives slightly less
 than specified
 5. If checked, the transaction also shields the transparent balance 
 (if any)
-6. The maximum amount per output note. If this is less that the amount
+6. The maximum amount per output note. If this is less than the amount
 sent, the app will create several notes. The change is not subject to
 this cap

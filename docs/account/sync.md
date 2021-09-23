@@ -14,7 +14,7 @@ You can manually trigger a complete rescan (from the first block).
 
 ![Rescan](img/IMG_0054.PNG)
 
-1. Choose "Rescan" in the app menu
+1. Choose "Rescan" on the app menu
 
 ## Scan Progress Status
 
@@ -22,7 +22,7 @@ You can manually trigger a complete rescan (from the first block).
 
 1. Current block height being processed
 2. Latest block height
-3. Estimated remaining time of the full scan
+3. The Estimated remaining time of the full scan
 
 When the app is synchronized with the current block, it just displays
 the block height.

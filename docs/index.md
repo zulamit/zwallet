@@ -27,7 +27,7 @@ TBD
 ## At a glance
 
 - Fastest synchronization of all the wallets on the market
-- Supports every feature of *shielded zcash*
+- Supports every feature of *shielded y/zcash*
 - Track your wallet performance and expenditures
 - Watch-only and Cold Wallet
 
@@ -47,7 +47,7 @@ Please follow this [link](getting-started)
 2. How fast is the synchronization exactly?
 
    It depends on the hardware but for average phones, Y/ZWallet scans the entire blockchain
-   (as of Sep 2021) in around 1-3 minutes. At the end, your account balances are 
+   (as of Sep 2021) in around 1-3 minutes. In the end, your account balances are 
    fully available to spend. The reference wallet SDK is 100x slower.
    
 3. Why the name Y/ZWallet? 

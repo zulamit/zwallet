@@ -21,11 +21,11 @@ nav_order: 2
 
 ### Notes
 
-- Diversified (or snap addresses) show for a few seconds. Then
-the account reverts to the primary address. They can be still used
+- Diversified (or snap addresses) show up for a few seconds. Then
+the account reverts to the primary address. They can still be used
 afterward
 - If the device is tilted forward, the page switches to "Receive Mode"
-- You can choose the Fiat currency in the settings page
+- You can choose the Fiat currency on the settings page
 
 ## Receive Mode
 
@@ -33,7 +33,7 @@ afterward
 
 
 1. The account balance is hidden. 
-2. the QR Code is rotated 180 degrees to facilitate scanning by a person in front of you.
+2. The QR Code is rotated 180 degrees to facilitate scanning by a person in front of you.
 
 This function can be turned off in the settings.
 

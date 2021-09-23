@@ -22,7 +22,7 @@ nav_order: 4
 
 ## Remarks
 
-The spendable balance exclude the network fee of 0.01 mZEC. 
+The spendable balance excludes the network fee of 0.01 mY/ZEC. 
 Notes may not be spendable if they were received recently.
 In this case, wait for more confirmations or change the setting
 "Number of Confirmations Needed before Spending". 

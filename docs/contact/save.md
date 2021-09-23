@@ -11,7 +11,7 @@ Changes to your contacts are first saved locally on your device.
 
 1. Tap this button if you want to store them in the blockchain.
 The app will make a transaction that saves your contact list. It costs
-0.01 mZEC or 0.01 mYEC
+0.01 mY/ZEC
 
 ## Remarks
 

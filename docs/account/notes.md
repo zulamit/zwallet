@@ -11,8 +11,8 @@ The Note Tab shows your received notes.
 
 ![Header](img/IMG_0058.PNG)
 
-1. Tap to toggle display of Height or Number of Confirmations
-2. Tap to sort by Date/Time (switches between ascending, descending and unsorted)
+1. Tap to toggle the display of Height or Number of Confirmations
+2. Tap to sort by Date/Time (switches between ascending, descending, and unsorted)
 3. Tap to sort by Amount
 4. Larger notes appear in bolder typeface
 
@@ -35,5 +35,5 @@ The Note Tab shows your received notes.
 3. Previous Page
 4. Next Page
 5. Go to Last Page
-6. Adjust Number of rows per page. 
+6. Adjust the Number of rows per page. 
 You may have to scroll the footer to the left if your screen is too small.

@@ -10,4 +10,4 @@ nav_order: 1
 Choose the server that the wallet connects to
 
 1. Lightwalletd is the server deployment sponsored by the zcash organization
-2. Enter the URL of your own deployment. For example: `https://lwd.example.com:9067`
+2. Enter the URL of your own deployment. For example, `https://lwd.example.com:9067`

@@ -30,7 +30,7 @@ backup information.
 
 ![Backup](img/IMG_0036.PNG)
 
-1. Your backup are the 24 words in the top box. You must keep these words in a safe place. The
+1. Your backup is the 24 words in the top box. You must keep these words in a safe place. The
 order of the words is important. 
 2. For your convenience, the app can show you a QR code for your seed phrase when you press the icon
 next to the box.

@@ -10,7 +10,7 @@ multiple recipients.
 
 ![MultiPay](img/IMG_0089.PNG)
 
-1. Tap to add a recipients ("Add")
+1. Tap to add a recipient ("Add")
 2. Finish and send the transaction ("Send")
 
 ## Add a recipient

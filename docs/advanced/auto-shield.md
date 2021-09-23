@@ -15,8 +15,8 @@ schedules a transaction immediately.
 ![Shield](img/IMG_0088.PNG)
 
 1. Auto-Shield threshold. A value of 0 disables auto shielding
-2. By default, shield when you make a payment. It can be overridden 
-in the "advanced options" of the Send page
+2. By default, shield when you pay. It can be overridden 
+in the "advanced options" section of the Send page
 
 ## Remarks
 

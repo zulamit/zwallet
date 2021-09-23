@@ -44,9 +44,9 @@ application.
 
 ## Sign
 
-You can build the `sign` app its [source code](https://github.com/hhanh00/zcash-sync)
+You can build the `sign` app from its [source code](https://github.com/hhanh00/zcash-sync)
 
-To run `sign` app, you need to create an `.env` file that has
+To run the `sign` app, you need to create an `.env` file that has
 a line
 
 ```
@@ -71,7 +71,7 @@ For example,
 sign tx.json tx.raw
 ```
 
-Then copy `tx.raw` back to USB drive (or Cloud storage)
+Then copy `tx.raw` back to a USB drive (or Cloud storage)
 
 ## Broadcast
 
@@ -80,10 +80,10 @@ Then copy `tx.raw` back to USB drive (or Cloud storage)
 ![Broadcast](img/IMG_0098.PNG)
 
 1. Select "Broadcast" from the app menu
-2. Pick up the raw transaction file from storage
-3. Wait for the tx id
+2. Pick up the raw transaction file from the storage
+3. Wait for the transaction id
 
 ## Remarks
 
-- USB drive is safer that Cloud storage but in any case, the files
+- USB drive is safer than Cloud storage but in any case, the files
 do not contain any information that could be used to reveal your secret key

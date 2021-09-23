@@ -16,11 +16,11 @@ nav_order: 0.1
 - *Multi-account*
 - *Watch only account* from **viewing key**
 - Import seed phrase (**ZIP 32 compliant**) or secret key (**Zcashd standard**)
-- One touch transparent account shielding
-- **Automatic shielding** above configurable threshold
+- One-touch transparent account shielding
+- **Automatic shielding** above a configurable threshold
 - Transparent Shielding in Payments 
 - Snap (i.e. **diversified**) addresses 
-- Show equivalent in **Fiat currencies** (USD, EUR, JPY, RMB, etc.)
+- Show equivalents in **Fiat currencies** (USD, EUR, JPY, RMB, etc.)
 - Display and select notes (**Coin Control**)
 - Specify spending amount in Fiat or ZEC
 - Prepare **UNSIGNED transactions** for cold storage spending

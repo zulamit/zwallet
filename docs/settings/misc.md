@@ -11,7 +11,7 @@ nav_order: 6
 It needs to send the transaction ID to the server. Therefore, the server
 can know which transactions belong to you
 2. When checked, your account balance will be hidden on the account page if 
-you device is tilted forward or is put down
+your device is tilted forward or is put down
 
 ## Remarks
 
