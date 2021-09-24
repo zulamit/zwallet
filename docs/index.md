@@ -74,8 +74,16 @@ Please follow this [link](getting-started)
 
    Yes, the wallet uses the standard API of lightwalletd. It can connect to 
    ZecWallet version of lightwalletd or your own deployment.
-   
-8. How can I keep my account safe?
+ 
+8. Can I receive my mining rewards in my transparent address?
+
+   It is best not to receive your mining rewards because they need to mature
+   for 100 blocks before they can be spent. The Y/ZWallet cannot
+   shield your balance if any of the UTXO is not old enough. Currently,
+   `lightwalletd` does not provide an API to get the UTXO age and the
+   shielding transaction will be rejected by the network.
+
+9. How can I keep my account safe?
 
    The number one reason for lost coins is failure to have a *backup* of the 
    seed phrase.
