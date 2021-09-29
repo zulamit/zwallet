@@ -15,7 +15,7 @@ It is more practical to do one of the following:
 
 1. Copy it to the clipboard and paste it into an email/chat
 2. Tilt your device forward and let them scan your QR Code (your balance is hidden)
-3. Tap the QR code button and the wallet will show a larger QR code
+3. Tap the QR code button and the wallet will show the ["Receive Payment" page](/account/payment_uri)
 
 
 4. It takes up to a few minutes to have confirmation of a transfer in the blockchain.
