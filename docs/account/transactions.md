@@ -35,6 +35,11 @@ Tap on a transaction to show the details of the transactions
 
 1. Opens the transaction in an external block explorer
 
+## Export to CSV
+
+![Export](img/IMG_0137.PNG)
+
+1. Click on the 'Save' icon to export your transaction history as a CSV file
 
 ## Remarks
 
