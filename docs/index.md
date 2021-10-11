@@ -42,8 +42,8 @@ Please follow this [link](getting-started)
 
 1. Does it support transparent addresses?
 
-   Yes, but coins received in transparent addresses cannot be directly spent and must
-   be shielded first.
+   Yes, but we highly recommend shielding these coins before spending them.
+   The app is Shielded by Default.
   
 2. How fast is the synchronization exactly?
 
