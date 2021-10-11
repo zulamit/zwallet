@@ -5,7 +5,8 @@ nav_order: 0
 ---
 
 <p align="center">
-    <h1 align="center">Y/ZWallet</h1>
+    <h1 align="center">YWallet/ZWallet</h1>
+    <h2 align="center">WarpWallet</h2>
     <p align="center">The fastest, most advanced, shielded wallet for Zcash and Ycash</p>
 	<div align="center"><img src="IMG_0115.PNG"></div>
 </p>
@@ -50,9 +51,14 @@ Please follow this [link](getting-started)
    (as of Sep 2021) in around 1-3 minutes. In the end, your account balances are 
    fully available to spend. The reference wallet SDK is 100x slower.
    
-3. Why the name Y/ZWallet? 
+3. Why the name Y/ZWallet and WarpWallet? 
 
-   There are different versions of the app for Ycash and Zcash. 
+   There are different versions of the app for Ycash and Zcash. The app was
+   initially built for Zcash and was called ZWallet. Then it was ported to Ycash
+   and named YWallet.
+   Unfortunately, the name ZWallet is taken on the Apple Store and the app
+   had to be rebranded WarpWallet.
+   
    A single version that supports both coins may be implemented in the future.
    
 4. Is it open source?

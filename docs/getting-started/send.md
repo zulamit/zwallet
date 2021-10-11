@@ -32,9 +32,11 @@ shield button to initiate the transfer to your shielded address
 
 ## Remarks
 
-The spendable balance excludes the network fee of 0.01 mY/ZEC. 
-Notes may not be spendable if they were received recently.
+- The spendable balance excludes the network fee of 0.01 mY/ZEC. 
+- Notes may not be spendable if they were received recently.
 In this case, wait for more confirmations or change the setting
 "Number of Confirmations Needed before Spending". 
-
-Lowering the value increases the risk of having the transaction reverted.
+- Lowering the value increases the risk of having the transaction reverted.
+- By default, the balance in the transparent address cannot be spent. 
+Refer to [Use Transparent Balance](/advanced/advanced-send) to enable 
+spending from it.

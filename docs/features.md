@@ -7,7 +7,7 @@ nav_order: 0.1
 ## Main Features
 
 - Warp Sync: **PROCESSES ~10 000 BLOCKS PER SECOND** (1) 
-- **Transparent** and **Shielded** Address support (2)
+- **Transparent** and **Shielded** Address support
 - Scalable Design: Supports **hundreds of thousands of transactions and received notes**
 - **Low Requirements**: Android 7.0+, 2 GB of RAM
 
@@ -18,7 +18,6 @@ nav_order: 0.1
 - Import seed phrase (**ZIP 32 compliant**) or secret key (**Zcashd standard**)
 - One-touch transparent account shielding
 - **Automatic shielding** above a configurable threshold
-- Transparent Shielding in Payments 
 - Snap (i.e. **diversified**) addresses 
 - Show equivalents in **Fiat currencies** (USD, EUR, JPY, RMB, etc.)
 - Display and select notes (**Coin Control**)
@@ -36,7 +35,9 @@ nav_order: 0.1
 - **Color and Dark/Light Themes**
 - Customizable anchor offset
 - **QR code scanner support**
-- **Localization** in English, Spanish, French, Chinese, (more to come)
+- Payment URI with **Deep Links**
+- Integration with iOS/Android dashboard **Quick Actions**
+- **Localization** in English, Spanish, French (more to come)
 - *Fluent and Responsive UI*
 
 # Privacy Features
@@ -46,4 +47,3 @@ nav_order: 0.1
 - Customizable `lightwalletd` server URL
 
 1. Tested on OnePlus 7T - Snapdragon 855+
-2. Primary Shielded - Transparent Balance cannot be directly spent

@@ -16,7 +16,16 @@ The Receive/Payment URI page is for making QR codes that encode
 
 If you don't tap the button, the QR code is just your receiving address.
 
+## Quick Actions
+
+You can start a send/receive transaction directly from the app launcher / dashboard
+by long pressing the app icon.
+
+![Payment](img/IMG_0142.PNG)
+
 ## Remarks
 
 - When the app scans a QR code and detects a payment QR, it automatically
 fills the amount and memo.
+- When you scan a Payment URI with the iOS Camera app, it will offer to
+open the app.
