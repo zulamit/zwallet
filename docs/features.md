@@ -22,7 +22,7 @@ nav_order: 0.1
 - Show equivalents in **Fiat currencies** (USD, EUR, JPY, RMB, etc.)
 - Display and select notes (**Coin Control**)
 - Specify spending amount in Fiat or ZEC
-- Prepare **UNSIGNED transactions** for cold storage spending
+- Prepare **unsigned transactions online** and **sign them offline** (cold storage scenario)
 - **Broadcast raw transactions**
 - **Multiple recipient** payments
 - *Transaction History*
