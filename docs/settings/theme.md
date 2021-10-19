@@ -12,22 +12,41 @@ nav_order: 2
 
 Unlike other settings, changes are applied immediately.
 
-## Gold
+## Custom Theme
+
+![Custom Theme](img/IMG_0151.PNG)
+
+1. Select "Custom" as the theme
+2. Click on the Edit button to open the Theme Editor
+
+![Custom Theme](img/IMG_0152.PNG)
+
+1. Choose the Primary color for OK buttons, etc
+2. Choose the Primary Variant color
+3. Choose the Secondary color for Cancel buttons, etc
+4. Choose the Secondary Variant color
+
+Custom themes have both light and dark versions.
+
+## Predefined Themes
+
+### Gold
 
 ![Gold](img/theme/IMG_0108.PNG)
 ![Gold](img/theme/IMG_0109.PNG)
 
-## Blue
+### Blue
 
 ![Blue](img/theme/IMG_0110.PNG)
 ![Blue](img/theme/IMG_0111.PNG)
 
-## Pink
+### Pink
 
 ![Pink](img/theme/IMG_0112.PNG)
 ![Pink](img/theme/IMG_0113.PNG)
 
-## Purple
+### Purple
 
 ![Purple](img/theme/IMG_0114.PNG)
 ![Purple](img/theme/IMG_0115.PNG)
+

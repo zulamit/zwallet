@@ -9,7 +9,7 @@ nav_order: 0.1
 - Warp Sync: **PROCESSES ~10 000 BLOCKS PER SECOND** (1) 
 - **Transparent** and **Shielded** Address support
 - Scalable Design: Supports **hundreds of thousands of transactions and received notes**
-- **Low Requirements**: Android 7.0+, 2 GB of RAM
+- **Low Requirements**: Android 7.0+, iPhone 7, 2 GB of RAM
 
 ## Other Features
 
@@ -31,8 +31,9 @@ nav_order: 0.1
 - Account *Balance History*
 - Largest Past *Payees Chart*
 - **Wallet P/L Charts and Reports**
-- *Contact Address Book*
+- *Contact Address Book* (with optional storage in memos)
 - **Color and Dark/Light Themes**
+- **Custom themes**
 - Customizable anchor offset
 - **QR code scanner support**
 - Payment URI with **Deep Links**
