@@ -24,7 +24,7 @@ increased
 The app tracks wallet in and outflows and evaluates profit and loss
 based on [the average cost method](https://en.wikipedia.org/wiki/Average_cost_method).
 
-![PnL](img/IMG_0068.PNG)
+![PnL](img/IMG_0161.PNG)
 
 1. Historical Price
 2. Realized P/L 

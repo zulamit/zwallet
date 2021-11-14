@@ -8,7 +8,7 @@ nav_order: 2
 The budget page shows your largest spending/payments and
 a chart of your past account balance. 
 
-![Budget](img/IMG_0067.PNG)
+![Budget](img/IMG_0160.PNG)
 
 The table shows the top 5 addresses where you spent the most.
 

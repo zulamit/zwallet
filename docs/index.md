@@ -23,6 +23,7 @@ nav_order: 0
 
 ### ZWallet
 
+<a href="https://play.google.com/store/apps/details?id=me.hanh.zwallet"><img style="height:74px" src="google-play-badge.png"></a>
 TBD
 
 ## At a glance
