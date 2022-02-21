@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Advanced Usage</title><link>/docs/advanced/</link><description>Recent content in Advanced Usage on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="/docs/advanced/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Auto-Shield Transparent Balance</title><link>/docs/advanced/auto-shield/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/auto-shield/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Advanced Usage</title><link>https://hhanh00.github.io/zwallet/docs/advanced/</link><description>Recent content in Advanced Usage on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://hhanh00.github.io/zwallet/docs/advanced/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Auto-Shield Transparent Balance</title><link>https://hhanh00.github.io/zwallet/docs/advanced/auto-shield/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/auto-shield/</guid><description>
 &lt;p>The Auto-Shield feature automatically transfers your transparent
 balance to the shielded address when it is greater than a
 configurable amount.&lt;/p>
@@ -20,7 +20,7 @@ unshielded for a long time&lt;/li>
 on the Transparent Account page&lt;/li>
 &lt;li>With option 2, the recipient of the payment can infer that the
 transparent address belongs to you&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Coin Control</title><link>/docs/advanced/coin-control/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/coin-control/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Coin Control</title><link>https://hhanh00.github.io/zwallet/docs/advanced/coin-control/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/coin-control/</guid><description>
 &lt;p>By default, every received note that has enough confirmations can
 be picked in an outgoing transaction. With Coin Control, you can
 exclude some notes from being selected.&lt;/p>
@@ -28,7 +28,7 @@ exclude some notes from being selected.&lt;/p>
 &lt;ol>
 &lt;li>Tap to select/deselect notes. Notes that are selected will &lt;strong>not&lt;/strong>
 be spent&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Send Options</title><link>/docs/advanced/advanced-send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/advanced-send/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Send Options</title><link>https://hhanh00.github.io/zwallet/docs/advanced/advanced-send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/advanced-send/</guid><description>
 &lt;img src="../img/IMG_0140.PNG">
 &lt;ol>
 &lt;li>Show/Hide advanced options&lt;/li>
@@ -46,7 +46,7 @@ this cap&lt;/li>
 will include the &lt;em>whole&lt;/em> transparent balance. As always, change is sent to the
 shielded address.&lt;/li>
 &lt;li>Be aware that &lt;strong>the recipient will gain knowledge of your transparent address&lt;/strong>.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Budget</title><link>/docs/advanced/budget/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/budget/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Budget</title><link>https://hhanh00.github.io/zwallet/docs/advanced/budget/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/budget/</guid><description>
 &lt;p>The budget page shows your largest spending/payments and
 a chart of your past account balance.&lt;/p>
 &lt;img src="../img/IMG_0160.PNG">
@@ -57,7 +57,7 @@ a chart of your past account balance.&lt;/p>
 &lt;li>Total amount sent to the address&lt;/li>
 &lt;li>Tap and hold to show the exact balance at a given time&lt;/li>
 &lt;li>The time range can be adjusted on the Settings page&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Wallet Profit and Loss</title><link>/docs/advanced/pnl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/pnl/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Wallet Profit and Loss</title><link>https://hhanh00.github.io/zwallet/docs/advanced/pnl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/pnl/</guid><description>
 &lt;p>Wallet P/L (Profit and Loss) calculates and displays your wallet
 performance versus fiat currency. It considers incoming funds
 as purchases at market price and outgoing funds as sales.&lt;/p>
@@ -92,7 +92,7 @@ one price per day and therefore it will not take intraday movements
 into consideration&lt;/li>
 &lt;li>The historical price it uses could be different from your actual
 purchase or sale price. As a result, the P/L is only indicative&lt;/li>
-&lt;/ul></description></item><item><title>Docs: MultiPay</title><link>/docs/advanced/multipay/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/multipay/</guid><description>
+&lt;/ul></description></item><item><title>Docs: MultiPay</title><link>https://hhanh00.github.io/zwallet/docs/advanced/multipay/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/multipay/</guid><description>
 &lt;p>MultiPay allows you to create a single payment transaction with
 multiple recipients.&lt;/p>
 &lt;img src="../img/IMG_0089.PNG">
@@ -127,7 +127,7 @@ multiple recipients.&lt;/p>
 &lt;li>Contacts are replaced by their addresses&lt;/li>
 &lt;li>Notes can have an amount equal to 0&lt;/li>
 &lt;li>Multipay transactions can be empty&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Cold Storage</title><link>/docs/advanced/cold-storage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/cold-storage/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Cold Storage</title><link>https://hhanh00.github.io/zwallet/docs/advanced/cold-storage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/cold-storage/</guid><description>
 &lt;p>In a cold storage transaction, the mobile account does not have
 the secret key needed for spending.
 However, it is able to build an unsigned transaction and export

@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Documentation</title><link>/docs/</link><description>Recent content in Documentation on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Account Manager</title><link>/docs/account/manager/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/account/manager/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Documentation</title><link>https://hhanh00.github.io/zwallet/docs/</link><description>Recent content in Documentation on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://hhanh00.github.io/zwallet/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Account Manager</title><link>https://hhanh00.github.io/zwallet/docs/account/manager/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/manager/</guid><description>
 &lt;p>Open the account manager by selecting &amp;ldquo;Accounts&amp;rdquo; in the app menu.&lt;/p>
 &lt;img src="../img/IMG_0057.PNG">
 &lt;ol>
@@ -13,12 +13,12 @@
 &lt;p>To return to the account page, select an account by tapping on its name. Or press the back button,
 if you don&amp;rsquo;t want to change the current selection.&lt;/p>
 &lt;h2 id="remarks">Remarks&lt;/h2>
-&lt;p>There needs to be at least one account. The last account cannot be deleted&lt;/p></description></item><item><title>Docs: Add/Edit/Delete</title><link>/docs/contact/manage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/contact/manage/</guid><description>
+&lt;p>There needs to be at least one account. The last account cannot be deleted&lt;/p></description></item><item><title>Docs: Add/Edit/Delete</title><link>https://hhanh00.github.io/zwallet/docs/contact/manage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/contact/manage/</guid><description>
 &lt;img src="../img/IMG_0084.PNG">
 &lt;ol>
 &lt;li>Tap to open the QR code scanner&lt;/li>
 &lt;li>An address &lt;em>should&lt;/em> be assigned to a single contact&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Auto-Shield Transparent Balance</title><link>/docs/advanced/auto-shield/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/auto-shield/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Auto-Shield Transparent Balance</title><link>https://hhanh00.github.io/zwallet/docs/advanced/auto-shield/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/auto-shield/</guid><description>
 &lt;p>The Auto-Shield feature automatically transfers your transparent
 balance to the shielded address when it is greater than a
 configurable amount.&lt;/p>
@@ -40,7 +40,7 @@ unshielded for a long time&lt;/li>
 on the Transparent Account page&lt;/li>
 &lt;li>With option 2, the recipient of the payment can infer that the
 transparent address belongs to you&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Backup Restore</title><link>/docs/account/restore/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/account/restore/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Backup Restore</title><link>https://hhanh00.github.io/zwallet/docs/account/restore/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/restore/</guid><description>
 &lt;h2 id="backup">Backup&lt;/h2>
 &lt;p>Backups are &lt;strong>very important&lt;/strong> and must be taken unless you don&amp;rsquo;t mind losing access to the account
 and the coins it contains.&lt;/p>
@@ -69,7 +69,7 @@ If you need to recall that page, open the app menu and select &amp;ldquo;Backup&
 the app will ask you if you want to rescan the blockchain if needed.&lt;/p>
 &lt;blockquote>
 &lt;p>Scanning updates every account. You don&amp;rsquo;t need to rescan each new account individually&lt;/p>
-&lt;/blockquote></description></item><item><title>Docs: Coin Control</title><link>/docs/advanced/coin-control/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/coin-control/</guid><description>
+&lt;/blockquote></description></item><item><title>Docs: Coin Control</title><link>https://hhanh00.github.io/zwallet/docs/advanced/coin-control/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/coin-control/</guid><description>
 &lt;p>By default, every received note that has enough confirmations can
 be picked in an outgoing transaction. With Coin Control, you can
 exclude some notes from being selected.&lt;/p>
@@ -77,7 +77,7 @@ exclude some notes from being selected.&lt;/p>
 &lt;ol>
 &lt;li>Tap to select/deselect notes. Notes that are selected will &lt;strong>not&lt;/strong>
 be spent&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Send Options</title><link>/docs/advanced/advanced-send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/advanced-send/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Send Options</title><link>https://hhanh00.github.io/zwallet/docs/advanced/advanced-send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/advanced-send/</guid><description>
 &lt;img src="../img/IMG_0140.PNG">
 &lt;ol>
 &lt;li>Show/Hide advanced options&lt;/li>
@@ -95,13 +95,13 @@ this cap&lt;/li>
 will include the &lt;em>whole&lt;/em> transparent balance. As always, change is sent to the
 shielded address.&lt;/li>
 &lt;li>Be aware that &lt;strong>the recipient will gain knowledge of your transparent address&lt;/strong>.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Server</title><link>/docs/settings/server/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/settings/server/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Server</title><link>https://hhanh00.github.io/zwallet/docs/settings/server/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/server/</guid><description>
 &lt;img src="../img/IMG_0099.PNG">
 &lt;p>Choose the server that the wallet connects to&lt;/p>
 &lt;ol>
 &lt;li>Lightwalletd is the server deployment sponsored by the zcash organization&lt;/li>
 &lt;li>Enter the URL of your own deployment. For example, &lt;code>https://lwd.example.com:9067&lt;/code>&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Budget</title><link>/docs/advanced/budget/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/budget/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Budget</title><link>https://hhanh00.github.io/zwallet/docs/advanced/budget/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/budget/</guid><description>
 &lt;p>The budget page shows your largest spending/payments and
 a chart of your past account balance.&lt;/p>
 &lt;img src="../img/IMG_0160.PNG">
@@ -112,7 +112,7 @@ a chart of your past account balance.&lt;/p>
 &lt;li>Total amount sent to the address&lt;/li>
 &lt;li>Tap and hold to show the exact balance at a given time&lt;/li>
 &lt;li>The time range can be adjusted on the Settings page&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Notes</title><link>/docs/account/notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/account/notes/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Notes</title><link>https://hhanh00.github.io/zwallet/docs/account/notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/notes/</guid><description>
 &lt;p>The Note Tab shows your received notes.&lt;/p>
 &lt;h2 id="display-and-sorting">Display and Sorting&lt;/h2>
 &lt;img src="../img/IMG_0058.PNG">
@@ -142,7 +142,7 @@ a chart of your past account balance.&lt;/p>
 &lt;li>Go to Last Page&lt;/li>
 &lt;li>Adjust the Number of rows per page.
 You may have to scroll the footer to the left if your screen is too small.&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Save to Blockchain</title><link>/docs/contact/save/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/contact/save/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Save to Blockchain</title><link>https://hhanh00.github.io/zwallet/docs/contact/save/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/contact/save/</guid><description>
 &lt;img src="../img/IMG_0085.PNG">
 &lt;p>Changes to your contacts are first saved locally on your device.&lt;/p>
 &lt;ol>
@@ -154,7 +154,7 @@ The app will make a transaction that saves your contact list. It costs
 &lt;ul>
 &lt;li>Contacts that are saved in the blockchain are recovered when the
 account is restored from its seed&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Theme</title><link>/docs/settings/theme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/settings/theme/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Theme</title><link>https://hhanh00.github.io/zwallet/docs/settings/theme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/theme/</guid><description>
 &lt;img src="../img/IMG_0099_1.PNG">
 &lt;ol>
 &lt;li>Select the theme color&lt;/li>
@@ -191,7 +191,7 @@ account is restored from its seed&lt;/li>
 &lt;h3 id="purple">Purple&lt;/h3>
 &lt;p>&lt;img src="../img/theme/IMG_0114.PNG">
 &lt;img src="../img/theme/IMG_0115.PNG">
-&lt;/p></description></item><item><title>Docs: Auto-Shield</title><link>/docs/settings/auto-shield/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/settings/auto-shield/</guid><description>
+&lt;/p></description></item><item><title>Docs: Auto-Shield</title><link>https://hhanh00.github.io/zwallet/docs/settings/auto-shield/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/auto-shield/</guid><description>
 &lt;img src="../img/IMG_0141.PNG">
 &lt;ol>
 &lt;li>Auto shield your transparent balance when it is higher than this value.
@@ -203,7 +203,7 @@ The app will create a separate transaction&lt;/li>
 &lt;li>A value of 0 for option 1 means no automatic shielding&lt;/li>
 &lt;li>You can also shield your balance manually at any time&lt;/li>
 &lt;li>Option 2 is similar to ZecWallet approach of handling transparent balance&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Payment URI</title><link>/docs/account/payment_uri/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/account/payment_uri/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Payment URI</title><link>https://hhanh00.github.io/zwallet/docs/account/payment_uri/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/payment_uri/</guid><description>
 &lt;img src="../img/IMG_0143.PNG">
 &lt;p>The Receive/Payment URI page is for making QR codes that encode&lt;/p>
 &lt;ol>
@@ -225,7 +225,7 @@ by long pressing the app icon.&lt;/p>
 fills the amount and memo.&lt;/li>
 &lt;li>When you scan a Payment URI with the iOS Camera app, it will offer to
 open the app.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Transactions</title><link>/docs/account/transactions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/account/transactions/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Transactions</title><link>https://hhanh00.github.io/zwallet/docs/account/transactions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/transactions/</guid><description>
 &lt;p>The History Tab shows the transaction history.&lt;/p>
 &lt;p>&lt;img src="../img/IMG_0064.PNG">
 &lt;img src="../img/IMG_0065.PNG">
@@ -265,7 +265,7 @@ You may have to scroll the footer to the left if your screen is too small.&lt;/l
 &lt;li>Incoming transactions are shown in green. Outgoing transactions are
 shown in red&lt;/li>
 &lt;li>Larger transactions are shown in heavier typeface&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Wallet Profit and Loss</title><link>/docs/advanced/pnl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/pnl/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Wallet Profit and Loss</title><link>https://hhanh00.github.io/zwallet/docs/advanced/pnl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/pnl/</guid><description>
 &lt;p>Wallet P/L (Profit and Loss) calculates and displays your wallet
 performance versus fiat currency. It considers incoming funds
 as purchases at market price and outgoing funds as sales.&lt;/p>
@@ -300,7 +300,7 @@ one price per day and therefore it will not take intraday movements
 into consideration&lt;/li>
 &lt;li>The historical price it uses could be different from your actual
 purchase or sale price. As a result, the P/L is only indicative&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Fiat Currency</title><link>/docs/settings/currency/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/settings/currency/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Fiat Currency</title><link>https://hhanh00.github.io/zwallet/docs/settings/currency/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/currency/</guid><description>
 &lt;img src="../img/IMG_0099_3.PNG">
 &lt;ol>
 &lt;li>Choose the reference Fiat/Crypto currency
@@ -366,7 +366,7 @@ among&lt;/li>
 &amp;ldquo;xag&amp;rdquo;,
 &amp;ldquo;xau&amp;rdquo;,
 &amp;ldquo;bits&amp;rdquo;,
-&amp;ldquo;sats&amp;rdquo;&lt;/p></description></item><item><title>Docs: MultiPay</title><link>/docs/advanced/multipay/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/multipay/</guid><description>
+&amp;ldquo;sats&amp;rdquo;&lt;/p></description></item><item><title>Docs: MultiPay</title><link>https://hhanh00.github.io/zwallet/docs/advanced/multipay/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/multipay/</guid><description>
 &lt;p>MultiPay allows you to create a single payment transaction with
 multiple recipients.&lt;/p>
 &lt;img src="../img/IMG_0089.PNG">
@@ -401,7 +401,7 @@ multiple recipients.&lt;/p>
 &lt;li>Contacts are replaced by their addresses&lt;/li>
 &lt;li>Notes can have an amount equal to 0&lt;/li>
 &lt;li>Multipay transactions can be empty&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Synchronization</title><link>/docs/account/sync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/account/sync/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Synchronization</title><link>https://hhanh00.github.io/zwallet/docs/account/sync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/sync/</guid><description>
 &lt;p>The app keeps up to date with the blockchain automatically. It checks
 the current status of the blockchain every 15s.&lt;/p>
 &lt;h2 id="rescan">Rescan&lt;/h2>
@@ -418,13 +418,13 @@ the current status of the blockchain every 15s.&lt;/p>
 &lt;li>The Estimated remaining time of the full scan&lt;/li>
 &lt;/ol>
 &lt;p>When the app is synchronized with the current block, it just displays
-the block height.&lt;/p></description></item><item><title>Docs: Chart Range</title><link>/docs/settings/chart-range/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/settings/chart-range/</guid><description>
+the block height.&lt;/p></description></item><item><title>Docs: Chart Range</title><link>https://hhanh00.github.io/zwallet/docs/settings/chart-range/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/chart-range/</guid><description>
 &lt;img src="../img/IMG_0100_1.PNG">
 &lt;ol>
 &lt;li>Choose the chart time range. They all end at the current date.
 By default, charts span 1 year (365 days) and can be set to
 1 month (30 days), 3 months (90 days), and 6 months (180 days).&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Cold Storage</title><link>/docs/advanced/cold-storage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/advanced/cold-storage/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Cold Storage</title><link>https://hhanh00.github.io/zwallet/docs/advanced/cold-storage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/cold-storage/</guid><description>
 &lt;p>In a cold storage transaction, the mobile account does not have
 the secret key needed for spending.
 However, it is able to build an unsigned transaction and export
@@ -475,7 +475,7 @@ a line&lt;/p>
 &lt;ul>
 &lt;li>USB drive is safer than Cloud storage but in any case, the files
 do not contain any information that could be used to reveal your secret key&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Watch Only</title><link>/docs/account/watch-only/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/account/watch-only/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Watch Only</title><link>https://hhanh00.github.io/zwallet/docs/account/watch-only/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/watch-only/</guid><description>
 &lt;p>You can turn a regular account into a watch-only account. This prevents
 you or anyone from spending from it. You will still be able to receive coins
 and monitor the balance.&lt;/p>
@@ -487,7 +487,7 @@ of the seed phrase to restore the account later.&lt;/p>
 &lt;ol>
 &lt;li>Select the Cold Storage option from the app menu&lt;/li>
 &lt;li>Choose &amp;ldquo;DELETE&amp;rdquo;&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Miscellaneous</title><link>/docs/settings/misc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/settings/misc/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Miscellaneous</title><link>https://hhanh00.github.io/zwallet/docs/settings/misc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/misc/</guid><description>
 &lt;p>&lt;img src="../img/IMG_0100_2.PNG">
 &lt;img src="../img/IMG_0124.PNG">
 &lt;/p>
@@ -504,7 +504,7 @@ your device is tilted forward or is put down&lt;/li>
 &lt;li>Running your personal deployment of &lt;code>lightwalletd&lt;/code> is the best way to keep
 all of your information private&lt;/li>
 &lt;li>Changing the setting &amp;ldquo;Protect Send&amp;rdquo; also require authentication&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Your first account</title><link>/docs/getting-started/first-account/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/first-account/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Your first account</title><link>https://hhanh00.github.io/zwallet/docs/getting-started/first-account/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/getting-started/first-account/</guid><description>
 &lt;p>The first time you launch YWallet/ZWallet, the app will show the
 &amp;ldquo;About&amp;rdquo; page. Please read it and particularly the part about
 &lt;strong>Keeping a backup&lt;/strong> of your accounts. It is the one and only
@@ -538,7 +538,7 @@ next to the box.&lt;/li>
 &lt;li>The account name is required. It does not have to be unique.&lt;/li>
 &lt;li>If the &amp;ldquo;Seed/Secret Key or View key&amp;rdquo; field is not blank but
 does not contain a valid value, the &amp;ldquo;ADD&amp;rdquo; button is disabled.&lt;/li>
-&lt;li>If you want to restore a previous account, &lt;a href="/docs/account/restore/">go to this page&lt;/a>&lt;/li>
+&lt;li>If you want to restore a previous account, &lt;a href="https://hhanh00.github.io/zwallet/zwallet/docs/account/restore/">go to this page&lt;/a>&lt;/li>
 &lt;li>Below the seed phrase, you will find your secret key and your viewing keys.
 You do not need to save them because they can be derived from your seed phrase. They are provided
 in case you need to use another app that does not support seed phrases.&lt;/li>
@@ -547,7 +547,7 @@ in case you need to use another app that does not support seed phrases.&lt;/li>
 &lt;p>Once you close the Backup page, you will return to the Account Manager.&lt;/p>
 &lt;ol>
 &lt;li>Tap on the new account name&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Account summary</title><link>/docs/getting-started/account-summary/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/account-summary/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Account summary</title><link>https://hhanh00.github.io/zwallet/docs/getting-started/account-summary/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/getting-started/account-summary/</guid><description>
 &lt;h2 id="shielded-mode">Shielded Mode&lt;/h2>
 &lt;img src="../img/IMG_0041.PNG">
 &lt;ol>
@@ -590,7 +590,7 @@ afterward&lt;/li>
 unless you enable &amp;ldquo;Spend from Transparent Balance&amp;rdquo;.
 The coins should be first transferred to the shielded address.&lt;/li>
 &lt;li>Press to initiate shielding of the current balance&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Receive coins</title><link>/docs/getting-started/receive/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/receive/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Receive coins</title><link>https://hhanh00.github.io/zwallet/docs/getting-started/receive/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/getting-started/receive/</guid><description>
 &lt;p>The person who sends you coins needs to know your account address.
 There are several ways to communicate it.&lt;/p>
 &lt;img src="../img/IMG_0042.PNG">
@@ -604,7 +604,7 @@ It is more practical to do one of the following:&lt;/p>
 &lt;p>Tilt your device forward and let them scan your QR Code (your balance is hidden)&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Tap the QR code button and the wallet will show the &lt;a href="/docs/account/payment_uri/">&amp;ldquo;Receive Payment&amp;rdquo; page&lt;/a>&lt;/p>
+&lt;p>Tap the QR code button and the wallet will show the &lt;a href="https://hhanh00.github.io/zwallet/zwallet/docs/account/payment_uri/">&amp;ldquo;Receive Payment&amp;rdquo; page&lt;/a>&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>It takes up to a few minutes to have confirmation of a transfer in the blockchain.
@@ -614,7 +614,7 @@ Unconfirmed incoming and outgoing funds are shown under the balance&lt;/p>
 &lt;p>This is the current block number. When the wallet detects a new block, it will
 automatically synchronize and update&lt;/p>
 &lt;/li>
-&lt;/ol></description></item><item><title>Docs: Send coins</title><link>/docs/getting-started/send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/send/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Send coins</title><link>https://hhanh00.github.io/zwallet/docs/getting-started/send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/getting-started/send/</guid><description>
 &lt;img src="../img/IMG_0043.PNG">
 &lt;ol>
 &lt;li>Start from the account page by clicking on the &amp;ldquo;Send&amp;rdquo; button in the bottom right corner&lt;/li>
@@ -633,8 +633,8 @@ automatically synchronize and update&lt;/p>
 &lt;img src="../img/IMG_0125_1.PNG">
 &lt;ol>
 &lt;li>Total balance available = transparent + shielded&lt;/li>
-&lt;li>Shielded &lt;a href="/docs/account/notes/">NOTES&lt;/a> that don&amp;rsquo;t have enough confirmations for sending&lt;/li>
-&lt;li>Shielded notes that were excluded from sending (&lt;a href="/docs/advanced/coin-control/">COIN CONTROL&lt;/a>)&lt;/li>
+&lt;li>Shielded &lt;a href="https://hhanh00.github.io/zwallet/zwallet/docs/account/notes/">NOTES&lt;/a> that don&amp;rsquo;t have enough confirmations for sending&lt;/li>
+&lt;li>Shielded notes that were excluded from sending (&lt;a href="https://hhanh00.github.io/zwallet/zwallet/docs/advanced/coin-control/">COIN CONTROL&lt;/a>)&lt;/li>
 &lt;li>Transparent balance. These coins must be shielded before sending. Tap the
 shield button to initiate the transfer to your shielded address&lt;/li>
 &lt;li>Remaining balance spendable (taking the network fee into consideration)&lt;/li>
@@ -647,9 +647,9 @@ In this case, wait for more confirmations or change the setting
 &amp;ldquo;Number of Confirmations Needed before Spending&amp;rdquo;.&lt;/li>
 &lt;li>Lowering the value increases the risk of having the transaction reverted.&lt;/li>
 &lt;li>By default, the balance in the transparent address cannot be spent.
-Refer to &lt;a href="/docs/advanced/advanced-send/">Use Transparent Balance&lt;/a> to enable
+Refer to &lt;a href="https://hhanh00.github.io/zwallet/zwallet/docs/advanced/advanced-send/">Use Transparent Balance&lt;/a> to enable
 spending from it.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Release Notes</title><link>/docs/release_notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/release_notes/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Release Notes</title><link>https://hhanh00.github.io/zwallet/docs/release_notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/release_notes/</guid><description>
 &lt;h2 id="1012">1.0.12&lt;/h2>
 &lt;blockquote>
 &lt;p>&lt;strong>IMPORTANT NOTICE&lt;/strong>&lt;/p>
