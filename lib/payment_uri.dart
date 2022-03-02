@@ -83,7 +83,7 @@ class PaymentURIState extends State<PaymentURIPage> {
 
     final String _qrText;
     if (amount > 0) {
-      _qrText = WarpApi.makePaymentURI(widget.address, amount, memo);
+      _qrText = WarpApi.makePaymentURI(accountManager.coin, widget.address, amount, memo);
     } else
       _qrText = widget.address;
 

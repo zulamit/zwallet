@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:warp_api/warp_api.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import 'backup.dart';
 import 'main.dart';
 import 'generated/l10n.dart';
 
@@ -19,6 +21,7 @@ class _RestorePageState extends State<RestorePage> {
   final _shareController = TextEditingController();
   var _validKey = true;
   var _isVK = false;
+  var _coin = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,17 @@ class _RestorePageState extends State<RestorePage> {
             child: SingleChildScrollView(child: Padding(
                 padding: EdgeInsets.all(16),
                 child: Column(children: [
+                  FormBuilderRadioGroup<int>(
+                      orientation: OptionsOrientation.horizontal,
+                      name: 'coin',
+                      initialValue: _coin,
+                      onChanged: (int? v) { _coin = v!; },
+                      options: [
+                        FormBuilderFieldOption(
+                            child: Text('Zcash'), value: 0),
+                        FormBuilderFieldOption(
+                            child: Text('Ycash'), value: 1),
+                      ]),
                   TextFormField(
                     decoration: InputDecoration(labelText: s.accountName),
                     controller: _nameController,
@@ -83,9 +97,10 @@ class _RestorePageState extends State<RestorePage> {
 
   _onOK() async {
     final s = S.of(context);
-    if (_formKey.currentState!.validate()) {
+    final form = _formKey.currentState!;
+    if (form.validate()) {
       final account =
-          WarpApi.newAccount(_nameController.text, _keyController.text);
+          WarpApi.newAccount(_coin, _nameController.text, _keyController.text); // TODO
       if (account < 0) {
         showDialog(
             context: context,
@@ -105,15 +120,16 @@ class _RestorePageState extends State<RestorePage> {
       else {
         if (_shareController.text.isNotEmpty)
           accountManager.storeShareSecret(account, _shareController.text);
-        await accountManager.refresh();
+        // await accountManager.refresh();
+        await accounts.refresh();
         if (_keyController.text != "") {
           syncStatus.setAccountRestored(true);
           Navigator.of(context).pop();
         }
         else {
           if (accountManager.accounts.length == 1)
-            WarpApi.skipToLastHeight(); // single new account -> quick sync
-          Navigator.of(context).pushReplacementNamed('/backup', arguments: account);
+            WarpApi.skipToLastHeight(0); // single new account -> quick sync // TODO
+          Navigator.of(context).pushReplacementNamed('/backup', arguments: AccountId(_coin, account)); // Need coin type
         }
       }
     }
@@ -121,7 +137,7 @@ class _RestorePageState extends State<RestorePage> {
 
   _checkKey(key) {
     setState(() {
-      final keyType = WarpApi.validKey(key);
+      final keyType = WarpApi.validKey(0, key); // TODO
       _validKey = key == "" || keyType >= 0;
       _isVK = keyType == 2;
     });

@@ -23,7 +23,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:uni_links/uni_links.dart';
 import 'package:quick_actions/quick_actions.dart';
-import 'package:flutter/services.dart' show PlatformException;
+import 'accounts.dart';
+import 'coin/coins.dart';
 import 'generated/l10n.dart';
 
 import 'account.dart';
@@ -57,6 +58,7 @@ var settings = Settings();
 var multipayData = MultiPayStore();
 var eta = ETAStore();
 var contacts = ContactStore();
+var accounts = AccountManager2();
 
 Future<Database> getDatabase() async {
   var databasesPath = await getDatabasesPath();
@@ -92,7 +94,7 @@ void handleQuickAction(BuildContext context, String shortcut) {
 }
 
 class LoadProgress extends StatelessWidget {
-  double value;
+  final double value;
 
   LoadProgress(this.value);
 
@@ -158,7 +160,7 @@ void main() {
                 '/tx': (context) =>
                     TransactionPage(routeSettings.arguments as Tx),
                 '/backup': (context) =>
-                    BackupPage(routeSettings.arguments as int?),
+                    BackupPage(routeSettings.arguments as AccountId?),
                 '/multipay': (context) => MultiPayPage(),
                 '/multisig': (context) => MultisigPage(),
                 '/multisign': (context) => MultisigAggregatorPage(
@@ -208,7 +210,12 @@ class ZWalletAppState extends State<ZWalletApp> {
     if (!initialized) {
       initialized = true;
       final dbPath = await getDatabasesPath();
-      WarpApi.initWallet(dbPath + "/zec.db", settings.getLWD());
+      await ycash.open(dbPath);
+      await zcash.open(dbPath);
+      WarpApi.initWallet(dbPath);
+      for (var s in settings.servers) {
+        WarpApi.updateLWD(s.coin, s.getLWDUrl());
+      }
       final db = await getDatabase();
       await accountManager.init(db);
       await contacts.init(db);
@@ -532,7 +539,7 @@ Future<void> shieldTAddr(BuildContext context) async {
               Navigator.of(context).pop();
               final snackBar1 = SnackBar(content: Text(s.shieldingInProgress));
               rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar1);
-              final txid = await WarpApi.shieldTAddr(accountManager.active.id);
+              final txid = await WarpApi.shieldTAddr(accountManager.active.coin, accountManager.active.id);
               final snackBar2 = SnackBar(content: Text("${s.txId}: $txid"));
               rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar2);
             })),

@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:warp/coin/coins.dart';
 import 'package:warp_api/warp_api.dart';
 import 'package:warp_api/types.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,10 +18,46 @@ import 'dart:convert' as convert;
 import 'package:convert/convert.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 
+import 'coin/coin.dart';
 import 'generated/l10n.dart';
 import 'main.dart';
 
 part 'store.g.dart';
+
+class LWDServer {
+  final int coin;
+  late String choice;
+  late String customUrl;
+
+  LWDServer(this.coin) {
+    choice = coinDef.lwd.first.name;
+    customUrl = coinDef.lwd.first.url;
+  }
+
+  Future<String> loadPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    final _choice = prefs.getString('lwd_choice_${coinDef.ticker}');
+    if (_choice != null)
+      choice = _choice;
+    prefs.setString('lwd_choice_${coinDef.ticker}', choice);
+    customUrl = prefs.getString('lwd_custom_${coinDef.ticker}') ?? "";
+    return getLWDUrl();
+  }
+
+  String getLWDUrl() {
+    final url;
+    if (choice == "custom")
+      url = customUrl;
+    else {
+      final lwd = coinDef.lwd.firstWhere((lwd) => lwd.name == choice,
+          orElse: () => coinDef.lwd.first);
+      url = lwd.url;
+    }
+    return url;
+  }
+
+  CoinBase get coinDef => getCoin(coin);
+}
 
 class Settings = _Settings with _$Settings;
 
@@ -31,11 +68,7 @@ abstract class _Settings with Store {
   @observable
   bool simpleMode = true;
 
-  @observable
-  String ldUrl = "";
-
-  @observable
-  String ldUrlChoice = "";
+  List<LWDServer> servers = [LWDServer(0), LWDServer(1)];
 
   @observable
   int anchorOffset = 10;
@@ -100,10 +133,6 @@ abstract class _Settings with Store {
     final prefs = await SharedPreferences.getInstance();
     linkHooksInitialized = prefs.getBool('link_hooks') ?? false;
     simpleMode = prefs.getBool('simple_mode') ?? true;
-    ldUrlChoice = prefs.getString('lightwalletd_choice') ?? "Lightwalletd";
-    ldUrl = prefs.getString('lightwalletd_custom') ?? "";
-    prefs.setString('lightwalletd_choice', ldUrlChoice);
-    prefs.setString('lightwalletd_custom', ldUrl);
     anchorOffset = prefs.getInt('anchor_offset') ?? 3;
     getTx = prefs.getBool('get_txinfo') ?? true;
     rowsPerPage = prefs.getInt('rows_per_age') ?? 10;
@@ -127,6 +156,10 @@ abstract class _Settings with Store {
 
     memoSignature = prefs.getString('memo_signature');
 
+    for (var s in servers) {
+      final url = await s.loadPrefs();
+    }
+
     _updateThemeData();
     Future.microtask(_loadCurrencies); // lazily
     return true;
@@ -145,20 +178,11 @@ abstract class _Settings with Store {
     prefs.setBool('simple_mode', simple);
   }
 
-  @action
-  Future<void> setURLChoice(String choice) async {
-    ldUrlChoice = choice;
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString('lightwalletd_choice', ldUrlChoice);
-    updateLWD();
-  }
-
-  @action
-  Future<void> setURL(String url) async {
-    ldUrl = url;
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString('lightwalletd_custom', ldUrl);
-    updateLWD();
+  void updateLWD() async {
+    for (var s in servers) {
+      final url = await s.loadPrefs();
+      WarpApi.updateLWD(s.coin, url);
+    }
   }
 
   @action
@@ -258,22 +282,6 @@ abstract class _Settings with Store {
     accountManager.fetchChartData();
   }
 
-  String getLWD() {
-    switch (ldUrlChoice) {
-      case "custom":
-        return ldUrl;
-      default:
-        return coin.lwd
-            .firstWhere((lwd) => lwd.name == ldUrlChoice,
-                orElse: () => coin.lwd.first)
-            .url;
-    }
-  }
-
-  void updateLWD() {
-    WarpApi.updateLWD(getLWD());
-  }
-
   @action
   Future<void> updateGetTx(bool v) async {
     final prefs = await SharedPreferences.getInstance();
@@ -366,7 +374,7 @@ abstract class _AccountManager with Store {
   late Database db;
 
   @observable
-  Account active = Account(0, "", "", 0, null);
+  Account active = Account(0, 0, "", "", 0, 0, null);
 
   @observable
   bool canPay = false;
@@ -427,6 +435,8 @@ abstract class _AccountManager with Store {
     await resetToDefaultAccount();
   }
 
+  int get coin { return active.coin; }
+
   Future<void> resetToDefaultAccount() async {
     await refresh();
     if (accounts.isNotEmpty) {
@@ -449,7 +459,7 @@ abstract class _AccountManager with Store {
     taddress = res1.isNotEmpty ? res1[0]['address'] : "";
     showTAddr = false;
 
-    WarpApi.setMempoolAccount(account.id);
+    WarpApi.setMempoolAccount(account.coin, account.id);
     final List<Map> res2 = await db.rawQuery(
         "SELECT sk FROM accounts WHERE id_account = ?1", [account.id]);
     canPay = res2.isNotEmpty && res2[0]['sk'] != null;
@@ -468,7 +478,7 @@ abstract class _AccountManager with Store {
   }
 
   String newAddress() {
-    return WarpApi.newAddress(active.id);
+    return WarpApi.newAddress(active.coin, active.id);
   }
 
   Future<Backup> getBackup(int account) async {
@@ -533,7 +543,7 @@ abstract class _AccountManager with Store {
 
   @action
   Future<void> updateUnconfirmedBalance() async {
-    unconfirmedBalance = await WarpApi.mempoolSync();
+    unconfirmedBalance = await WarpApi.mempoolSync(active.coin);
   }
 
   isEmpty() async {
@@ -551,14 +561,14 @@ abstract class _AccountManager with Store {
       final shareInfo = r['secret'] != null
           ? ShareInfo(r['idx'], r['threshold'], r['participants'], r['secret'])
           : null;
-      return Account(
-          r['id_account'], r['name'], r['address'], r['balance'], shareInfo);
+      return Account(0, // TODO
+          r['id_account'], r['name'], r['address'], r['balance'], 0, shareInfo);
     }).toList();
   }
 
   @action
   Future<void> delete(int account) async {
-    WarpApi.deleteAccount(account);
+    WarpApi.deleteAccount(0, account); // TODO
     if (account == active.id) resetToDefaultAccount();
   }
 
@@ -571,7 +581,7 @@ abstract class _AccountManager with Store {
 
   @action
   void storeShareSecret(int account, String secretKey) {
-    WarpApi.storeShareSecret(account, secretKey);
+    WarpApi.storeShareSecret(0, account, secretKey); // TODO
   }
 
   Future<ShareInfo?> getShareInfo(int accountId) async {
@@ -604,7 +614,7 @@ abstract class _AccountManager with Store {
     await _updateTBalance(accountId);
 
     final hasNewTx = await _fetchNotesAndHistory(accountId, force);
-    int countNewPrices = await WarpApi.syncHistoricalPrices(settings.currency);
+    int countNewPrices = await WarpApi.syncHistoricalPrices(coin, settings.currency);
     if (hasNewTx) {
       await _fetchSpending(accountId);
       await _fetchAccountBalanceTimeSeries(accountId);
@@ -906,14 +916,14 @@ abstract class _AccountManager with Store {
   }
 
   _updateTBalance(int accountId) {
-    int balance = WarpApi.getTBalance(accountId);
+    int balance = WarpApi.getTBalance(coin, accountId);
     if (balance != tbalance) tbalance = balance;
   }
 
   void autoshield() {
     if (settings.autoShieldThreshold != 0.0 &&
         tbalance / ZECUNIT >= settings.autoShieldThreshold) {
-      WarpApi.shieldTAddr(active.id);
+      WarpApi.shieldTAddr(coin, active.id);
     }
   }
 
@@ -925,7 +935,7 @@ abstract class _AccountManager with Store {
   Future<Map<int, int>> getAllTBalances() async {
     final Map<int, int> balances = {};
     for (var a in accounts) {
-      final b = await WarpApi.getTBalanceAsync(a.id);
+      final b = await WarpApi.getTBalanceAsync(coin, a.id);
       balances[a.id] = b;
     }
 
@@ -934,13 +944,15 @@ abstract class _AccountManager with Store {
 }
 
 class Account {
+  final int coin;
   final int id;
   final String name;
   final String address;
   final int balance;
+  int tbalance = 0;
   final ShareInfo? share;
 
-  Account(this.id, this.name, this.address, this.balance, this.share);
+  Account(this.coin, this.id, this.name, this.address, this.balance, this.tbalance, this.share);
 }
 
 class PriceStore = _PriceStore with _$PriceStore;
@@ -999,7 +1011,7 @@ abstract class _SyncStatus with Store {
 
   @action
   Future<bool> update() async {
-    latestHeight = await WarpApi.getLatestHeight();
+    latestHeight = await WarpApi.getLatestHeight(accountManager.coin);
     final _syncedHeight = Sqflite.firstIntValue(
             await _db.rawQuery("SELECT MAX(height) FROM blocks")) ??
         0;
@@ -1014,12 +1026,12 @@ abstract class _SyncStatus with Store {
     final snackBar = SnackBar(content: Text(S.of(context).rescanRequested));
     rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar);
     setSyncHeight(0);
-    WarpApi.rewindToHeight(0);
-    WarpApi.truncateData();
+    WarpApi.rewindToHeight(accountManager.coin, 0);
+    WarpApi.truncateData(accountManager.coin, );
     contacts.markContactsDirty(false);
     await syncStatus.update();
     final params =
-        SyncParams(settings.getTx, settings.anchorOffset, syncPort.sendPort);
+        SyncParams(accountManager.coin, settings.getTx, settings.anchorOffset, syncPort.sendPort);
     await compute(WarpApi.warpSync, params);
     syncing = false;
     eta.reset();
@@ -1033,7 +1045,7 @@ abstract class _SyncStatus with Store {
   @action
   void setSyncedToLatestHeight() {
     setSyncHeight(latestHeight);
-    WarpApi.skipToLastHeight();
+    WarpApi.skipToLastHeight(accountManager.coin);
   }
 }
 
@@ -1140,7 +1152,7 @@ abstract class _ContactStore with Store {
 
   @action
   Future<void> add(Contact c) async {
-    WarpApi.storeContact(c.id, c.name, c.address, true);
+    WarpApi.storeContact(accountManager.coin, c.id, c.name, c.address, true);
     await markContactsDirty(true);
     await _fetchContacts();
   }
@@ -1148,7 +1160,7 @@ abstract class _ContactStore with Store {
   @action
   Future<void> remove(Contact c) async {
     contacts.removeWhere((contact) => contact.id == c.id);
-    WarpApi.storeContact(c.id, c.name, "", true);
+    WarpApi.storeContact(accountManager.coin, c.id, c.name, "", true);
     await markContactsDirty(true);
     await _fetchContacts();
   }

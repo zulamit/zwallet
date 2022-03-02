@@ -80,7 +80,7 @@ class _AccountPageState extends State<AccountPage>
           syncStatus.setSyncHeight(height);
           eta.checkpoint(height, DateTime.now());
         } else {
-          WarpApi.mempoolReset(syncStatus.latestHeight);
+          WarpApi.mempoolReset(accountManager.coin, syncStatus.latestHeight);
           _trySync();
         }
       });
@@ -411,7 +411,7 @@ class _AccountPageState extends State<AccountPage>
 
   _reorg() async {
     final targetHeight = syncStatus.syncedHeight - 10;
-    WarpApi.rewindToHeight(targetHeight);
+    WarpApi.rewindToHeight(accountManager.coin, targetHeight);
     syncStatus.setSyncHeight(targetHeight);
     await _trySync();
   }
@@ -423,7 +423,7 @@ class _AccountPageState extends State<AccountPage>
     await accountManager.updateUnconfirmedBalance();
     if (!syncStatus.isSynced()) {
       final res =
-          await WarpApi.tryWarpSync(settings.getTx, settings.anchorOffset);
+          await WarpApi.tryWarpSync(accountManager.coin, settings.getTx, settings.anchorOffset);
       if (res == 1) {
         await _reorg();
       } else if (res == 0) {
@@ -530,7 +530,7 @@ class _AccountPageState extends State<AccountPage>
     final result = await FilePicker.platform.pickFiles();
 
     if (result != null) {
-      final res = WarpApi.broadcast(result.files.single.path!);
+      final res = WarpApi.broadcast(accountManager.coin, result.files.single.path!);
       final snackBar = SnackBar(content: Text(res));
       rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar);
     }

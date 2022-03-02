@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 import 'store.dart';
 import 'generated/l10n.dart';
+import 'accounts.dart' show getBackup;
+
+class AccountId {
+  final int coin;
+  final int id;
+  AccountId(this.coin, this.id);
+}
 
 class BackupPage extends StatefulWidget {
-  final int? accountId;
+  final AccountId? accountId;
 
   BackupPage(this.accountId);
 
@@ -21,7 +28,7 @@ class BackupState extends State<BackupPage> {
   final _shareController = TextEditingController();
 
   Future<bool> _init() async {
-    backup = await accountManager.getBackup(widget.accountId ?? accountManager.active.id);
+    backup = await getBackup(widget.accountId!); // TODO ?? accountManager.active.id
     _backupController.text = backup.value();
     _skController.text = backup.sk ?? "";
     _ivkController.text = backup.ivk;

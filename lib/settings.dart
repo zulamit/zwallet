@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:warp/coin/coins.dart';
+import 'package:warp_api/warp_api.dart';
 
+import 'coin/coin.dart';
 import 'main.dart';
 import 'generated/l10n.dart';
 
@@ -12,7 +16,7 @@ class SettingsPage extends StatefulWidget {
 
 final _settingsFormKey = GlobalKey<FormBuilderState>();
 
-class SettingsState extends State<SettingsPage> {
+class SettingsState extends State<SettingsPage> with SingleTickerProviderStateMixin {
   var _anchorController =
       TextEditingController(text: "${settings.anchorOffset}");
   var _thresholdController = TextEditingController(
@@ -20,27 +24,19 @@ class SettingsState extends State<SettingsPage> {
   var _memoController = TextEditingController();
   var _currency = settings.currency;
   var _needAuth = false;
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
     final simpleMode = settings.simpleMode;
     _memoController.text = settings.memoSignature ?? s.sendFrom(coin.app);
-
-    List<FormBuilderFieldOption> options = coin.lwd
-        .map((lwd) => FormBuilderFieldOption<dynamic>(
-            child: Text(lwd.name), value: lwd.name))
-        .toList();
-    options.add(
-      FormBuilderFieldOption(
-          value: 'custom',
-          child: FormBuilderTextField(
-            name: 'lwd_url',
-            decoration: InputDecoration(labelText: s.custom),
-            initialValue: settings.ldUrl,
-            onSaved: _onURL,
-          )),
-    );
 
     return Scaffold(
         appBar: AppBar(title: Text(s.settings)),
@@ -64,14 +60,16 @@ class SettingsState extends State<SettingsPage> {
                                 FormBuilderFieldOption(
                                     child: Text(s.advanced), value: 'advanced'),
                               ]),
-                          if (!simpleMode) FormBuilderRadioGroup(
-                              orientation: OptionsOrientation.vertical,
-                              name: 'servers',
-                              decoration: InputDecoration(
-                                  labelText: s.server),
-                              initialValue: settings.ldUrlChoice,
-                              onSaved: _onChoice,
-                              options: options),
+                          TabBar(controller: _tabController, tabs: [Tab(text: "Zcash"), Tab(text: "Ycash")]),
+                          if (!simpleMode) SizedBox(height: 200, child: TabBarView(controller: _tabController, children: [ServerSelect(0), ServerSelect(1)])),
+                          // if (!simpleMode) FormBuilderRadioGroup(
+                          //     orientation: OptionsOrientation.vertical,
+                          //     name: 'servers',
+                          //     decoration: InputDecoration(
+                          //         labelText: s.server),
+                          //     initialValue: settings.ldUrlChoice,
+                          //     onSaved: _onChoice,
+                          //     options: options),
                           FormBuilderRadioGroup(
                               orientation: OptionsOrientation.horizontal,
                               name: 'themes',
@@ -222,14 +220,6 @@ class SettingsState extends State<SettingsPage> {
     settings.setMode(v == 'simple');
   }
 
-  _onChoice(v) {
-    settings.setURLChoice(v);
-  }
-
-  _onURL(v) {
-    settings.setURL(v);
-  }
-
   _onTheme(v) {
     settings.setTheme(v);
   }
@@ -268,6 +258,7 @@ class SettingsState extends State<SettingsPage> {
     if (form.validate()) {
       if (_needAuth && !await authenticate(context, S.of(context).protectSendSettingChanged)) return;
       form.save();
+      settings.updateLWD();
       Navigator.of(context).pop();
     }
   }
@@ -288,3 +279,89 @@ class SettingsState extends State<SettingsPage> {
     Navigator.of(context).pushNamed('/edit_theme');
   }
 }
+
+class ServerSelect extends StatefulWidget {
+  final int coin;
+
+  ServerSelect(this.coin);
+  _ServerSelectState createState() => _ServerSelectState(coin);
+}
+
+class _ServerSelectState extends State<ServerSelect> with
+  AutomaticKeepAliveClientMixin {
+  late String choice;
+  late String customUrl;
+
+  _ServerSelectState(int coin) {
+    final coinDef = getCoin(coin);
+    choice = coinDef.lwd.first.name;
+    customUrl = coinDef.lwd.first.url;
+  }
+
+  CoinBase get coinDef => getCoin(widget.coin);
+
+  Future<bool> init() async {
+    final prefs = await SharedPreferences.getInstance();
+    final _choice = prefs.getString('lwd_choice_${coinDef.ticker}');
+    if (_choice != null)
+      choice = _choice;
+    prefs.setString('lwd_choice_${coinDef.ticker}', choice);
+    customUrl = prefs.getString('lwd_custom_${coinDef.ticker}') ?? "";
+    return true;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(future: init(), builder: (context, snapshot) {
+      if (snapshot.hasData) {
+        return innerBuild(context);
+      }
+      return SizedBox();
+    });
+  }
+
+  @override
+  Widget innerBuild(BuildContext context) {
+    final s = S.of(context);
+    List<FormBuilderFieldOption<String>> options = coinDef.lwd
+        .map((lwd) => FormBuilderFieldOption<String>(
+        child: Text(lwd.name), value: lwd.name))
+        .toList();
+    options.add(
+      FormBuilderFieldOption(
+          value: 'custom',
+          child: FormBuilderTextField(
+            name: 'lwd_url ${coinDef.ticker}',
+            decoration: InputDecoration(labelText: s.custom),
+            initialValue: customUrl,
+            onSaved: _setCustom,
+          )),
+    );
+
+    return FormBuilderRadioGroup<String>(
+        orientation: OptionsOrientation.vertical,
+        name: 'lwd ${coinDef.ticker}',
+        decoration: InputDecoration(
+            labelText: s.server),
+        initialValue: choice,
+        onSaved: _setChoice,
+        options: options);
+  }
+
+  void _setChoice(String? v) async {
+    if (v == null) return;
+    final prefs = await SharedPreferences.getInstance();
+    print("lwd_choice_${coinDef.ticker} $v");
+    prefs.setString('lwd_choice_${coinDef.ticker}', v);
+  }
+
+  void _setCustom(String? v) async {
+    if (v == null) return;
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('lwd_custom_${coinDef.ticker}', v);
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}
+

@@ -209,7 +209,7 @@ class SendState extends State<SendPage> {
     if (c.isNotEmpty) return null;
     final zaddr = WarpApi.getSaplingFromUA(v);
     if (zaddr.isNotEmpty) return null;
-    if (!WarpApi.validAddress(v)) return s.invalidAddress;
+    if (!WarpApi.validAddress(accountManager.coin, v)) return s.invalidAddress;
     return null;
   }
 
@@ -259,7 +259,7 @@ class SendState extends State<SendPage> {
   }
 
   void _setPaymentURI(String uri) {
-    final json = WarpApi.parsePaymentURI(uri);
+    final json = WarpApi.parsePaymentURI(accountManager.coin, uri);
     try {
       final payment = DecodedPaymentURI.fromJson(jsonDecode(json));
       setState(() {
@@ -441,7 +441,7 @@ Future<void> send(BuildContext context, List<Recipient> recipients, bool useTran
 
   if (accountManager.canPay) {
     Navigator.of(context).pop();
-    final tx = await WarpApi.sendPayment(accountManager.active.id, recipients,
+    final tx = await WarpApi.sendPayment(accountManager.coin, accountManager.active.id, recipients,
         useTransparent, settings.anchorOffset, (progress) {
           progressPort.sendPort.send(progress);
         });
@@ -454,7 +454,7 @@ Future<void> send(BuildContext context, List<Recipient> recipients, bool useTran
     Directory tempDir = await getTemporaryDirectory();
     String filename = "${tempDir.path}/tx.json";
 
-    final txjson = WarpApi.prepareTx(accountManager.active.id, recipients,
+    final txjson = WarpApi.prepareTx(accountManager.coin, accountManager.active.id, recipients,
         useTransparent, settings.anchorOffset, filename);
 
     if (coin.supportsMultisig && accountManager.active.share != null) {

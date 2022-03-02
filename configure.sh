@@ -21,7 +21,6 @@ esac
 
 cp assets/$COIN.png assets/icon.png
 cp lib/coin/$COIN.dart lib/coin/coindef.dart
-cp native/zcash-params/src/coindef/$COIN.rs native/zcash-params/src/coin.rs
 
 mo pubspec.yaml.tpl > pubspec.yaml
 mo ios/Runner/Info.plist.tpl > ios/Runner/Info.plist

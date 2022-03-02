@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:warp/main.dart';
 import 'package:warp/store.dart';
+import 'coin/coins.dart';
 import 'generated/l10n.dart';
 
 import 'about.dart';
@@ -14,23 +15,20 @@ class AccountManagerPage extends StatefulWidget {
 
 class AccountManagerState extends State<AccountManagerPage> {
   var _accountNameController = TextEditingController();
-  var _tbalances = Map<int, int>();
 
   @override
   initState() {
     super.initState();
     Future.microtask(() async {
-      await accountManager.refresh();
-      final tbalances = await accountManager.getAllTBalances();
-      setState(() {
-        _tbalances = tbalances;
-      });
+      await accounts.refresh();
+      await accounts.updateTBalance();
     });
     showAboutOnce(this.context);
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
         appBar: AppBar(title: Text(S.of(context).selectAccount), actions: [
           PopupMenuButton<String>(
@@ -43,36 +41,37 @@ class AccountManagerState extends State<AccountManagerPage> {
               onSelected: _onMenu)
         ]),
         body: Padding(padding: EdgeInsets.all(8), child: Observer(
-            builder: (context) =>
-                  accountManager.accounts.isEmpty
-                      ? Center(child: NoAccount())
-                      : ListView.builder(
-                          itemCount: accountManager.accounts.length,
-                          itemBuilder: (BuildContext context, int index) {
-                          final a = accountManager.accounts[index];
-                          final zbal = a.balance / ZECUNIT;
-                          final tbal = (_tbalances[a.id] ?? 0) / ZECUNIT;
-                          final balance = zbal + tbal;
-                          return Card(
-                              child: Dismissible(
-                            key: Key(a.name),
-                            child: ListTile(
-                              title: Text(a.name,
-                                  style: Theme.of(context).textTheme.headline5),
-                              subtitle: Text("${decimalFormat(zbal, 3)} + ${_tbalances[a.id] != null ? decimalFormat(tbal, 3) : '?'}"),
-                              trailing: Text(decimalFormat(balance, 3)),
-                              onTap: () {
-                                _selectAccount(a);
-                              },
-                              onLongPress: () {
-                                _editAccount(a);
-                              },
-                            ),
-                            confirmDismiss: (d) => _onAccountDelete(a),
-                            onDismissed: (d) =>
-                                _onDismissed(index, a),
-                          ));
-                        }),
+            builder: (context) {
+              final _1 = accounts.epoch;
+              return accounts.list.isEmpty
+                  ? Center(child: NoAccount())
+                  : ListView.builder(
+                      itemCount: accounts.list.length,
+                      itemBuilder: (BuildContext context, int index) {
+                      final a = accounts.list[index];
+                      final zbal = a.balance / ZECUNIT;
+                      final tbal = a.tbalance / ZECUNIT;
+                      final balance = zbal + tbal;
+                      return Card(
+                          child: Dismissible(
+                        key: Key(a.name),
+                        child: ListTile(
+                          title: Text(a.name,
+                              style: theme.textTheme.headline5?.apply(color: a.coin == 0 ? theme.colorScheme.primary : theme.colorScheme.secondary)),
+                          subtitle: Text("${decimalFormat(zbal, 3)} + ${decimalFormat(tbal, 3)}"),
+                          trailing: Text(decimalFormat(balance, 3)),
+                          onTap: () {
+                            _selectAccount(a);
+                          },
+                          onLongPress: () {
+                            _editAccount(a);
+                          },
+                        ),
+                        confirmDismiss: (d) => _onAccountDelete(a),
+                        onDismissed: (d) =>
+                            _onDismissed(index, a),
+                      ));
+                    });},
                 )),
         floatingActionButton: GestureDetector(onLongPress: _onFullRestore, child: FloatingActionButton(
             onPressed: _onRestore, child: Icon(Icons.add))));
@@ -94,7 +93,7 @@ class AccountManagerState extends State<AccountManagerPage> {
     if (!confirm2) return false;
 
     final zbal = account.balance;
-    final tbal = _tbalances[account.id] ?? 0;
+    final tbal = account.tbalance;
     if (zbal + tbal > 0) {
       final confirm3 = await showDialog<bool>(
         context: context,
