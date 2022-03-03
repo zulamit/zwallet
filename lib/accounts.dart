@@ -4,6 +4,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:warp/coin/coins.dart';
 import 'package:mobx/mobx.dart';
 import 'package:warp/coin/zcash.dart';
+import 'package:warp/db.dart';
 import 'package:warp_api/warp_api.dart';
 
 import 'backup.dart';
@@ -81,7 +82,7 @@ abstract class _ActiveAccount with Store {
   Account account = emptyAccount;
   CoinBase coinDef = ZcashCoin();
   bool canPay = false;
-  int balance = 0;
+  Balances balances = Balances.zero;
   int unconfirmedBalance = 0;
   String taddress = "";
   int tbalance = 0;
@@ -90,6 +91,7 @@ abstract class _ActiveAccount with Store {
   List<Spending> spendings = [];
   List<TimeSeriesPoint<double>> accountBalances = [];
   List<PnL> pnls = [];
+
 
   @observable
   int lastTxHeight = 0;
@@ -141,8 +143,7 @@ abstract class _ActiveAccount with Store {
         "SELECT sk FROM accounts WHERE id_account = ?1", [id]);
     canPay = res2.isNotEmpty && res2[0]['sk'] != null;
 
-    balance = 0;
-    tbalance = 0;
+    balances = Balances.zero;
 
     dataEpoch += 1;
     // await _fetchData(db, account, true);
@@ -156,6 +157,11 @@ abstract class _ActiveAccount with Store {
   @action
   void updateTBalance() {
     tbalance = WarpApi.getTBalance(coin, id);
+  }
+
+  Future<void> updateBalances() async {
+    final dbr = DbReader(AccountId(coin, id));
+    balances = await dbr.getBalance(syncStatus.confirmHeight);
   }
 
   String newAddress() {

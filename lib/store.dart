@@ -997,20 +997,24 @@ abstract class _PriceStore with Store {
 class SyncStatus = _SyncStatus with _$SyncStatus;
 
 abstract class _SyncStatus with Store {
-  @observable
-  bool accountRestored = false;
 
   @observable
-  bool syncing = false;
-
-  @observable
-  int syncedHeight = -1;
+  int? syncedHeight;
 
   @observable
   int latestHeight = 0;
 
+  bool accountRestored = false;
+  bool syncing = false;
+
   bool isSynced() {
-    return syncedHeight < 0 || syncedHeight == latestHeight;
+    final sh = syncedHeight;
+    return sh != null && sh >= latestHeight;
+  }
+
+  int get confirmHeight {
+    final ch = latestHeight - settings.anchorOffset;
+    return max(ch, 0);
   }
 
   @action
@@ -1030,21 +1034,30 @@ abstract class _SyncStatus with Store {
   }
 
   @action
+  Future<void> sync() async {
+    if (syncing) return;
+    syncing = true;
+    await syncStatus.update();
+    if (!isSynced()) {
+      final params = SyncParams(
+          active.coin, settings.getTx, settings.anchorOffset,
+          syncPort.sendPort);
+      await compute(WarpApi.warpSync, params);
+    }
+    syncing = false;
+    eta.reset();
+  }
+
+  @action
   Future<void> rescan(BuildContext context) async {
     eta.reset();
-    syncing = true;
     final snackBar = SnackBar(content: Text(S.of(context).rescanRequested));
     rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar);
-    setSyncHeight(0);
+    syncedHeight = null;
     WarpApi.rewindToHeight(active.coin, 0);
     WarpApi.truncateData(active.coin);
     contacts.markContactsDirty(false);
-    await syncStatus.update();
-    final params =
-        SyncParams(active.coin, settings.getTx, settings.anchorOffset, syncPort.sendPort);
-    await compute(WarpApi.warpSync, params);
-    syncing = false;
-    eta.reset();
+    await sync();
   }
 
   @action

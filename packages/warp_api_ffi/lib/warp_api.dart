@@ -108,7 +108,7 @@ class WarpApi {
 
   static void warpSync(SyncParams params) {
     warp_api_lib.warp_sync(params.coin, params.getTx ? 1 : 0, params.anchorOffset, params.port!.nativePort);
-    params.port!.send(-1);
+    params.port!.send(null);
   }
 
   static Future<int> tryWarpSync(int coin, bool getTx, int anchorOffset) async {

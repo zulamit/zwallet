@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -8,6 +10,7 @@ import 'about.dart';
 import 'account2.dart';
 import 'generated/l10n.dart';
 import 'main.dart';
+import 'store.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,6 +20,7 @@ class HomePage extends StatefulWidget {
 class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _tabIndex = 0;
+  StreamSubscription? _syncDispose;
 
   @override
   void initState() {
@@ -27,9 +31,31 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
         _tabIndex = _tabController.index;
       });
     });
-    Future.microtask(() {
-      priceStore.fetchCoinPrice(active.coin);
+    Future.microtask(() async {
+      await syncStatus.update();
+      await active.updateBalances();
+      await priceStore.fetchCoinPrice(active.coin);
+      await Future.delayed(Duration(seconds: 3));
+      await syncStatus.sync();
+      Timer.periodic(Duration(seconds: 15), (Timer t) {
+        syncStatus.sync();
+      });
     });
+    _syncDispose = syncStream.listen((height) {
+      final h = height as int?;
+      if (h != null) {
+        syncStatus.setSyncHeight(h);
+        eta.checkpoint(h, DateTime.now());
+      } else {
+        WarpApi.mempoolReset(accountManager.coin, syncStatus.latestHeight);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _syncDispose?.cancel();
+    super.dispose();
   }
 
   @override

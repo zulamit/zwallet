@@ -126,7 +126,7 @@ class AccountManagerState extends State<AccountManagerPage> {
       if (approved)
         syncStatus.rescan(context);
     }
-    else if (syncStatus.syncedHeight < 0) {
+    else if (syncStatus.syncedHeight! < 0) {
       syncStatus.setSyncedToLatestHeight();
     }
 

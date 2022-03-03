@@ -38,4 +38,5 @@ class Balances {
   final int excludedBalance;
 
   Balances(this.balance, this.shieldedBalance, this.unconfirmedBalance, this.underConfirmedBalance, this.excludedBalance);
+  static Balances zero = Balances(0, 0, 0, 0, 0);
 }

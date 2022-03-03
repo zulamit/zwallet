@@ -191,7 +191,7 @@ class _AccountPageState extends State<AccountPage>
                 final _1 = eta.eta;
                 final _2 = syncStatus.syncedHeight;
                 final _3 = syncStatus.latestHeight;
-                return syncStatus.syncedHeight < 0
+                return syncStatus.syncedHeight == null
                     ? Text(s.rescanNeeded)
                     : syncStatus.isSynced()
                         ? Text('${syncStatus.syncedHeight}',
@@ -410,7 +410,9 @@ class _AccountPageState extends State<AccountPage>
   }
 
   _reorg() async {
-    final targetHeight = syncStatus.syncedHeight - 10;
+    final syncedHeight = syncStatus.syncedHeight;
+    if (syncedHeight == null) return;
+    final targetHeight = syncedHeight - 10;
     WarpApi.rewindToHeight(accountManager.coin, targetHeight);
     syncStatus.setSyncHeight(targetHeight);
     await _trySync();
@@ -418,7 +420,7 @@ class _AccountPageState extends State<AccountPage>
 
   _trySync() async {
     priceStore.fetchCoinPrice(active.coin);
-    if (syncStatus.syncedHeight < 0) return;
+    if (syncStatus.syncedHeight! < 0) return;
     await syncStatus.update();
     await accountManager.updateUnconfirmedBalance();
     if (!syncStatus.isSynced()) {
