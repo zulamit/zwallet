@@ -1991,6 +1991,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Simple Mode`
+  String get simpleMode {
+    return Intl.message(
+      'Simple Mode',
+      name: 'simpleMode',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

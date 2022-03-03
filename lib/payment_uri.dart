@@ -27,7 +27,7 @@ class PaymentURIState extends State<PaymentURIPage> {
     super.initState();
     qrText = widget.address;
     Future.microtask(() {
-      priceStore.fetchZecPrice();
+      priceStore.fetchCoinPrice(active.coin);
     });
   }
 

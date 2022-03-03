@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:warp/main.dart';
 import 'package:warp/store.dart';
+import 'backup.dart';
 import 'coin/coins.dart';
 import 'generated/l10n.dart';
 
@@ -117,11 +118,13 @@ class AccountManagerState extends State<AccountManagerPage> {
 
   _selectAccount(Account account) async {
     await accountManager.setActiveAccount(account);
+    await active.setActiveAccount(AccountId(account.coin, account.id));
+    await syncStatus.update();
     if (syncStatus.accountRestored) {
       syncStatus.setAccountRestored(false);
       final approved = await rescanDialog(context);
       if (approved)
-        syncStatus.sync(context);
+        syncStatus.rescan(context);
     }
     else if (syncStatus.syncedHeight < 0) {
       syncStatus.setSyncedToLatestHeight();

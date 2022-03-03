@@ -281,6 +281,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Blindaje en progreso…"),
         "sign": MessageLookupByLibrary.simpleMessage("Sign"),
         "simple": MessageLookupByLibrary.simpleMessage("Sencillo"),
+        "simpleMode": MessageLookupByLibrary.simpleMessage("Simple Mode"),
         "spendable": MessageLookupByLibrary.simpleMessage("Gastable"),
         "spendableBalance":
             MessageLookupByLibrary.simpleMessage("Saldo Gastable"),

@@ -1,4 +1,5 @@
 import 'dart:isolate';
+import 'dart:math';
 import 'dart:typed_data';
 import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
@@ -17,6 +18,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import 'package:convert/convert.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:sensors_plus/sensors_plus.dart';
 
 import 'coin/coin.dart';
 import 'generated/l10n.dart';
@@ -128,6 +130,9 @@ abstract class _Settings with Store {
   @observable
   String? memoSignature;
 
+  @observable
+  bool flat = false;
+
   @action
   Future<bool> restore() async {
     final prefs = await SharedPreferences.getInstance();
@@ -157,12 +162,22 @@ abstract class _Settings with Store {
     memoSignature = prefs.getString('memo_signature');
 
     for (var s in servers) {
-      final url = await s.loadPrefs();
+      await s.loadPrefs();
     }
 
     _updateThemeData();
     Future.microtask(_loadCurrencies); // lazily
+    accelerometerEvents.listen(_handleAccel);
     return true;
+  }
+
+  @action
+  void _handleAccel(event) {
+    final n = sqrt(event.x * event.x + event.y * event.y + event.z * event.z);
+    final inclination = acos(event.z / n) / pi * 180 * event.y.sign;
+    final _flat = inclination < 20;
+    if (flat != _flat)
+      flat = _flat;
   }
 
   @action
@@ -308,7 +323,7 @@ abstract class _Settings with Store {
     final prefs = await SharedPreferences.getInstance();
     currency = newCurrency;
     prefs.setString('currency', currency);
-    await priceStore.fetchZecPrice();
+    await priceStore.fetchCoinPrice(active.coin);
     await accountManager.fetchChartData();
   }
 
@@ -453,7 +468,9 @@ abstract class _AccountManager with Store {
   @action
   Future<void> setActiveAccount(Account account) async {
     final prefs = await SharedPreferences.getInstance();
+    prefs.setInt('coin', account.coin);
     prefs.setInt('account', account.id);
+
     final List<Map> res1 = await db.rawQuery(
         "SELECT address FROM taddrs WHERE account = ?1", [account.id]);
     taddress = res1.isNotEmpty ? res1[0]['address'] : "";
@@ -959,35 +976,27 @@ class PriceStore = _PriceStore with _$PriceStore;
 
 abstract class _PriceStore with Store {
   @observable
-  double zecPrice = 0.0;
+  double coinPrice = 0.0;
 
   @action
-  Future<void> fetchZecPrice() async {
+  Future<void> fetchCoinPrice(int coin) async {
+    final coinDef = getCoin(coin);
     final base = "api.coingecko.com";
     final uri = Uri.https(base, '/api/v3/simple/price',
-        {'ids': coin.currency, 'vs_currencies': settings.currency});
+        {'ids': coinDef.currency, 'vs_currencies': settings.currency});
     final rep = await http.get(uri);
     if (rep.statusCode == 200) {
       final json = convert.jsonDecode(rep.body) as Map<String, dynamic>;
-      final p = json[coin.currency][settings.currency.toLowerCase()];
-      zecPrice = (p is double) ? p : (p as int).toDouble();
+      final p = json[coinDef.currency][settings.currency.toLowerCase()];
+      coinPrice = (p is double) ? p : (p as int).toDouble();
     } else
-      zecPrice = 0.0;
+      coinPrice = 0.0;
   }
 }
 
 class SyncStatus = _SyncStatus with _$SyncStatus;
 
 abstract class _SyncStatus with Store {
-  late Database _db;
-
-  init() async {
-    var databasesPath = await getDatabasesPath();
-    final path = join(databasesPath, 'zec.db');
-    _db = await openDatabase(path);
-    await update();
-  }
-
   @observable
   bool accountRestored = false;
 
@@ -1011,27 +1020,28 @@ abstract class _SyncStatus with Store {
 
   @action
   Future<bool> update() async {
-    latestHeight = await WarpApi.getLatestHeight(accountManager.coin);
+    final db = active.coinDef.db;
+    latestHeight = await WarpApi.getLatestHeight(active.coin);
     final _syncedHeight = Sqflite.firstIntValue(
-            await _db.rawQuery("SELECT MAX(height) FROM blocks")) ??
+            await db.rawQuery("SELECT MAX(height) FROM blocks")) ??
         0;
-    if (_syncedHeight > 0) setSyncHeight(_syncedHeight);
-    return syncedHeight == latestHeight;
+    if (_syncedHeight >= 0) setSyncHeight(_syncedHeight);
+    return latestHeight > 0 && syncedHeight == latestHeight;
   }
 
   @action
-  Future<void> sync(BuildContext context) async {
+  Future<void> rescan(BuildContext context) async {
     eta.reset();
     syncing = true;
     final snackBar = SnackBar(content: Text(S.of(context).rescanRequested));
     rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar);
     setSyncHeight(0);
-    WarpApi.rewindToHeight(accountManager.coin, 0);
-    WarpApi.truncateData(accountManager.coin, );
+    WarpApi.rewindToHeight(active.coin, 0);
+    WarpApi.truncateData(active.coin);
     contacts.markContactsDirty(false);
     await syncStatus.update();
     final params =
-        SyncParams(accountManager.coin, settings.getTx, settings.anchorOffset, syncPort.sendPort);
+        SyncParams(active.coin, settings.getTx, settings.anchorOffset, syncPort.sendPort);
     await compute(WarpApi.warpSync, params);
     syncing = false;
     eta.reset();
@@ -1045,7 +1055,7 @@ abstract class _SyncStatus with Store {
   @action
   void setSyncedToLatestHeight() {
     setSyncHeight(latestHeight);
-    WarpApi.skipToLastHeight(accountManager.coin);
+    WarpApi.skipToLastHeight(active.coin);
   }
 }
 

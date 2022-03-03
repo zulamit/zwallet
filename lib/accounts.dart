@@ -1,13 +1,19 @@
 import 'package:path/path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:warp/coin/coins.dart';
 import 'package:mobx/mobx.dart';
+import 'package:warp/coin/zcash.dart';
 import 'package:warp_api/warp_api.dart';
 
 import 'backup.dart';
+import 'coin/coin.dart';
+import 'main.dart';
 import 'store.dart';
 
 part 'accounts.g.dart';
+
+final Account emptyAccount = Account(0, 0, "", "", 0, 0, null);
 
 class AccountManager2 = _AccountManager2 with _$AccountManager2;
 
@@ -17,9 +23,10 @@ abstract class _AccountManager2 with Store {
 
   @action
   Future<void> refresh() async {
-    list.clear();
-    list.addAll(await _list(0));
-    list.addAll(await _list(1));
+    List<Account> _list = [];
+    _list.addAll(await _getList(0));
+    _list.addAll(await _getList(1));
+    list = _list;
     epoch += 1;
   }
 
@@ -32,7 +39,9 @@ abstract class _AccountManager2 with Store {
     epoch += 1;
   }
 
-  static Future<List<Account>> _list(int coin) async {
+  Account get(int coin, int id) => list.firstWhere((e) => e.coin == coin && e.id == id, orElse: () => emptyAccount);
+
+  static Future<List<Account>> _getList(int coin) async {
     final c = getCoin(coin);
     final db = c.db;
     List<Account> accounts = [];
@@ -57,6 +66,100 @@ abstract class _AccountManager2 with Store {
       accounts.add(account);
     }
     return accounts;
+  }
+}
+
+class ActiveAccount = _ActiveAccount with _$ActiveAccount;
+
+abstract class _ActiveAccount with Store {
+  @observable
+  int dataEpoch = 0;
+
+  int coin = 0;
+  int id = 0;
+
+  Account account = emptyAccount;
+  CoinBase coinDef = ZcashCoin();
+  bool canPay = false;
+  int balance = 0;
+  int unconfirmedBalance = 0;
+  String taddress = "";
+  int tbalance = 0;
+  List<Note> notes = [];
+  List<Tx> txs = [];
+  List<Spending> spendings = [];
+  List<TimeSeriesPoint<double>> accountBalances = [];
+  List<PnL> pnls = [];
+
+  @observable
+  int lastTxHeight = 0;
+
+  @observable
+  bool showTAddr = false;
+
+  @observable
+  SortConfig noteSortConfig = SortConfig("", SortOrder.Unsorted);
+
+  @observable
+  SortConfig txSortConfig = SortConfig("", SortOrder.Unsorted);
+
+  @observable
+  int pnlSeriesIndex = 0;
+
+  @observable
+  bool pnlDesc = false;
+
+  @action
+  Future<void> restore() async {
+    final prefs = await SharedPreferences.getInstance();
+    coin = prefs.getInt('coin') ?? 0;
+    id = prefs.getInt('account') ?? 0;
+    setActiveAccount(AccountId(coin, id));
+  }
+
+  @action
+  Future<void> setActiveAccount(AccountId accountId) async {
+    coin = accountId.coin;
+    id = accountId.id;
+
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setInt('coin', coin);
+    prefs.setInt('account', id);
+
+    coinDef = getCoin(coin);
+    final db = coinDef.db;
+
+    account = accounts.get(coin, id);
+
+    final List<Map> res1 = await db.rawQuery(
+        "SELECT address FROM taddrs WHERE account = ?1", [id]);
+    taddress = res1.isNotEmpty ? res1[0]['address'] : "";
+    showTAddr = false;
+
+    WarpApi.setMempoolAccount(coin, id);
+    final List<Map> res2 = await db.rawQuery(
+        "SELECT sk FROM accounts WHERE id_account = ?1", [id]);
+    canPay = res2.isNotEmpty && res2[0]['sk'] != null;
+
+    balance = 0;
+    tbalance = 0;
+
+    dataEpoch += 1;
+    // await _fetchData(db, account, true);
+  }
+
+  @action
+  void toggleShowTAddr() {
+    showTAddr = !showTAddr;
+  }
+
+  @action
+  void updateTBalance() {
+    tbalance = WarpApi.getTBalance(coin, id);
+  }
+
+  String newAddress() {
+    return WarpApi.newAddress(coin, id);
   }
 }
 

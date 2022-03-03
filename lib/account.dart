@@ -406,7 +406,7 @@ class _AccountPageState extends State<AccountPage>
   }
 
   double _fx() {
-    return priceStore.zecPrice;
+    return priceStore.coinPrice;
   }
 
   _reorg() async {
@@ -417,7 +417,7 @@ class _AccountPageState extends State<AccountPage>
   }
 
   _trySync() async {
-    priceStore.fetchZecPrice();
+    priceStore.fetchCoinPrice(active.coin);
     if (syncStatus.syncedHeight < 0) return;
     await syncStatus.update();
     await accountManager.updateUnconfirmedBalance();
@@ -506,7 +506,7 @@ class _AccountPageState extends State<AccountPage>
   _rescan() async {
     final approved = await rescanDialog(context);
     if (approved) {
-      syncStatus.sync(context);
+      syncStatus.rescan(context);
     }
   }
 

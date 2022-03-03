@@ -190,5 +190,6 @@
   "encryptedBackup": "{app} Encrypted Backup",
   "fullRestore": "Full Restore",
   "loadBackup": "Load Backup",
-  "backupAllAccounts": "Backup All Accounts"
+  "backupAllAccounts": "Backup All Accounts",
+  "simpleMode": "Simple Mode"
 }

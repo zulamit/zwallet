@@ -98,10 +98,10 @@ class SendState extends State<SendPage> {
   Widget build(BuildContext context) {
     final s = S.of(context);
     final simpleMode = settings.simpleMode;
-    _memoController.text = settings.memoSignature ?? s.sendFrom(coin.app);
+    _memoController.text = settings.memoSignature ?? s.sendFrom('ZYWallet');
 
     return Scaffold(
-        appBar: AppBar(title: Text(s.sendCointicker(coin.ticker))),
+        appBar: AppBar(title: Text(s.sendCointicker(active.coinDef.ticker))),
         body: GestureDetector(
             onTap: () {
               FocusScope.of(context).unfocus();
@@ -117,7 +117,7 @@ class SendState extends State<SendPage> {
                           textFieldConfiguration: TextFieldConfiguration(
                             controller: _addressController,
                             decoration: InputDecoration(
-                                labelText: s.sendCointickerTo(coin.ticker)),
+                                labelText: s.sendCointickerTo(active.coinDef.ticker)),
                             minLines: 4,
                             maxLines: 10,
                             keyboardType: TextInputType.multiline,
@@ -302,7 +302,7 @@ class SendState extends State<SendPage> {
                   title: Text(s.pleaseConfirm),
                   content: SingleChildScrollView(
                       child: Text(s.sendingAzecCointickerToAddress(
-                          aZEC, coin.ticker, _address))),
+                          aZEC, active.coinDef.ticker, _address))),
                   actions: confirmButtons(
                       context, () => Navigator.of(context).pop(true),
                       okLabel: s.approve, cancelValue: false)));
@@ -457,17 +457,12 @@ Future<void> send(BuildContext context, List<Recipient> recipients, bool useTran
     final txjson = WarpApi.prepareTx(accountManager.coin, accountManager.active.id, recipients,
         useTransparent, settings.anchorOffset, filename);
 
-    if (coin.supportsMultisig && accountManager.active.share != null) {
-      final txSummary = TxSummary(address, amount, txjson);
-      Navigator.of(context).pushReplacementNamed('/multisign', arguments: txSummary);
-    } else {
-      final file = File(filename);
-      await file.writeAsString(txjson);
-      Share.shareFiles([filename], subject: s.unsignedTransactionFile);
+    final file = File(filename);
+    await file.writeAsString(txjson);
+    Share.shareFiles([filename], subject: s.unsignedTransactionFile);
 
-      final snackBar2 = SnackBar(content: Text(s.fileSaved));
-      rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar2);
-      Navigator.of(context).pop();
-    }
+    final snackBar2 = SnackBar(content: Text(s.fileSaved));
+    rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar2);
+    Navigator.of(context).pop();
   }
 }

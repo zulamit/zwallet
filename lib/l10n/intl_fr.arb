@@ -190,5 +190,6 @@
   "encryptedBackup": "Sauvegarde de {app} ",
   "fullRestore": "Restauration complète",
   "loadBackup": "Recharger une sauvegarde",
-  "backupAllAccounts": "Sauver tous les comptes"
+  "backupAllAccounts": "Sauver tous les comptes",
+  "simpleMode": "Simple Mode"
 }
