@@ -71,12 +71,12 @@ pub fn init_wallet(db_path: &str) {
     });
     YMEMPOOL.get_or_init(|| {
         info!("YMempool Init");
-        let mempool = MemPool::new(CoinType::Ycash, db_path);
+        let mempool = MemPool::new(CoinType::Ycash, &format!("{}/yec.db", db_path));
         Mutex::new(mempool)
     });
     ZMEMPOOL.get_or_init(|| {
         info!("ZMempool Init");
-        let mempool = MemPool::new(CoinType::Zcash, db_path);
+        let mempool = MemPool::new(CoinType::Zcash, &format!("{}/zec.db", db_path));
         Mutex::new(mempool)
     });
     SYNCLOCK.get_or_init(|| Mutex::new(()));
@@ -352,7 +352,6 @@ pub fn shield_taddr(coin: u8, account: u32) -> String {
 
 pub fn set_lwd_url(coin: u8, url: &str) {
     let res = || {
-        log::info!("set_lwd_url {} {}", coin, url);
         let mut wallet = get_wallet_lock(coin)?;
         wallet.set_lwd_url(url)?;
         let mut mempool = get_mempool_lock(coin)?;

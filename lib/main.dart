@@ -210,45 +210,40 @@ class ZWalletAppState extends State<ZWalletApp> {
   }
 
   Future<bool> _init() async {
-    try {
-      if (!initialized) {
-        initialized = true;
-        final dbPath = await getDatabasesPath();
-        await ycash.open(dbPath);
-        await zcash.open(dbPath);
-        WarpApi.initWallet(dbPath);
-        for (var s in settings.servers) {
-          WarpApi.updateLWD(s.coin, s.getLWDUrl());
-        }
-        final db = await getDatabase();
-        await accountManager.init(db);
-        await accounts.refresh();
-        await active.restore();
-        await contacts.init(db);
-        await syncStatus.update();
-        await initUniLinks(this.context);
-        final quickActions = QuickActions();
-        quickActions.initialize((type) {
-          handleQuickAction(this.context, type);
-        });
-        if (!settings.linkHooksInitialized) {
-          Future.microtask(() {
-            final s = S.of(this.context);
-            quickActions.setShortcutItems(<ShortcutItem>[
-              ShortcutItem(type: 'receive',
-                  localizedTitle: s.receive(coin.ticker),
-                  icon: 'receive'),
-              ShortcutItem(type: 'send',
-                  localizedTitle: s.sendCointicker(coin.ticker),
-                  icon: 'send'),
-            ]);
-          });
-          await settings.setLinkHooksInitialized();
-        }
+    if (!initialized) {
+      initialized = true;
+      final dbPath = await getDatabasesPath();
+      await ycash.open(dbPath);
+      await zcash.open(dbPath);
+      WarpApi.initWallet(dbPath);
+      for (var s in settings.servers) {
+        WarpApi.updateLWD(s.coin, s.getLWDUrl());
       }
-    }
-    catch (e) {
-      print("EXC $e");
+      final db = await getDatabase();
+      // await accountManager.init(db);
+      await accounts.refresh();
+      await active.restore();
+      await contacts.init(db);
+      await syncStatus.update();
+      await initUniLinks(this.context);
+      final quickActions = QuickActions();
+      quickActions.initialize((type) {
+        handleQuickAction(this.context, type);
+      });
+      if (!settings.linkHooksInitialized) {
+        Future.microtask(() {
+          final s = S.of(this.context);
+          quickActions.setShortcutItems(<ShortcutItem>[
+            ShortcutItem(type: 'receive',
+                localizedTitle: s.receive(coin.ticker),
+                icon: 'receive'),
+            ShortcutItem(type: 'send',
+                localizedTitle: s.sendCointicker(coin.ticker),
+                icon: 'send'),
+          ]);
+        });
+        await settings.setLinkHooksInitialized();
+      }
     }
     return true;
   }
@@ -259,7 +254,6 @@ class ZWalletAppState extends State<ZWalletApp> {
         future: init,
         builder: (context, snapshot) {
           if (!snapshot.hasData) return LoadProgress(0.7);
-          print("HOME");
           return active.id != 0
               ? HomePage() :
               AccountManagerPage();

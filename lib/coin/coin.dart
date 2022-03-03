@@ -23,7 +23,6 @@ abstract class CoinBase {
 
   Future<void> open(String dbPath) async {
     final path = join(dbPath, dbName);
-    print("db $path");
     db = await openDatabase(path);
   }
 }

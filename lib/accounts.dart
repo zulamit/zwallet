@@ -40,6 +40,13 @@ abstract class _AccountManager2 with Store {
     epoch += 1;
   }
 
+  @action
+  Future<void> delete(int coin, int id) async {
+    WarpApi.deleteAccount(coin, id);
+    if (active.coin == coin && active.id == id)
+      active.reset();
+  }
+
   Account get(int coin, int id) => list.firstWhere((e) => e.coin == coin && e.id == id, orElse: () => emptyAccount);
 
   static Future<List<Account>> _getList(int coin) async {
@@ -47,9 +54,6 @@ abstract class _AccountManager2 with Store {
     final db = c.db;
     List<Account> accounts = [];
     final List<Map> res0 = await db.rawQuery("SELECT name FROM accounts", []);
-    for (var r in res0) {
-      print(r['name']);
-    }
 
     final List<Map> res = await db.rawQuery(
         "WITH notes AS (SELECT a.id_account, a.name, a.address, CASE WHEN r.spent IS NULL THEN r.value ELSE 0 END AS nv FROM accounts a LEFT JOIN received_notes r ON a.id_account = r.account),"
@@ -82,19 +86,14 @@ abstract class _ActiveAccount with Store {
   Account account = emptyAccount;
   CoinBase coinDef = ZcashCoin();
   bool canPay = false;
-  Balances balances = Balances.zero;
-  int unconfirmedBalance = 0;
+  @observable Balances balances = Balances.zero;
   String taddress = "";
   int tbalance = 0;
-  List<Note> notes = [];
+  @observable List<Note> notes = [];
   List<Tx> txs = [];
   List<Spending> spendings = [];
   List<TimeSeriesPoint<double>> accountBalances = [];
   List<PnL> pnls = [];
-
-
-  @observable
-  int lastTxHeight = 0;
 
   @observable
   bool showTAddr = false;
@@ -119,6 +118,10 @@ abstract class _ActiveAccount with Store {
     setActiveAccount(AccountId(coin, id));
   }
 
+  void reset() {
+    setActiveAccount(AccountId(0, 0));
+  }
+
   @action
   Future<void> setActiveAccount(AccountId accountId) async {
     coin = accountId.coin;
@@ -133,19 +136,21 @@ abstract class _ActiveAccount with Store {
 
     account = accounts.get(coin, id);
 
-    final List<Map> res1 = await db.rawQuery(
-        "SELECT address FROM taddrs WHERE account = ?1", [id]);
-    taddress = res1.isNotEmpty ? res1[0]['address'] : "";
+    if (id > 0) {
+      final List<Map> res1 = await db.rawQuery(
+          "SELECT address FROM taddrs WHERE account = ?1", [id]);
+      taddress = res1.isNotEmpty ? res1[0]['address'] : "";
+
+      final List<Map> res2 = await db.rawQuery(
+          "SELECT sk FROM accounts WHERE id_account = ?1", [id]);
+      canPay = res2.isNotEmpty && res2[0]['sk'] != null;
+    }
+
     showTAddr = false;
-
-    WarpApi.setMempoolAccount(coin, id);
-    final List<Map> res2 = await db.rawQuery(
-        "SELECT sk FROM accounts WHERE id_account = ?1", [id]);
-    canPay = res2.isNotEmpty && res2[0]['sk'] != null;
-
     balances = Balances.zero;
+    WarpApi.setMempoolAccount(coin, id);
 
-    dataEpoch += 1;
+    await update();
     // await _fetchData(db, account, true);
   }
 
@@ -159,13 +164,71 @@ abstract class _ActiveAccount with Store {
     tbalance = WarpApi.getTBalance(coin, id);
   }
 
+  @action
   Future<void> updateBalances() async {
     final dbr = DbReader(AccountId(coin, id));
     balances = await dbr.getBalance(syncStatus.confirmHeight);
   }
 
+  @action
+  Future<void> update() async {
+    await updateBalances();
+    updateTBalance();
+    final dbr = DbReader(AccountId(coin, id));
+    notes = await dbr.getNotes();
+    dataEpoch += 1;
+  }
+
   String newAddress() {
     return WarpApi.newAddress(coin, id);
+  }
+
+  @computed
+  List<Note> get sortedNotes {
+    var notes2 = [...notes];
+    switch (noteSortConfig.field) {
+      case "time":
+        return _sort(notes2, (Note note) => note.height, noteSortConfig.order);
+      case "amount":
+        return _sort(notes2, (Note note) => note.value, noteSortConfig.order);
+    }
+    return notes2;
+  }
+
+  @action
+  void sortNotes(String field) {
+    noteSortConfig = noteSortConfig.sortOn(field);
+  }
+
+  List<C> _sort<C extends HasHeight, T extends Comparable>(
+      List<C> items, T Function(C) project, SortOrder order) {
+    switch (order) {
+      case SortOrder.Ascending:
+        items.sort((a, b) => project(a).compareTo(project(b)));
+        break;
+      case SortOrder.Descending:
+        items.sort((a, b) => -project(a).compareTo(project(b)));
+        break;
+      case SortOrder.Unsorted:
+        items.sort((a, b) => -a.height.compareTo(b.height));
+        break;
+    }
+    return items;
+  }
+
+  @action
+  Future<void> excludeNote(Note note) async {
+    await coinDef.db.execute(
+        "UPDATE received_notes SET excluded = ?2 WHERE id_note = ?1",
+        [note.id, note.excluded]);
+  }
+
+  @action
+  Future<void> invertExcludedNotes() async {
+    await coinDef.db.execute(
+        "UPDATE received_notes SET excluded = NOT(COALESCE(excluded, 0)) WHERE account = ?1",
+        [active.id]);
+    notes = notes.map((n) => n.invertExcluded).toList();
   }
 }
 

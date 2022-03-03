@@ -10,6 +10,7 @@ import 'about.dart';
 import 'account2.dart';
 import 'generated/l10n.dart';
 import 'main.dart';
+import 'note.dart';
 import 'store.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,7 +26,7 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 1, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(() {
       setState(() {
         _tabIndex = _tabController.index;
@@ -37,8 +38,9 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
       await priceStore.fetchCoinPrice(active.coin);
       await Future.delayed(Duration(seconds: 3));
       await syncStatus.sync();
-      Timer.periodic(Duration(seconds: 15), (Timer t) {
+      Timer.periodic(Duration(seconds: 15), (Timer t) async {
         syncStatus.sync();
+        await active.updateBalances();
       });
     });
     _syncDispose = syncStream.listen((height) {
@@ -100,7 +102,10 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
             title: Text("${active.account.name}"),
             bottom: TabBar(
               controller: _tabController,
-              tabs: [Tab(text: s.account)],
+              tabs: [
+                Tab(text: s.account),
+                Tab(text: s.notes)
+              ],
             ),
             actions: [menu],
           ),
@@ -108,6 +113,7 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
             controller: _tabController,
             children: [
               AccountPage2(),
+              NoteWidget(),
             ],
           ),
           floatingActionButton: button,

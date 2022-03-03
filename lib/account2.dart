@@ -8,18 +8,33 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 import 'generated/l10n.dart';
 import 'main.dart';
+import 'store.dart';
 
-class AccountPage2 extends StatelessWidget {
+class AccountPage2 extends StatefulWidget {
+  @override
+  _AccountState createState() => _AccountState();
+}
+
+class _AccountState extends State<AccountPage2> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true; //Set to true
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SingleChildScrollView(
         padding: EdgeInsets.all(20),
         child: Observer(builder: (context) {
           final _1 = active.dataEpoch;
           return Column(children: [
             SyncStatusWidget(),
+            Padding(padding: EdgeInsets.symmetric(vertical: 8)),
             QRAddressWidget(),
-            BalanceWidget()
+            Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+            BalanceWidget(),
+            Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+            MemPoolWidget(),
+            ProgressWidget(),
           ]);
         }));
   }
@@ -201,15 +216,72 @@ class BalanceWidget extends StatelessWidget {
                 style: theme.textTheme.headline6),
           if (!hide && fx != 0.0)
             Text(
-                "1 ${coinDef.ticker} = ${decimalFormat(fx, 2, symbol: settings.currency)}"),
+                "1 ${coinDef.ticker} = ${decimalFormat(
+                    fx, 2, symbol: settings.currency)}"),
         ]);
-      });
+  });
+}
 
-  static _getBalanceHi(int b) {
-    return decimalFormat((b.abs() ~/ 100000) / 1000.0, 3);
+class MemPoolWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Observer(builder: (context) {
+    final b = active.balances;
+    final theme = Theme.of(context);
+    final unconfirmedBalance = b.unconfirmedBalance;
+    if (unconfirmedBalance == 0) return Container();
+    final unconfirmedStyle = TextStyle(
+        color: amountColor(context, unconfirmedBalance));
+
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.baseline,
+        textBaseline: TextBaseline.ideographic,
+        children: <Widget>[
+          Text(
+              '${_sign(unconfirmedBalance)} ${_getBalanceHi(unconfirmedBalance)}',
+              style: theme.textTheme.headline4
+                  ?.merge(unconfirmedStyle)),
+          Text(
+              '${_getBalanceLo(unconfirmedBalance)}',
+              style: unconfirmedStyle),
+        ]);
+  });
+}
+
+class ProgressWidget extends StatefulWidget {
+  @override
+  ProgressState createState() => ProgressState();
+}
+
+class ProgressState extends State<ProgressWidget> {
+  int _progress = 0;
+  StreamSubscription? _progressDispose;
+
+  @override
+  void initState() {
+    super.initState();
+    _progressDispose = progressStream.listen((percent) {
+      setState(() {
+        _progress = percent;
+      });
+    });
   }
 
-  static _getBalanceLo(int b) {
-    return (b.abs() % 100000).toString().padLeft(5, '0');
+  @override
+  void dispose() {
+    _progressDispose?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_progress == 0) return Container();
+    return LinearProgressIndicator(value: _progress / 100.0);
   }
 }
+
+_getBalanceHi(int b) => decimalFormat((b.abs() ~/ 100000) / 1000.0, 3);
+
+_getBalanceLo(int b) => (b.abs() % 100000).toString().padLeft(5, '0');
+
+_sign(int b) => b < 0 ? '-' : '+';

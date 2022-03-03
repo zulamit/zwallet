@@ -326,7 +326,7 @@ class _AccountPageState extends State<AccountPage>
               if (_progress > 0)
                 LinearProgressIndicator(value: _progress / 100.0),
             ]))),
-        if (!simpleMode) NoteWidget(tabTo),
+        if (!simpleMode) NoteWidget(),
         HistoryWidget(tabTo),
         if (!simpleMode) BudgetWidget(),
         if (!simpleMode) PnLWidget(),

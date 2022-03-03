@@ -79,7 +79,6 @@ class AccountManagerState extends State<AccountManagerPage> {
   }
 
   Future<bool> _onAccountDelete(Account account) async {
-    if (accountManager.accounts.length == 1) return false;
     final confirm1 = await showDialog<bool>(
       context: context,
       barrierDismissible: false,
@@ -112,14 +111,16 @@ class AccountManagerState extends State<AccountManagerPage> {
   }
 
   void _onDismissed(int index, Account account) async {
-    await accountManager.delete(account.id);
-    accountManager.refresh();
+    await accounts.delete(account.coin, account.id);
+    accounts.refresh();
   }
 
   _selectAccount(Account account) async {
-    await accountManager.setActiveAccount(account);
+    // await accountManager.setActiveAccount(account);
     await active.setActiveAccount(AccountId(account.coin, account.id));
+    await active.update();
     await syncStatus.update();
+    await priceStore.fetchCoinPrice(account.coin);
     if (syncStatus.accountRestored) {
       syncStatus.setAccountRestored(false);
       final approved = await rescanDialog(context);

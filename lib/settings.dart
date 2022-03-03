@@ -351,7 +351,6 @@ class _ServerSelectState extends State<ServerSelect> with
   void _setChoice(String? v) async {
     if (v == null) return;
     final prefs = await SharedPreferences.getInstance();
-    print("lwd_choice_${coinDef.ticker} $v");
     prefs.setString('lwd_choice_${coinDef.ticker}', v);
   }
 

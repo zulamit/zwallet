@@ -467,6 +467,7 @@ abstract class _AccountManager with Store {
 
   @action
   Future<void> setActiveAccount(Account account) async {
+    assert(false);
     final prefs = await SharedPreferences.getInstance();
     prefs.setInt('coin', account.coin);
     prefs.setInt('account', account.id);
