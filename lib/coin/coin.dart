@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -14,6 +15,7 @@ abstract class CoinBase {
   String get currency;
   String get ticker;
   String get explorerUrl;
+  AssetImage get image;
   String get dbName;
   late Database db;
   List<LWInstance> get lwd;

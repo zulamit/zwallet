@@ -23,17 +23,17 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:uni_links/uni_links.dart';
 import 'package:quick_actions/quick_actions.dart';
+import 'account2.dart';
 import 'accounts.dart';
 import 'coin/coins.dart';
 import 'generated/l10n.dart';
 
-import 'account.dart';
 import 'account_manager.dart';
 import 'backup.dart';
 import 'coin/coindef.dart';
 import 'home.dart';
 import 'multisend.dart';
-import 'multisign.dart';
+// import 'multisign.dart';
 import 'payment_uri.dart';
 import 'reset.dart';
 import 'settings.dart';
@@ -52,7 +52,7 @@ const DEFAULT_FEE = 1000;
 const MAXMONEY = 21000000;
 const DOC_URL = "https://hhanh00.github.io/zwallet/";
 
-var accountManager = AccountManager();
+// var accountManager = AccountManager();
 var priceStore = PriceStore();
 var syncStatus = SyncStatus();
 var settings = Settings();
@@ -151,7 +151,7 @@ void main() {
             supportedLocales: S.delegate.supportedLocales,
             onGenerateRoute: (RouteSettings routeSettings) {
               var routes = <String, WidgetBuilder>{
-                '/account': (context) => AccountPage(),
+                '/account': (context) => AccountPage2(),
                 '/restore': (context) => RestorePage(),
                 '/send': (context) =>
                     SendPage(routeSettings.arguments as SendPageArgs?),
@@ -164,11 +164,11 @@ void main() {
                 '/backup': (context) =>
                     BackupPage(routeSettings.arguments as AccountId?),
                 '/multipay': (context) => MultiPayPage(),
-                '/multisig': (context) => MultisigPage(),
-                '/multisign': (context) => MultisigAggregatorPage(
-                    routeSettings.arguments as TxSummary),
-                '/multisig_shares': (context) =>
-                    MultisigSharesPage(routeSettings.arguments as String),
+                // '/multisig': (context) => MultisigPage(),
+                // '/multisign': (context) => MultisigAggregatorPage(
+                //     routeSettings.arguments as TxSummary),
+                // '/multisig_shares': (context) =>
+                //     MultisigSharesPage(routeSettings.arguments as String),
                 '/edit_theme': (context) =>
                     ThemeEditorPage(onSaved: settings.updateCustomThemeColors),
                 '/reset': (context) => ResetPage(),
@@ -254,6 +254,7 @@ class ZWalletAppState extends State<ZWalletApp> {
         future: init,
         builder: (context, snapshot) {
           if (!snapshot.hasData) return LoadProgress(0.7);
+          print("HOME");
           return active.id != 0
               ? HomePage() :
               AccountManagerPage();
@@ -547,7 +548,7 @@ Future<void> shieldTAddr(BuildContext context) async {
               Navigator.of(context).pop();
               final snackBar1 = SnackBar(content: Text(s.shieldingInProgress));
               rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar1);
-              final txid = await WarpApi.shieldTAddr(accountManager.active.coin, accountManager.active.id);
+              final txid = await WarpApi.shieldTAddr(active.coin, active.id);
               final snackBar2 = SnackBar(content: Text("${s.txId}: $txid"));
               rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar2);
             })),

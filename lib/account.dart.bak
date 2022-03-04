@@ -327,7 +327,7 @@ class _AccountPageState extends State<AccountPage>
                 LinearProgressIndicator(value: _progress / 100.0),
             ]))),
         if (!simpleMode) NoteWidget(),
-        HistoryWidget(tabTo),
+        HistoryWidget(),
         if (!simpleMode) BudgetWidget(),
         if (!simpleMode) PnLWidget(),
         ContactsTab(key: contactKey),

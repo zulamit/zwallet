@@ -100,7 +100,7 @@ class _RestorePageState extends State<RestorePage> {
     final form = _formKey.currentState!;
     if (form.validate()) {
       final account =
-          WarpApi.newAccount(_coin, _nameController.text, _keyController.text); // TODO
+          WarpApi.newAccount(_coin, _nameController.text, _keyController.text);
       if (account < 0) {
         showDialog(
             context: context,
@@ -118,8 +118,8 @@ class _RestorePageState extends State<RestorePage> {
                 ]));
       }
       else {
-        if (_shareController.text.isNotEmpty)
-          accountManager.storeShareSecret(account, _shareController.text);
+        // if (_shareController.text.isNotEmpty)
+        //   accountManager.storeShareSecret(account, _shareController.text);
         // await accountManager.refresh();
         await accounts.refresh();
         if (_keyController.text != "") {
@@ -127,8 +127,8 @@ class _RestorePageState extends State<RestorePage> {
           Navigator.of(context).pop();
         }
         else {
-          if (accountManager.accounts.length == 1)
-            WarpApi.skipToLastHeight(0); // single new account -> quick sync // TODO
+          if (accounts.list.where((e) => e.coin == active.coin).length == 1)
+            WarpApi.skipToLastHeight(0); // single new account -> quick sync
           Navigator.of(context).pushReplacementNamed('/backup', arguments: AccountId(_coin, account)); // Need coin type
         }
       }
@@ -137,7 +137,7 @@ class _RestorePageState extends State<RestorePage> {
 
   _checkKey(key) {
     setState(() {
-      final keyType = WarpApi.validKey(0, key); // TODO
+      final keyType = WarpApi.validKey(_coin, key);
       _validKey = key == "" || keyType >= 0;
       _isVK = keyType == 2;
     });

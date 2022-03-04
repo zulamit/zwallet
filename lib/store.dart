@@ -294,7 +294,7 @@ abstract class _Settings with Store {
     final prefs = await SharedPreferences.getInstance();
     chartRange = v;
     prefs.setString('chart_range', chartRange);
-    accountManager.fetchChartData();
+    active.fetchChartData();
   }
 
   @action
@@ -324,7 +324,7 @@ abstract class _Settings with Store {
     currency = newCurrency;
     prefs.setString('currency', currency);
     await priceStore.fetchCoinPrice(active.coin);
-    await accountManager.fetchChartData();
+    await active.fetchChartData();
   }
 
   @action
@@ -1176,7 +1176,7 @@ abstract class _ContactStore with Store {
 
   @action
   Future<void> add(Contact c) async {
-    WarpApi.storeContact(accountManager.coin, c.id, c.name, c.address, true);
+    WarpApi.storeContact(active.coin, c.id, c.name, c.address, true);
     await markContactsDirty(true);
     await _fetchContacts();
   }
@@ -1184,7 +1184,7 @@ abstract class _ContactStore with Store {
   @action
   Future<void> remove(Contact c) async {
     contacts.removeWhere((contact) => contact.id == c.id);
-    WarpApi.storeContact(accountManager.coin, c.id, c.name, "", true);
+    WarpApi.storeContact(active.coin, c.id, c.name, "", true);
     await markContactsDirty(true);
     await _fetchContacts();
   }

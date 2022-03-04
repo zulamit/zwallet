@@ -102,7 +102,7 @@ class QRAddressState extends State<QRAddressWidget> {
                 child: QrImage(
                     data: address,
                     size: qrSize,
-                    embeddedImage: AssetImage('assets/${coinDef.currency}.png'),
+                    embeddedImage: coinDef.image,
                     backgroundColor: Colors.white))),
         Padding(padding: EdgeInsets.symmetric(vertical: 8)),
         RichText(
@@ -182,7 +182,7 @@ class BalanceWidget extends StatelessWidget {
         final theme = Theme.of(context);
         final flat = settings.flat;
         final hide = settings.autoHide && flat;
-        final showTAddr = accountManager.showTAddr;
+        final showTAddr = active.showTAddr;
         final balance = showTAddr ? active.tbalance : active.account.balance;
         final balanceColor = !showTAddr
             ? theme.colorScheme.primaryVariant

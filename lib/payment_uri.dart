@@ -10,7 +10,7 @@ import 'generated/l10n.dart';
 class PaymentURIPage extends StatefulWidget {
   final String address;
 
-  PaymentURIPage(String? _address): address = _address ?? accountManager.active.address;
+  PaymentURIPage(String? _address): address = _address ?? active.account.address;
 
   @override
   PaymentURIState createState() => PaymentURIState();
@@ -83,7 +83,7 @@ class PaymentURIState extends State<PaymentURIPage> {
 
     final String _qrText;
     if (amount > 0) {
-      _qrText = WarpApi.makePaymentURI(accountManager.coin, widget.address, amount, memo);
+      _qrText = WarpApi.makePaymentURI(active.coin, widget.address, amount, memo);
     } else
       _qrText = widget.address;
 

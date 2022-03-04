@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'coin.dart';
 
 class ZcashCoin extends CoinBase {
@@ -7,6 +9,7 @@ class ZcashCoin extends CoinBase {
   String ticker = "ZEC";
   String dbName = "zec.db";
   String explorerUrl = "https://explorer.zcha.in/transactions/";
+  AssetImage image = AssetImage('assets/zcash.png');
   List<LWInstance> lwd = [
     LWInstance("Lightwalletd", "https://mainnet.lightwalletd.com:9067"),
     LWInstance("Zecwallet", "https://lwdv3.zecwallet.co"),

@@ -1,6 +1,4 @@
-import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:warp/coin/coins.dart';
 import 'package:mobx/mobx.dart';
 import 'package:warp/coin/zcash.dart';
@@ -47,6 +45,15 @@ abstract class _AccountManager2 with Store {
       active.reset();
   }
 
+  @action
+  Future<void> changeAccountName(int coin, int id, String name) async {
+    final c = getCoin(coin); // TODO: Do in backend would be cleaner
+    final db = c.db;
+    await db.execute("UPDATE accounts SET name = ?2 WHERE id_account = ?1",
+        [id, name]);
+    await refresh();
+  }
+
   Account get(int coin, int id) => list.firstWhere((e) => e.coin == coin && e.id == id, orElse: () => emptyAccount);
 
   static Future<List<Account>> _getList(int coin) async {
@@ -66,7 +73,7 @@ abstract class _AccountManager2 with Store {
       //     ? ShareInfo(
       //     r['idx'], r['threshold'], r['participants'], r['secret'])
       //     : null; // TODO: Multisig
-      final account = Account(coin, // TODO
+      final account = Account(coin,
           r['id_account'], r['name'], r['address'], r['balance'], 0, null);
       accounts.add(account);
     }
@@ -89,11 +96,12 @@ abstract class _ActiveAccount with Store {
   @observable Balances balances = Balances.zero;
   String taddress = "";
   int tbalance = 0;
+
   @observable List<Note> notes = [];
-  List<Tx> txs = [];
-  List<Spending> spendings = [];
-  List<TimeSeriesPoint<double>> accountBalances = [];
-  List<PnL> pnls = [];
+  @observable List<Tx> txs = [];
+  @observable List<Spending> spendings = [];
+  @observable List<TimeSeriesPoint<double>> accountBalances = [];
+  @observable List<PnL> pnls = [];
 
   @observable
   bool showTAddr = false;
@@ -166,7 +174,7 @@ abstract class _ActiveAccount with Store {
 
   @action
   Future<void> updateBalances() async {
-    final dbr = DbReader(AccountId(coin, id));
+    final dbr = DbReader(coin, id);
     balances = await dbr.getBalance(syncStatus.confirmHeight);
   }
 
@@ -174,8 +182,10 @@ abstract class _ActiveAccount with Store {
   Future<void> update() async {
     await updateBalances();
     updateTBalance();
-    final dbr = DbReader(AccountId(coin, id));
+    final dbr = DbReader(coin, id);
     notes = await dbr.getNotes();
+    txs = await dbr.getTxs();
+    await fetchChartData();
     dataEpoch += 1;
   }
 
@@ -195,9 +205,33 @@ abstract class _ActiveAccount with Store {
     return notes2;
   }
 
+  @computed
+  List<Tx> get sortedTxs {
+    var txs2 = [...txs];
+    switch (txSortConfig.field) {
+      case "time":
+        return _sort(txs2, (Tx tx) => tx.height, txSortConfig.order);
+      case "amount":
+        return _sort(txs2, (Tx tx) => tx.value, txSortConfig.order);
+      case "txid":
+        return _sort(txs2, (Tx tx) => tx.txid, txSortConfig.order);
+      case "address":
+        return _sort(
+            txs2, (Tx tx) => tx.contact ?? tx.address, txSortConfig.order);
+      case "memo":
+        return _sort(txs2, (Tx tx) => tx.memo, txSortConfig.order);
+    }
+    return txs2;
+  }
+
   @action
   void sortNotes(String field) {
     noteSortConfig = noteSortConfig.sortOn(field);
+  }
+
+  @action
+  void sortTx(String field) {
+    txSortConfig = txSortConfig.sortOn(field);
   }
 
   List<C> _sort<C extends HasHeight, T extends Comparable>(
@@ -217,6 +251,25 @@ abstract class _ActiveAccount with Store {
   }
 
   @action
+  void setPnlSeriesIndex(int index) {
+    pnlSeriesIndex = index;
+  }
+
+  @computed
+  List<PnL> get pnlSorted {
+    if (pnlDesc) {
+      var _pnls = [...pnls.reversed];
+      return _pnls;
+    }
+    return pnls;
+  }
+
+  @action
+  void togglePnlDesc() {
+    pnlDesc = !pnlDesc;
+  }
+
+  @action
   Future<void> excludeNote(Note note) async {
     await coinDef.db.execute(
         "UPDATE received_notes SET excluded = ?2 WHERE id_note = ?1",
@@ -230,6 +283,17 @@ abstract class _ActiveAccount with Store {
         [active.id]);
     notes = notes.map((n) => n.invertExcluded).toList();
   }
+
+  @action
+  Future<void> fetchChartData() async {
+    final dbr = DbReader(active.coin, active.id);
+    pnls = await dbr.getPNL(active.id);
+    spendings = await dbr.getSpending(active.id);
+    accountBalances = await dbr.getAccountBalanceTimeSeries(active.id, active.balances.balance);
+  }
+
+  @action
+  void convertToWatchOnly() {} // TODO
 }
 
 Future<Backup> getBackup(AccountId account) async {

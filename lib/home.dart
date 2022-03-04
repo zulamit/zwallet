@@ -4,10 +4,13 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:warp/history.dart';
 import 'package:warp_api/warp_api.dart';
 
 import 'about.dart';
 import 'account2.dart';
+import 'budget.dart';
+import 'contact.dart';
 import 'generated/l10n.dart';
 import 'main.dart';
 import 'note.dart';
@@ -26,7 +29,7 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 6, vsync: this);
     _tabController.addListener(() {
       setState(() {
         _tabIndex = _tabController.index;
@@ -49,7 +52,7 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
         syncStatus.setSyncHeight(h);
         eta.checkpoint(h, DateTime.now());
       } else {
-        WarpApi.mempoolReset(accountManager.coin, syncStatus.latestHeight);
+        WarpApi.mempoolReset(active.coin, syncStatus.latestHeight);
       }
     });
   }
@@ -82,7 +85,7 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
               PopupMenuItem(child: Text(s.accounts), value: "Accounts"),
               PopupMenuItem(child: Text(s.backup), value: "Backup"),
               PopupMenuItem(child: Text(s.rescan), value: "Rescan"),
-              if (!simpleMode && accountManager.canPay)
+              if (!simpleMode && active.canPay)
                 PopupMenuItem(child: Text(s.coldStorage), value: "Cold"),
               if (!simpleMode)
                 PopupMenuItem(child: Text(s.multipay), value: "MultiPay"),
@@ -102,9 +105,14 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
             title: Text("${active.account.name}"),
             bottom: TabBar(
               controller: _tabController,
+              isScrollable: true,
               tabs: [
                 Tab(text: s.account),
-                Tab(text: s.notes)
+                Tab(text: s.notes),
+                Tab(text: s.history),
+                Tab(text: s.budget),
+                Tab(text: s.tradingPl),
+                Tab(text: s.contacts),
               ],
             ),
             actions: [menu],
@@ -114,6 +122,10 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
             children: [
               AccountPage2(),
               NoteWidget(),
+              HistoryWidget(),
+              BudgetWidget(),
+              PnLWidget(),
+              ContactsTab(),
             ],
           ),
           floatingActionButton: button,
@@ -190,14 +202,14 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
     final result = await FilePicker.platform.pickFiles();
 
     if (result != null) {
-      final res = WarpApi.broadcast(accountManager.coin, result.files.single.path!);
+      final res = WarpApi.broadcast(active.coin, result.files.single.path!);
       final snackBar = SnackBar(content: Text(res));
       rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar);
     }
   }
 
   _convertToWatchOnly() {
-    accountManager.convertToWatchOnly();
+    active.convertToWatchOnly();
     Navigator.of(context).pop();
   }
 

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import "coin.dart";
 
 class YcashCoin extends CoinBase {
@@ -7,6 +9,7 @@ class YcashCoin extends CoinBase {
   String ticker = "YEC";
   String dbName = "yec.db";
   String explorerUrl = "https://yecblockexplorer.com/tx/";
+  AssetImage image = AssetImage('assets/ycash.png');
   List<LWInstance> lwd = [
     LWInstance("Lightwalletd", "https://lite.ycash.xyz:9067"),
   ];

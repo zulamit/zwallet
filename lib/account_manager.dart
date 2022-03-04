@@ -149,7 +149,7 @@ class AccountManagerState extends State<AccountManagerPage> {
   }
 
   _changeAccountName(Account account) {
-    accountManager.changeAccountName(account, _accountNameController.text);
+    accounts.changeAccountName(account.coin, account.id, _accountNameController.text);
     Navigator.of(context).pop();
   }
 

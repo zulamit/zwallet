@@ -9,8 +9,6 @@ import 'generated/l10n.dart';
 import 'store.dart';
 
 class ContactsTab extends StatefulWidget {
-  ContactsTab({Key? key}) : super(key: key);
-
   @override
   State<StatefulWidget> createState() => ContactsState();
 }
@@ -22,7 +20,7 @@ class ContactsState extends State<ContactsTab> {
       Padding(padding: EdgeInsets.all(8), child: contacts.contacts.isEmpty
           ? NoContact()
           : Column(children: [
-            if (contacts.dirty) OutlinedButton(onPressed: accountManager.canPay ? _onCommit : null, child: Text(S.of(context).saveToBlockchain), style: OutlinedButton.styleFrom(
+            if (contacts.dirty) OutlinedButton(onPressed: active.canPay ? _onCommit : null, child: Text(S.of(context).saveToBlockchain), style: OutlinedButton.styleFrom(
           side: BorderSide(
               width: 1, color: Theme.of(context).primaryColor))),
               Expanded(child: ListView.builder(
@@ -57,7 +55,7 @@ class ContactsState extends State<ContactsTab> {
 
   _editContact(Contact c) async {
     final contact = await showContactForm(context, c);
-    if (contact != null) contacts.add(contact);
+    contacts.add(contact);
   }
 
   Future<bool> _onConfirmDelContact(Contact c) async {
@@ -94,7 +92,7 @@ class ContactsState extends State<ContactsTab> {
     if (approve) {
       contacts.markContactsDirty(false);
       final tx = await WarpApi.commitUnsavedContacts(
-          accountManager.coin, accountManager.active.id, settings.anchorOffset);
+          active.coin, active.id, settings.anchorOffset);
       final snackBar = SnackBar(content: Text("${S.of(context).txId}: $tx"));
       rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar);
     }
@@ -162,7 +160,7 @@ class ContactState extends State<ContactForm> {
       state.save();
       final contact = Contact(widget.contact.id, nameController.text, address);
       Navigator.of(context).pop(contact);
-      accountManager.fetchAccountData(true);
+      active.update();
     }
   }
 
@@ -214,7 +212,7 @@ class AddressState extends State<AddressInput> {
     if (v == null || v.isEmpty) return S.of(context).addressIsEmpty;
     final zaddr = WarpApi.getSaplingFromUA(v);
     if (zaddr.isNotEmpty) return null;
-    if (!WarpApi.validAddress(accountManager.coin, v)) return S.of(context).invalidAddress;
+    if (!WarpApi.validAddress(active.coin, v)) return S.of(context).invalidAddress;
     if (contacts.contacts.where((c) => c.address == v).isNotEmpty) return S.of(context).duplicateContact;
     return null;
   }

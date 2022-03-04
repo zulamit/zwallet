@@ -87,7 +87,7 @@ class MultiPayState extends State<MultiPayPage> {
       await send(context, multipayData.recipients, false);
 
       multipayData.clear();
-      await accountManager.fetchAccountData(true);
+      await active.update();
     }
   }
 }
