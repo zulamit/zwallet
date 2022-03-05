@@ -6,7 +6,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:warp/store.dart';
+import 'store.dart';
 import 'package:warp_api/warp_api.dart';
 import 'package:warp_api/types.dart';
 

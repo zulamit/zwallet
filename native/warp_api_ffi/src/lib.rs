@@ -18,8 +18,8 @@ pub unsafe extern "C" fn reset_app() {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn warp_sync(coin: u8, get_tx: bool, anchor_offset: u32, port: i64) {
-    api::warp_sync(coin, get_tx, anchor_offset, port);
+pub unsafe extern "C" fn warp_sync(coin: u8, get_tx: bool, anchor_offset: u32, port: i64) -> i8 {
+    api::warp_sync(coin, get_tx, anchor_offset, port)
 }
 
 #[no_mangle]
@@ -88,10 +88,10 @@ pub unsafe extern "C" fn send_multi_payment(
     CString::new(tx_id).unwrap().into_raw()
 }
 
-#[no_mangle]
-pub unsafe extern "C" fn try_warp_sync(coin: u8, get_tx: bool, anchor_offset: u32) -> i8 {
-    api::try_warp_sync(coin, get_tx, anchor_offset)
-}
+// #[no_mangle]
+// pub unsafe extern "C" fn try_warp_sync(coin: u8, get_tx: bool, anchor_offset: u32) -> i8 {
+//     api::try_warp_sync(coin, get_tx, anchor_offset)
+// }
 
 #[no_mangle]
 pub unsafe extern "C" fn skip_to_last_height(coin: u8) {

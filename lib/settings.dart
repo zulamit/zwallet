@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:warp/coin/coins.dart';
-import 'package:warp_api/warp_api.dart';
+import 'coin/coins.dart';
 
 import 'coin/coin.dart';
 import 'main.dart';
@@ -60,7 +58,7 @@ class SettingsState extends State<SettingsPage> with SingleTickerProviderStateMi
                                 FormBuilderFieldOption(
                                     child: Text(s.advanced), value: 'advanced'),
                               ]),
-                          TabBar(controller: _tabController, tabs: [Tab(text: "Zcash"), Tab(text: "Ycash")]),
+                          if (!simpleMode) TabBar(controller: _tabController, tabs: [Tab(text: "Zcash"), Tab(text: "Ycash")]),
                           if (!simpleMode) SizedBox(height: 200, child: TabBarView(controller: _tabController, children: [ServerSelect(0), ServerSelect(1)])),
                           // if (!simpleMode) FormBuilderRadioGroup(
                           //     orientation: OptionsOrientation.vertical,
@@ -214,9 +212,6 @@ class SettingsState extends State<SettingsPage> with SingleTickerProviderStateMi
   }
 
   _onMode(v) {
-    final simpleMode = v == 'simple';
-    if (settings.simpleMode != simpleMode)
-      showSnackBar(S.of(context).changingTheModeWillTakeEffectAtNextRestart);
     settings.setMode(v == 'simple');
   }
 
@@ -289,39 +284,21 @@ class ServerSelect extends StatefulWidget {
 
 class _ServerSelectState extends State<ServerSelect> with
   AutomaticKeepAliveClientMixin {
+  final int coin;
   late String choice;
   late String customUrl;
+  bool _saved = true;
 
-  _ServerSelectState(int coin) {
-    final coinDef = getCoin(coin);
-    choice = coinDef.lwd.first.name;
-    customUrl = coinDef.lwd.first.url;
+  _ServerSelectState(this.coin) {
+    choice = settings.servers[coin].choice;
+    customUrl = settings.servers[coin].customUrl;
   }
 
   CoinBase get coinDef => getCoin(widget.coin);
 
-  Future<bool> init() async {
-    final prefs = await SharedPreferences.getInstance();
-    final _choice = prefs.getString('lwd_choice_${coinDef.ticker}');
-    if (_choice != null)
-      choice = _choice;
-    prefs.setString('lwd_choice_${coinDef.ticker}', choice);
-    customUrl = prefs.getString('lwd_custom_${coinDef.ticker}') ?? "";
-    return true;
-  }
-
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(future: init(), builder: (context, snapshot) {
-      if (snapshot.hasData) {
-        return innerBuild(context);
-      }
-      return SizedBox();
-    });
-  }
-
-  @override
-  Widget innerBuild(BuildContext context) {
+    super.build(context);
     final s = S.of(context);
     List<FormBuilderFieldOption<String>> options = coinDef.lwd
         .map((lwd) => FormBuilderFieldOption<String>(
@@ -334,7 +311,12 @@ class _ServerSelectState extends State<ServerSelect> with
             name: 'lwd_url ${coinDef.ticker}',
             decoration: InputDecoration(labelText: s.custom),
             initialValue: customUrl,
-            onSaved: _setCustom,
+            onSaved: _save,
+            onChanged: (v) {
+              if (v == null) return;
+              customUrl = v;
+              _saved = false;
+              },
           )),
     );
 
@@ -344,20 +326,18 @@ class _ServerSelectState extends State<ServerSelect> with
         decoration: InputDecoration(
             labelText: s.server),
         initialValue: choice,
-        onSaved: _setChoice,
+        onSaved: _save,
+        onChanged: (v) {
+          if (v == null) return;
+          choice = v;
+          _saved = false;
+          },
         options: options);
   }
 
-  void _setChoice(String? v) async {
-    if (v == null) return;
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString('lwd_choice_${coinDef.ticker}', v);
-  }
-
-  void _setCustom(String? v) async {
-    if (v == null) return;
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString('lwd_custom_${coinDef.ticker}', v);
+  void _save(_) async {
+    if (_saved) return;
+    settings.servers[coin].savePrefs(choice, customUrl);
   }
 
   @override

@@ -183,7 +183,7 @@ class BalanceWidget extends StatelessWidget {
         final flat = settings.flat;
         final hide = settings.autoHide && flat;
         final showTAddr = active.showTAddr;
-        final balance = showTAddr ? active.tbalance : active.account.balance;
+        final balance = showTAddr ? active.tbalance : active.balances.balance;
         final balanceColor = !showTAddr
             ? theme.colorScheme.primaryVariant
             : theme.colorScheme.secondaryVariant;

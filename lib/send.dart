@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:warp/dualmoneyinput.dart';
+import 'dualmoneyinput.dart';
 import 'package:warp_api/types.dart';
 import 'package:warp_api/warp_api.dart';
 import 'package:decimal/decimal.dart';

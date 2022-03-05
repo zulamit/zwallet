@@ -183,27 +183,27 @@ pub fn warp_sync(coin: u8, get_tx: bool, anchor_offset: u32, port: i64) -> i8 {
     convert_sync_result(res)
 }
 
-pub fn try_warp_sync(coin: u8, get_tx: bool, anchor_offset: u32) -> i8 {
-    let r = get_runtime();
-    let res = r.block_on(async {
-        android_logger::init_once(Config::default().with_min_level(Level::Info));
-        let _sync_lock = SYNCLOCK
-            .get()
-            .ok_or_else(|| anyhow::anyhow!("Lock not initialized"))?
-            .try_lock();
-        if _sync_lock.is_ok() {
-            let wallet = get_wallet_lock(coin)?;
-            let db_path = wallet.db_path.clone();
-            let ld_url = wallet.ld_url.clone();
-            drop(wallet);
-            warp(coin, get_tx, anchor_offset, &db_path, &ld_url, 0).await?;
-            Ok::<_, anyhow::Error>(())
-        } else {
-            Err(anyhow::anyhow!(ChainError::Busy))
-        }
-    });
-    convert_sync_result(res)
-}
+// pub fn try_warp_sync(coin: u8, get_tx: bool, anchor_offset: u32) -> i8 {
+//     let r = get_runtime();
+//     let res = r.block_on(async {
+//         android_logger::init_once(Config::default().with_min_level(Level::Info));
+//         let _sync_lock = SYNCLOCK
+//             .get()
+//             .ok_or_else(|| anyhow::anyhow!("Lock not initialized"))?
+//             .try_lock();
+//         if _sync_lock.is_ok() {
+//             let wallet = get_wallet_lock(coin)?;
+//             let db_path = wallet.db_path.clone();
+//             let ld_url = wallet.ld_url.clone();
+//             drop(wallet);
+//             warp(coin, get_tx, anchor_offset, &db_path, &ld_url, 0).await?;
+//             Ok::<_, anyhow::Error>(())
+//         } else {
+//             Err(anyhow::anyhow!(ChainError::Busy))
+//         }
+//     });
+//     convert_sync_result(res)
+// }
 
 pub fn is_valid_key(coin: u8, seed: &str) -> i8 {
     let coin_type = get_coin_type(coin);

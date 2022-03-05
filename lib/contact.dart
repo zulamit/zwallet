@@ -9,6 +9,7 @@ import 'generated/l10n.dart';
 import 'store.dart';
 
 class ContactsTab extends StatefulWidget {
+  ContactsTab({key: Key}): super(key: key);
   @override
   State<StatefulWidget> createState() => ContactsState();
 }
@@ -20,32 +21,32 @@ class ContactsState extends State<ContactsTab> {
       Padding(padding: EdgeInsets.all(8), child: contacts.contacts.isEmpty
           ? NoContact()
           : Column(children: [
-            if (contacts.dirty) OutlinedButton(onPressed: active.canPay ? _onCommit : null, child: Text(S.of(context).saveToBlockchain), style: OutlinedButton.styleFrom(
-          side: BorderSide(
-              width: 1, color: Theme.of(context).primaryColor))),
-              Expanded(child: ListView.builder(
-                  itemCount: contacts.contacts.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final c = contacts.contacts[index];
-                    return Card(
-                        child: Dismissible(
-                            key: Key("${c.id}"),
-                            child: ListTile(
-                              title: Text(c.name,
-                                  style: Theme.of(context).textTheme.headline5),
-                              subtitle: Text(c.address),
-                              trailing: Icon(Icons.chevron_right),
-                              onTap: () { _onContact(c); },
-                              onLongPress: () { _editContact(c); },
-                            ),
-                            confirmDismiss: (_) async {
-                              return await _onConfirmDelContact(c);
-                            },
-                            onDismissed: (_) {
-                              _delContact(c);
-                            }));
-                  })
-              )]))
+            if (!settings.coins[active.coin].contactsSaved) OutlinedButton(onPressed: active.canPay ? _onCommit : null, child: Text(S.of(context).saveToBlockchain), style: OutlinedButton.styleFrom(
+              side: BorderSide(
+                width: 1, color: Theme.of(context).primaryColor))),
+            Expanded(child: ListView.builder(
+                itemCount: contacts.contacts.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final c = contacts.contacts[index];
+                  return Card(
+                      child: Dismissible(
+                          key: Key("${c.id}"),
+                          child: ListTile(
+                            title: Text(c.name,
+                                style: Theme.of(context).textTheme.headline5),
+                            subtitle: Text(c.address),
+                            trailing: Icon(Icons.chevron_right),
+                            onTap: () { _onContact(c); },
+                            onLongPress: () { _editContact(c); },
+                          ),
+                          confirmDismiss: (_) async {
+                            return await _onConfirmDelContact(c);
+                          },
+                          onDismissed: (_) {
+                            _delContact(c);
+                          }));
+                })
+            )]))
     );
   }
 
@@ -90,11 +91,11 @@ class ContactsState extends State<ContactsTab> {
         S.of(context).areYouSureYouWantToSaveYourContactsIt(coin.ticker),
         S.of(context).ok);
     if (approve) {
-      contacts.markContactsDirty(false);
       final tx = await WarpApi.commitUnsavedContacts(
           active.coin, active.id, settings.anchorOffset);
       final snackBar = SnackBar(content: Text("${S.of(context).txId}: $tx"));
       rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar);
+      contacts.markContactsSaved(active.coin, true);
     }
   }
 }

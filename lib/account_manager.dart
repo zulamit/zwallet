@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:warp/main.dart';
-import 'package:warp/store.dart';
+import 'main.dart';
+import 'store.dart';
 import 'backup.dart';
-import 'coin/coins.dart';
 import 'generated/l10n.dart';
 
 import 'about.dart';
@@ -50,6 +49,7 @@ class AccountManagerState extends State<AccountManagerPage> {
                       itemCount: accounts.list.length,
                       itemBuilder: (BuildContext context, int index) {
                       final a = accounts.list[index];
+                      final weight = settings.coins[a.coin].active == a.id ? FontWeight.bold : FontWeight.normal;
                       final zbal = a.balance / ZECUNIT;
                       final tbal = a.tbalance / ZECUNIT;
                       final balance = zbal + tbal;
@@ -58,7 +58,10 @@ class AccountManagerState extends State<AccountManagerPage> {
                         key: Key(a.name),
                         child: ListTile(
                           title: Text(a.name,
-                              style: theme.textTheme.headline5?.apply(color: a.coin == 0 ? theme.colorScheme.primary : theme.colorScheme.secondary)),
+                              style: theme.textTheme.headline5
+                                ?.merge(TextStyle(fontWeight: weight))
+                                .apply(color: a.coin == 0 ? theme.colorScheme.primary : theme.colorScheme.secondary,
+                              )),
                           subtitle: Text("${decimalFormat(zbal, 3)} + ${decimalFormat(tbal, 3)}"),
                           trailing: Text(decimalFormat(balance, 3)),
                           onTap: () {
@@ -116,26 +119,16 @@ class AccountManagerState extends State<AccountManagerPage> {
   }
 
   _selectAccount(Account account) async {
-    // await accountManager.setActiveAccount(account);
     await active.setActiveAccount(AccountId(account.coin, account.id));
-    await active.update();
-    await syncStatus.update();
-    await priceStore.fetchCoinPrice(account.coin);
     if (syncStatus.accountRestored) {
       syncStatus.setAccountRestored(false);
       final approved = await rescanDialog(context);
       if (approved)
         syncStatus.rescan(context);
     }
-    else if (syncStatus.syncedHeight! < 0) {
-      syncStatus.setSyncedToLatestHeight();
-    }
 
     final navigator = Navigator.of(context);
-    if (navigator.canPop())
-      navigator.pop();
-    else
-      navigator.pushReplacementNamed('/account');
+    navigator.pushNamedAndRemoveUntil('/account', (route) => false);
   }
 
   _editAccount(Account account) async {

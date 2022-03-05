@@ -40,7 +40,7 @@ class NativeLibrary {
   late final _dart_reset_app _reset_app =
       _reset_app_ptr.asFunction<_dart_reset_app>();
 
-  void warp_sync(
+  int warp_sync(
     int coin,
     int get_tx,
     int anchor_offset,
@@ -199,23 +199,6 @@ class NativeLibrary {
       _lookup<ffi.NativeFunction<_c_send_multi_payment>>('send_multi_payment');
   late final _dart_send_multi_payment _send_multi_payment =
       _send_multi_payment_ptr.asFunction<_dart_send_multi_payment>();
-
-  int try_warp_sync(
-    int coin,
-    int get_tx,
-    int anchor_offset,
-  ) {
-    return _try_warp_sync(
-      coin,
-      get_tx,
-      anchor_offset,
-    );
-  }
-
-  late final _try_warp_sync_ptr =
-      _lookup<ffi.NativeFunction<_c_try_warp_sync>>('try_warp_sync');
-  late final _dart_try_warp_sync _try_warp_sync =
-      _try_warp_sync_ptr.asFunction<_dart_try_warp_sync>();
 
   void skip_to_last_height(
     int coin,
@@ -699,14 +682,14 @@ typedef _c_reset_app = ffi.Void Function();
 
 typedef _dart_reset_app = void Function();
 
-typedef _c_warp_sync = ffi.Void Function(
+typedef _c_warp_sync = ffi.Int8 Function(
   ffi.Uint8 coin,
   ffi.Int8 get_tx,
   ffi.Uint32 anchor_offset,
   ffi.Int64 port,
 );
 
-typedef _dart_warp_sync = void Function(
+typedef _dart_warp_sync = int Function(
   int coin,
   int get_tx,
   int anchor_offset,
@@ -805,18 +788,6 @@ typedef _dart_send_multi_payment = ffi.Pointer<ffi.Int8> Function(
   int anchor_offset,
   int use_transparent,
   int port,
-);
-
-typedef _c_try_warp_sync = ffi.Int8 Function(
-  ffi.Uint8 coin,
-  ffi.Int8 get_tx,
-  ffi.Uint32 anchor_offset,
-);
-
-typedef _dart_try_warp_sync = int Function(
-  int coin,
-  int get_tx,
-  int anchor_offset,
 );
 
 typedef _c_skip_to_last_height = ffi.Void Function(

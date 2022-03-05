@@ -3,8 +3,7 @@ import 'dart:typed_data';
 
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:warp/backup.dart';
-import 'package:warp/store.dart';
+import 'store.dart';
 import 'package:warp_api/warp_api.dart';
 import 'package:convert/convert.dart';
 import 'coin/coins.dart';

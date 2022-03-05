@@ -1,7 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:warp/dualmoneyinput.dart';
+import 'dualmoneyinput.dart';
 import 'package:warp_api/warp_api.dart';
 
 import 'main.dart';

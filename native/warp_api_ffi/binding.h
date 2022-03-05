@@ -15,7 +15,7 @@ void init_wallet(char *db_path);
 
 void reset_app(void);
 
-void warp_sync(uint8_t coin, bool get_tx, uint32_t anchor_offset, int64_t port);
+int8_t warp_sync(uint8_t coin, bool get_tx, uint32_t anchor_offset, int64_t port);
 
 void dart_post_cobject(DartPostCObjectFnType ptr);
 
@@ -39,8 +39,6 @@ const char *send_multi_payment(uint8_t coin,
                                uint32_t anchor_offset,
                                bool use_transparent,
                                int64_t port);
-
-int8_t try_warp_sync(uint8_t coin, bool get_tx, uint32_t anchor_offset);
 
 void skip_to_last_height(uint8_t coin);
 

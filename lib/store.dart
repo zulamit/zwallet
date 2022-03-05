@@ -8,9 +8,8 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
-import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:warp/coin/coins.dart';
+import 'coin/coins.dart';
 import 'package:warp_api/warp_api.dart';
 import 'package:warp_api/types.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,12 +37,20 @@ class LWDServer {
 
   Future<String> loadPrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    final _choice = prefs.getString('lwd_choice_${coinDef.ticker}');
-    if (_choice != null)
-      choice = _choice;
-    prefs.setString('lwd_choice_${coinDef.ticker}', choice);
-    customUrl = prefs.getString('lwd_custom_${coinDef.ticker}') ?? "";
+    choice = prefs.getString('${coinDef.ticker}.lwd_choice') ?? choice;
+    customUrl = prefs.getString('${coinDef.ticker}.lwd_custom') ?? "";
+    savePrefs(choice, customUrl);
     return getLWDUrl();
+  }
+
+  void savePrefs(String _choice, String _customUrl) {
+    choice = _choice;
+    customUrl = _customUrl;
+    Future.microtask(() async {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString('${coinDef.ticker}.lwd_choice', _choice);
+      prefs.setString('${coinDef.ticker}.lwd_custom', _customUrl);
+    });
   }
 
   String getLWDUrl() {
@@ -61,6 +68,16 @@ class LWDServer {
   CoinBase get coinDef => getCoin(coin);
 }
 
+class CoinData = _CoinData with _$CoinData;
+
+abstract class _CoinData with Store {
+  final int coin;
+  int active;
+  @observable bool contactsSaved;
+
+  _CoinData(this.coin): this.active = 0, this.contactsSaved = true;
+}
+
 class Settings = _Settings with _$Settings;
 
 abstract class _Settings with Store {
@@ -71,6 +88,7 @@ abstract class _Settings with Store {
   bool simpleMode = true;
 
   List<LWDServer> servers = [LWDServer(0), LWDServer(1)];
+  List<CoinData> coins = [CoinData(0), CoinData(1)];
 
   @observable
   int anchorOffset = 10;
@@ -165,6 +183,12 @@ abstract class _Settings with Store {
       await s.loadPrefs();
     }
 
+    for (var c in coins) {
+      final ticker = getCoin(c.coin).ticker;
+      c.active = prefs.getInt("$ticker.active") ?? 0;
+      c.contactsSaved = prefs.getBool("$ticker.contacts_saved") ?? true;
+    }
+
     _updateThemeData();
     Future.microtask(_loadCurrencies); // lazily
     accelerometerEvents.listen(_handleAccel);
@@ -191,6 +215,7 @@ abstract class _Settings with Store {
   Future<void> setMode(bool simple) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('simple_mode', simple);
+    simpleMode = simple;
   }
 
   void updateLWD() async {
@@ -1019,31 +1044,52 @@ abstract class _SyncStatus with Store {
   }
 
   @action
-  setSyncHeight(int height) {
+  setSyncHeight(int? height) {
     syncedHeight = height;
+  }
+
+  Future<int?> getDbSyncedHeight() async {
+    final db = active.coinDef.db;
+    final syncedHeight = Sqflite.firstIntValue(
+        await db.rawQuery("SELECT MAX(height) FROM blocks"));
+    return syncedHeight;
   }
 
   @action
   Future<bool> update() async {
-    final db = active.coinDef.db;
     latestHeight = await WarpApi.getLatestHeight(active.coin);
-    final _syncedHeight = Sqflite.firstIntValue(
-            await db.rawQuery("SELECT MAX(height) FROM blocks")) ??
-        0;
-    if (_syncedHeight >= 0) setSyncHeight(_syncedHeight);
+    final _syncedHeight = await getDbSyncedHeight();
+    // if syncedHeight = 0, we just started sync therefore don't set it back to null
+    if (syncedHeight != 0 || _syncedHeight != null) setSyncHeight(_syncedHeight);
     return latestHeight > 0 && syncedHeight == latestHeight;
   }
 
   @action
   Future<void> sync() async {
     if (syncing) return;
-    syncing = true;
     await syncStatus.update();
+    if (syncedHeight == null) return;
+    syncing = true;
+    final currentSyncedHeight = syncedHeight;
     if (!isSynced()) {
       final params = SyncParams(
           active.coin, settings.getTx, settings.anchorOffset,
           syncPort.sendPort);
-      await compute(WarpApi.warpSync, params);
+      final res = await compute(WarpApi.warpSync, params);
+      if (res == 0) {
+        if (currentSyncedHeight != syncedHeight) {
+          await active.update();
+          await contacts.fetchContacts();
+        }
+      }
+      else if (res == 1) { // Reorg
+        final _syncedHeight = await getDbSyncedHeight();
+        if (_syncedHeight != null) {
+          final rewindHeight = max(_syncedHeight - 20, 0);
+          print("Block reorg detected. Rewind to $rewindHeight");
+          WarpApi.rewindToHeight(active.coin, rewindHeight);
+        }
+      }
     }
     syncing = false;
     eta.reset();
@@ -1054,10 +1100,9 @@ abstract class _SyncStatus with Store {
     eta.reset();
     final snackBar = SnackBar(content: Text(S.of(context).rescanRequested));
     rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar);
-    syncedHeight = null;
+    syncedHeight = 0;
     WarpApi.rewindToHeight(active.coin, 0);
     WarpApi.truncateData(active.coin);
-    contacts.markContactsDirty(false);
     await sync();
   }
 
@@ -1138,26 +1183,12 @@ abstract class _ETAStore with Store {
 class ContactStore = _ContactStore with _$ContactStore;
 
 abstract class _ContactStore with Store {
-  late Database db;
-
-  @observable
-  bool dirty = false;
-
   @observable
   ObservableList<Contact> contacts = ObservableList<Contact>.of([]);
 
-  Future<void> init(Database db) async {
-    this.db = db;
-    final prefs = await SharedPreferences.getInstance();
-    dirty = prefs.getBool('contacts_dirty') ?? false;
-  }
-
   @action
   Future<void> fetchContacts() async {
-    await _fetchContacts();
-  }
-
-  Future<void> _fetchContacts() async {
+    final db = active.coinDef.db;
     List<Map> res = await db.rawQuery(
         "SELECT id, name, address FROM contacts WHERE address <> '' ORDER BY name");
     contacts.clear();
@@ -1168,25 +1199,26 @@ abstract class _ContactStore with Store {
   }
 
   @action
-  Future<void> markContactsDirty(bool v) async {
-    final prefs = await SharedPreferences.getInstance();
-    dirty = v;
-    prefs.setBool('contacts_dirty', dirty);
-  }
-
-  @action
   Future<void> add(Contact c) async {
     WarpApi.storeContact(active.coin, c.id, c.name, c.address, true);
-    await markContactsDirty(true);
-    await _fetchContacts();
+    markContactsSaved(active.coin, false);
+    await fetchContacts();
   }
 
   @action
   Future<void> remove(Contact c) async {
     contacts.removeWhere((contact) => contact.id == c.id);
     WarpApi.storeContact(active.coin, c.id, c.name, "", true);
-    await markContactsDirty(true);
-    await _fetchContacts();
+    markContactsSaved(active.coin, false);
+    await fetchContacts();
+  }
+
+  markContactsSaved(int coin, bool v) {
+    settings.coins[coin].contactsSaved = v;
+    Future.microtask(() async {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setBool("${getCoin(coin).ticker}.contacts_saved", v);
+    });
   }
 }
 

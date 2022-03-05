@@ -151,7 +151,7 @@ void main() {
             supportedLocales: S.delegate.supportedLocales,
             onGenerateRoute: (RouteSettings routeSettings) {
               var routes = <String, WidgetBuilder>{
-                '/account': (context) => AccountPage2(),
+                '/account': (context) => HomePage(),
                 '/restore': (context) => RestorePage(),
                 '/send': (context) =>
                     SendPage(routeSettings.arguments as SendPageArgs?),
@@ -223,7 +223,6 @@ class ZWalletAppState extends State<ZWalletApp> {
       // await accountManager.init(db);
       await accounts.refresh();
       await active.restore();
-      await contacts.init(db);
       await syncStatus.update();
       await initUniLinks(this.context);
       final quickActions = QuickActions();
@@ -254,10 +253,7 @@ class ZWalletAppState extends State<ZWalletApp> {
         future: init,
         builder: (context, snapshot) {
           if (!snapshot.hasData) return LoadProgress(0.7);
-          print("HOME");
-          return active.id != 0
-              ? HomePage() :
-              AccountManagerPage();
+          return HomePage();
         });
   }
 }

@@ -1,12 +1,12 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:warp/coin/coins.dart';
+import 'coin/coins.dart';
 import 'package:mobx/mobx.dart';
-import 'package:warp/coin/zcash.dart';
-import 'package:warp/db.dart';
+import 'db.dart';
 import 'package:warp_api/warp_api.dart';
 
 import 'backup.dart';
 import 'coin/coin.dart';
+import 'coin/zcash.dart';
 import 'main.dart';
 import 'store.dart';
 
@@ -54,13 +54,20 @@ abstract class _AccountManager2 with Store {
     await refresh();
   }
 
+  void saveActive(int coin, int id) {
+    settings.coins[coin].active = id;
+    Future.microtask(() async {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setInt("${getCoin(coin).ticker}.active", id);
+    });
+  }
+
   Account get(int coin, int id) => list.firstWhere((e) => e.coin == coin && e.id == id, orElse: () => emptyAccount);
 
   static Future<List<Account>> _getList(int coin) async {
     final c = getCoin(coin);
     final db = c.db;
     List<Account> accounts = [];
-    final List<Map> res0 = await db.rawQuery("SELECT name FROM accounts", []);
 
     final List<Map> res = await db.rawQuery(
         "WITH notes AS (SELECT a.id_account, a.name, a.address, CASE WHEN r.spent IS NULL THEN r.value ELSE 0 END AS nv FROM accounts a LEFT JOIN received_notes r ON a.id_account = r.account),"
@@ -135,6 +142,8 @@ abstract class _ActiveAccount with Store {
     coin = accountId.coin;
     id = accountId.id;
 
+    accounts.saveActive(coin, id);
+
     final prefs = await SharedPreferences.getInstance();
     prefs.setInt('coin', coin);
     prefs.setInt('account', id);
@@ -159,7 +168,6 @@ abstract class _ActiveAccount with Store {
     WarpApi.setMempoolAccount(coin, id);
 
     await update();
-    // await _fetchData(db, account, true);
   }
 
   @action
@@ -185,7 +193,6 @@ abstract class _ActiveAccount with Store {
     final dbr = DbReader(coin, id);
     notes = await dbr.getNotes();
     txs = await dbr.getTxs();
-    await fetchChartData();
     dataEpoch += 1;
   }
 
@@ -293,7 +300,12 @@ abstract class _ActiveAccount with Store {
   }
 
   @action
-  void convertToWatchOnly() {} // TODO
+  Future<void> convertToWatchOnly() async {
+    await coinDef.db.rawUpdate(
+        "UPDATE accounts SET seed = NULL, sk = NULL WHERE id_account = ?1",
+        [active.id]);
+    canPay = false;
+  }
 }
 
 Future<Backup> getBackup(AccountId account) async {

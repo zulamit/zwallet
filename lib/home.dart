@@ -4,46 +4,63 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:warp/history.dart';
 import 'package:warp_api/warp_api.dart';
 
 import 'about.dart';
 import 'account2.dart';
+import 'account_manager.dart';
 import 'budget.dart';
 import 'contact.dart';
+import 'history.dart';
 import 'generated/l10n.dart';
 import 'main.dart';
 import 'note.dart';
 import 'store.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Observer(builder: (context) {
+      final simpleMode = settings.simpleMode;
+      return HomePageInner(simpleMode);
+    });
+  }
+}
+
+class HomePageInner extends StatefulWidget {
+  final bool simpleMode;
+  HomePageInner(this.simpleMode);
   @override
   HomeState createState() => HomeState();
 }
 
-class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+class HomeState extends State<HomePageInner> with TickerProviderStateMixin {
+  TabController? _tabController;
   int _tabIndex = 0;
   StreamSubscription? _syncDispose;
+  final contactKey = GlobalKey<ContactsState>();
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
-    _tabController.addListener(() {
-      setState(() {
-        _tabIndex = _tabController.index;
-      });
-    });
     Future.microtask(() async {
       await syncStatus.update();
       await active.updateBalances();
       await priceStore.fetchCoinPrice(active.coin);
+      await WarpApi.syncHistoricalPrices(active.coin, settings.currency);
+      await active.fetchChartData();
+
       await Future.delayed(Duration(seconds: 3));
       await syncStatus.sync();
+      await contacts.fetchContacts();
+
       Timer.periodic(Duration(seconds: 15), (Timer t) async {
         syncStatus.sync();
         await active.updateBalances();
+      });
+      Timer.periodic(Duration(minutes: 5), (Timer t) async {
+        await WarpApi.syncHistoricalPrices(active.coin, settings.currency);
+        await active.fetchChartData();
       });
     });
     _syncDispose = syncStream.listen((height) {
@@ -58,6 +75,19 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
   }
 
   @override
+  void didChangeDependencies() {
+    _tabController?.dispose();
+    final tabController = TabController(length: settings.simpleMode ? 3 : 6, vsync: this);
+    tabController.addListener(() {
+      setState(() {
+        _tabIndex = tabController.index;
+      });
+    });
+    _tabController = tabController;
+    super.didChangeDependencies();
+  }
+
+  @override
   void dispose() {
     _syncDispose?.cancel();
     super.dispose();
@@ -69,15 +99,24 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
         final theme = Theme.of(context);
         final simpleMode = settings.simpleMode;
 
+        if (active.id == 0) {
+          return AccountManagerPage();
+        }
+
+        final contactTabIndex = simpleMode ? 2 : 5;
         Widget button = Container();
-        switch (_tabIndex) {
-          case 0:
+        if (_tabIndex == 0)
             button = FloatingActionButton(
               onPressed: _onSend,
               backgroundColor: theme.colorScheme.secondary,
               child: Icon(Icons.send),
             );
-        }
+        else if (_tabIndex == contactTabIndex)
+            button = FloatingActionButton(
+            onPressed: _onAddContact,
+            backgroundColor: theme.colorScheme.secondary,
+            child: Icon(Icons.add),
+            );
 
         final menu = PopupMenuButton<String>(
           itemBuilder: (context) {
@@ -108,10 +147,10 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
               isScrollable: true,
               tabs: [
                 Tab(text: s.account),
-                Tab(text: s.notes),
+                if (!simpleMode) Tab(text: s.notes),
                 Tab(text: s.history),
-                Tab(text: s.budget),
-                Tab(text: s.tradingPl),
+                if (!simpleMode) Tab(text: s.budget),
+                if (!simpleMode) Tab(text: s.tradingPl),
                 Tab(text: s.contacts),
               ],
             ),
@@ -121,11 +160,11 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
             controller: _tabController,
             children: [
               AccountPage2(),
-              NoteWidget(),
+              if (!simpleMode) NoteWidget(),
               HistoryWidget(),
-              BudgetWidget(),
-              PnLWidget(),
-              ContactsTab(),
+              if (!simpleMode) BudgetWidget(),
+              if (!simpleMode) PnLWidget(),
+              ContactsTab(key: contactKey),
             ],
           ),
           floatingActionButton: button,
@@ -208,8 +247,8 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
     }
   }
 
-  _convertToWatchOnly() {
-    active.convertToWatchOnly();
+  _convertToWatchOnly() async {
+    await active.convertToWatchOnly();
     Navigator.of(context).pop();
   }
 
@@ -217,4 +256,11 @@ class HomeState extends State<HomePage> with SingleTickerProviderStateMixin {
     Navigator.of(context).pushNamed('/settings');
   }
 
+  _onAddContact() async {
+    final contact = await contactKey.currentState
+        ?.showContactForm(context, Contact.empty());
+    if (contact != null) {
+      contacts.add(contact);
+    }
+  }
 }

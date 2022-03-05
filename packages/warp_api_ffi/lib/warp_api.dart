@@ -106,13 +106,9 @@ class WarpApi {
     warp_api_lib.rewind_to_height(coin, height);
   }
 
-  static void warpSync(SyncParams params) {
-    warp_api_lib.warp_sync(params.coin, params.getTx ? 1 : 0, params.anchorOffset, params.port!.nativePort);
+  static int warpSync(SyncParams params) {
+    final res = warp_api_lib.warp_sync(params.coin, params.getTx ? 1 : 0, params.anchorOffset, params.port!.nativePort);
     params.port!.send(null);
-  }
-
-  static Future<int> tryWarpSync(int coin, bool getTx, int anchorOffset) async {
-    final res = await compute(tryWarpSyncIsolateFn, SyncParams(coin, getTx, anchorOffset, null));
     return res;
   }
 
@@ -339,10 +335,6 @@ String sendPaymentIsolateFn(PaymentParams params) {
       params.useTransparent ? 1 : 0,
       params.port.nativePort);
   return txId.cast<Utf8>().toDartString();
-}
-
-int tryWarpSyncIsolateFn(SyncParams params) {
-  return warp_api_lib.try_warp_sync(params.coin, params.getTx ? 1 : 0, params.anchorOffset);
 }
 
 int getLatestHeightIsolateFn(int coin) {
