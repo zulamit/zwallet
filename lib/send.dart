@@ -96,7 +96,7 @@ class SendState extends State<SendPage> {
   Widget build(BuildContext context) {
     final s = S.of(context);
     final simpleMode = settings.simpleMode;
-    _memoController.text = settings.memoSignature ?? s.sendFrom('ZYWallet');
+    _memoController.text = settings.memoSignature ?? s.sendFrom(APP_NAME);
 
     return Scaffold(
         appBar: AppBar(title: Text(s.sendCointicker(active.coinDef.ticker))),

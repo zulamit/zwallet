@@ -17,7 +17,7 @@ class DbReader {
   int id;
   Database db;
 
-  DbReader(int coin, int id): this.init(coin, id, getCoin(coin).db);
+  DbReader(int coin, int id): this.init(coin, id, settings.coins[coin].def.db);
   DbReader.init(this.coin, this.id, this.db);
 
   Future<Balances> getBalance(int confirmHeight) async {

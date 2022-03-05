@@ -6,6 +6,7 @@ import 'package:warp_api/warp_api.dart';
 
 import 'main.dart';
 import 'generated/l10n.dart';
+import 'settings.dart';
 
 class PaymentURIPage extends StatefulWidget {
   final String address;
@@ -38,7 +39,7 @@ class PaymentURIState extends State<PaymentURIPage> {
     return Form(
         key: _formKey,
         child: Scaffold(
-          appBar: AppBar(title: Text(S.of(context).receive(coin.ticker))),
+          appBar: AppBar(title: Text(S.of(context).receive(activeCoin().ticker))),
           body: SingleChildScrollView(
             child: GestureDetector(
                 onTap: () { FocusScope.of(context).unfocus(); },

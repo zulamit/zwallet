@@ -119,7 +119,7 @@ class AccountManagerState extends State<AccountManagerPage> {
   }
 
   _selectAccount(Account account) async {
-    await active.setActiveAccount(AccountId(account.coin, account.id));
+    await active.setActiveAccount(account.coin, account.id);
     if (syncStatus.accountRestored) {
       syncStatus.setAccountRestored(false);
       final approved = await rescanDialog(context);

@@ -34,7 +34,7 @@ class SettingsState extends State<SettingsPage> with SingleTickerProviderStateMi
   Widget build(BuildContext context) {
     final s = S.of(context);
     final simpleMode = settings.simpleMode;
-    _memoController.text = settings.memoSignature ?? s.sendFrom(coin.app);
+    _memoController.text = settings.memoSignature ?? s.sendFrom(APP_NAME);
 
     return Scaffold(
         appBar: AppBar(title: Text(s.settings)),
@@ -134,13 +134,13 @@ class SettingsState extends State<SettingsPage> with SingleTickerProviderStateMi
                                       _needAuth = true;
                                     },
                                     onSaved: _onProtectSend)),
-                            if (coin.supportsUA)
-                              Expanded(
-                                  child: FormBuilderCheckbox(
-                                      name: 'use_ua',
-                                      title: Text(s.useUa),
-                                      initialValue: settings.useUA,
-                                      onSaved: _onUseUA)),
+                            // if (coin.supportsUA)
+                            //   Expanded(
+                            //       child: FormBuilderCheckbox(
+                            //           name: 'use_ua',
+                            //           title: Text(s.useUa),
+                            //           initialValue: settings.useUA,
+                            //           onSaved: _onUseUA)),
                           ]),
                           if (!simpleMode) FormBuilderTextField(
                               decoration: InputDecoration(
@@ -294,7 +294,7 @@ class _ServerSelectState extends State<ServerSelect> with
     customUrl = settings.servers[coin].customUrl;
   }
 
-  CoinBase get coinDef => getCoin(widget.coin);
+  CoinBase get coinDef => settings.coins[widget.coin].def;
 
   @override
   Widget build(BuildContext context) {
@@ -344,3 +344,4 @@ class _ServerSelectState extends State<ServerSelect> with
   bool get wantKeepAlive => true;
 }
 
+CoinBase activeCoin() => settings.coins[active.coin].def;

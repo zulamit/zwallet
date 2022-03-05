@@ -28,7 +28,7 @@ class _RestorePageState extends State<RestorePage> {
     final s = S.of(context);
     return Scaffold(
         appBar: AppBar(
-          title: Text("${coin.symbol} Wallet"),
+          title: Text(APP_NAME),
         ),
         body: GestureDetector(
           onTap: () { FocusScope.of(context).unfocus(); },
@@ -74,22 +74,22 @@ class _RestorePageState extends State<RestorePage> {
                           icon: new Icon(MdiIcons.qrcodeScan), onPressed: _onScan)
                     ],
                   ),
-                  if (_isVK && coin.supportsMultisig) Row(
-                    children: [
-                      Expanded(
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                                labelText: s.secretShare,
-                                hintText: s.enterSecretShareIfAccountIsMultisignature),
-                            minLines: 4,
-                            maxLines: 4,
-                            controller: _shareController,
-                            // TODO: Check share
-                          )),
-                      IconButton(
-                          icon: new Icon(MdiIcons.qrcodeScan), onPressed: _onScanShare)
-                    ],
-                  ),
+                  // if (_isVK && coin.supportsMultisig) Row(
+                  //   children: [
+                  //     Expanded(
+                  //         child: TextFormField(
+                  //           decoration: InputDecoration(
+                  //               labelText: s.secretShare,
+                  //               hintText: s.enterSecretShareIfAccountIsMultisignature),
+                  //           minLines: 4,
+                  //           maxLines: 4,
+                  //           controller: _shareController,
+                  //           // TODO: Check share
+                  //         )),
+                  //     IconButton(
+                  //         icon: new Icon(MdiIcons.qrcodeScan), onPressed: _onScanShare)
+                  //   ],
+                  // ),
                   ButtonBar(children:
                   confirmButtons(context, _validKey ? _onOK : null, okLabel: s.addnew, okIcon: Icon(Icons.add)))
                 ]))))));

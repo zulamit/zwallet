@@ -47,7 +47,7 @@ abstract class _AccountManager2 with Store {
 
   @action
   Future<void> changeAccountName(int coin, int id, String name) async {
-    final c = getCoin(coin); // TODO: Do in backend would be cleaner
+    final c = settings.coins[coin].def; // TODO: Do in backend would be cleaner
     final db = c.db;
     await db.execute("UPDATE accounts SET name = ?2 WHERE id_account = ?1",
         [id, name]);
@@ -58,14 +58,15 @@ abstract class _AccountManager2 with Store {
     settings.coins[coin].active = id;
     Future.microtask(() async {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setInt("${getCoin(coin).ticker}.active", id);
+      final def = settings.coins[coin].def;
+      prefs.setInt("${def.ticker}.active", id);
     });
   }
 
   Account get(int coin, int id) => list.firstWhere((e) => e.coin == coin && e.id == id, orElse: () => emptyAccount);
 
   static Future<List<Account>> _getList(int coin) async {
-    final c = getCoin(coin);
+    final c = settings.coins[coin].def;
     final db = c.db;
     List<Account> accounts = [];
 
@@ -130,25 +131,24 @@ abstract class _ActiveAccount with Store {
     final prefs = await SharedPreferences.getInstance();
     coin = prefs.getInt('coin') ?? 0;
     id = prefs.getInt('account') ?? 0;
-    setActiveAccount(AccountId(coin, id));
+    setActiveAccount(coin, id);
   }
 
   void reset() {
-    setActiveAccount(AccountId(0, 0));
+    setActiveAccount(0, 0);
   }
 
   @action
-  Future<void> setActiveAccount(AccountId accountId) async {
-    coin = accountId.coin;
-    id = accountId.id;
-
+  Future<void> setActiveAccount(int _coin, int _id) async {
+    coin = _coin;
+    id = _id;
     accounts.saveActive(coin, id);
 
     final prefs = await SharedPreferences.getInstance();
     prefs.setInt('coin', coin);
     prefs.setInt('account', id);
 
-    coinDef = getCoin(coin);
+    coinDef = settings.coins[coin].def;
     final db = coinDef.db;
 
     account = accounts.get(coin, id);
@@ -309,7 +309,7 @@ abstract class _ActiveAccount with Store {
 }
 
 Future<Backup> getBackup(AccountId account) async {
-  final c = getCoin(account.coin);
+  final c = settings.coins[account.coin].def;
   final db = c.db;
   final List<Map> res = await db.rawQuery(
       "SELECT name, seed, sk, ivk FROM accounts WHERE id_account = ?1",

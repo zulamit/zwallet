@@ -27,10 +27,11 @@ part 'store.g.dart';
 
 class LWDServer {
   final int coin;
+  final CoinBase coinDef;
   late String choice;
   late String customUrl;
 
-  LWDServer(this.coin) {
+  LWDServer(this.coin, this.coinDef) {
     choice = coinDef.lwd.first.name;
     customUrl = coinDef.lwd.first.url;
   }
@@ -64,18 +65,18 @@ class LWDServer {
     }
     return url;
   }
-
-  CoinBase get coinDef => getCoin(coin);
 }
 
 class CoinData = _CoinData with _$CoinData;
 
 abstract class _CoinData with Store {
   final int coin;
-  int active;
-  @observable bool contactsSaved;
+  int active = 0;
+  int syncedHeight = 0;
+  final CoinBase def;
+  @observable bool contactsSaved = true;
 
-  _CoinData(this.coin): this.active = 0, this.contactsSaved = true;
+  _CoinData(this.coin, this.def);
 }
 
 class Settings = _Settings with _$Settings;
@@ -87,8 +88,8 @@ abstract class _Settings with Store {
   @observable
   bool simpleMode = true;
 
-  List<LWDServer> servers = [LWDServer(0), LWDServer(1)];
-  List<CoinData> coins = [CoinData(0), CoinData(1)];
+  List<LWDServer> servers = [LWDServer(0, zcash), LWDServer(1, ycash)];
+  List<CoinData> coins = [CoinData(0, zcash), CoinData(1, ycash)];
 
   @observable
   int anchorOffset = 10;
@@ -184,7 +185,7 @@ abstract class _Settings with Store {
     }
 
     for (var c in coins) {
-      final ticker = getCoin(c.coin).ticker;
+      final ticker = c.def.ticker;
       c.active = prefs.getInt("$ticker.active") ?? 0;
       c.contactsSaved = prefs.getBool("$ticker.contacts_saved") ?? true;
     }
@@ -1006,14 +1007,14 @@ abstract class _PriceStore with Store {
 
   @action
   Future<void> fetchCoinPrice(int coin) async {
-    final coinDef = getCoin(coin);
+    final c = settings.coins[coin].def;
     final base = "api.coingecko.com";
     final uri = Uri.https(base, '/api/v3/simple/price',
-        {'ids': coinDef.currency, 'vs_currencies': settings.currency});
+        {'ids': c.currency, 'vs_currencies': settings.currency});
     final rep = await http.get(uri);
     if (rep.statusCode == 200) {
       final json = convert.jsonDecode(rep.body) as Map<String, dynamic>;
-      final p = json[coinDef.currency][settings.currency.toLowerCase()];
+      final p = json[c.currency][settings.currency.toLowerCase()];
       coinPrice = (p is double) ? p : (p as int).toDouble();
     } else
       coinPrice = 0.0;
@@ -1023,7 +1024,6 @@ abstract class _PriceStore with Store {
 class SyncStatus = _SyncStatus with _$SyncStatus;
 
 abstract class _SyncStatus with Store {
-
   @observable
   int? syncedHeight;
 
@@ -1048,6 +1048,11 @@ abstract class _SyncStatus with Store {
     syncedHeight = height;
   }
 
+  @action
+  void markAsSynced(int coin) {
+    WarpApi.skipToLastHeight(coin);
+  }
+
   Future<int?> getDbSyncedHeight() async {
     final db = active.coinDef.db;
     final syncedHeight = Sqflite.firstIntValue(
@@ -1060,7 +1065,8 @@ abstract class _SyncStatus with Store {
     latestHeight = await WarpApi.getLatestHeight(active.coin);
     final _syncedHeight = await getDbSyncedHeight();
     // if syncedHeight = 0, we just started sync therefore don't set it back to null
-    if (syncedHeight != 0 || _syncedHeight != null) setSyncHeight(_syncedHeight);
+    if (syncedHeight != 0 || _syncedHeight != null) setSyncHeight(
+        _syncedHeight);
     return latestHeight > 0 && syncedHeight == latestHeight;
   }
 
@@ -1217,7 +1223,8 @@ abstract class _ContactStore with Store {
     settings.coins[coin].contactsSaved = v;
     Future.microtask(() async {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setBool("${getCoin(coin).ticker}.contacts_saved", v);
+      final c = settings.coins[coin].def;
+      prefs.setBool("${c.ticker}.contacts_saved", v);
     });
   }
 }

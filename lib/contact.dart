@@ -6,6 +6,7 @@ import 'package:warp_api/warp_api.dart';
 
 import 'main.dart';
 import 'generated/l10n.dart';
+import 'settings.dart';
 import 'store.dart';
 
 class ContactsTab extends StatefulWidget {
@@ -88,7 +89,7 @@ class ContactsState extends State<ContactsTab> {
 
   _onCommit() async {
     final approve = await showMessageBox(context, S.of(context).saveToBlockchain, 
-        S.of(context).areYouSureYouWantToSaveYourContactsIt(coin.ticker),
+        S.of(context).areYouSureYouWantToSaveYourContactsIt(activeCoin().ticker),
         S.of(context).ok);
     if (approve) {
       final tx = await WarpApi.commitUnsavedContacts(
