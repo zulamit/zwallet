@@ -993,6 +993,8 @@ abstract class _PriceStore with Store {
   @observable
   double coinPrice = 0.0;
 
+  int? lastChartUpdateTime;
+
   @action
   Future<void> fetchCoinPrice(int coin) async {
     final c = settings.coins[coin].def;
@@ -1006,6 +1008,17 @@ abstract class _PriceStore with Store {
       coinPrice = (p is double) ? p : (p as int).toDouble();
     } else
       coinPrice = 0.0;
+  }
+
+  Future<void> updateChart() async {
+    final _lastChartUpdateTime = lastChartUpdateTime;
+    final now = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+    if (_lastChartUpdateTime == null || now > _lastChartUpdateTime + 5 * 60) {
+      await fetchCoinPrice(active.coin);
+      await WarpApi.syncHistoricalPrices(active.coin, settings.currency);
+      await active.fetchChartData();
+      lastChartUpdateTime = _lastChartUpdateTime;
+    }
   }
 }
 
@@ -1073,6 +1086,7 @@ abstract class _SyncStatus with Store {
       if (res == 0) {
         if (currentSyncedHeight != syncedHeight) {
           await active.update();
+          await priceStore.updateChart();
           await contacts.fetchContacts();
         }
       }

@@ -151,6 +151,7 @@ void main() {
                           (_) => settings.themeData.highlightColor)));
           return MaterialApp(
             title: APP_NAME,
+            debugShowCheckedModeBanner: false,
             theme: theme,
             home: home,
             scaffoldMessengerKey: rootScaffoldMessengerKey,

@@ -46,9 +46,7 @@ class HomeState extends State<HomePageInner> with TickerProviderStateMixin {
     Future.microtask(() async {
       await syncStatus.update();
       await active.updateBalances();
-      await priceStore.fetchCoinPrice(active.coin);
-      await WarpApi.syncHistoricalPrices(active.coin, settings.currency);
-      await active.fetchChartData();
+      await priceStore.updateChart();
 
       await Future.delayed(Duration(seconds: 3));
       await syncStatus.sync();
@@ -59,8 +57,7 @@ class HomeState extends State<HomePageInner> with TickerProviderStateMixin {
         await active.updateBalances();
       });
       Timer.periodic(Duration(minutes: 5), (Timer t) async {
-        await WarpApi.syncHistoricalPrices(active.coin, settings.currency);
-        await active.fetchChartData();
+        await priceStore.updateChart();
       });
     });
     _syncDispose = syncStream.listen((height) {

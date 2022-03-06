@@ -168,6 +168,7 @@ abstract class _ActiveAccount with Store {
     WarpApi.setMempoolAccount(coin, id);
 
     await update();
+    await priceStore.updateChart();
   }
 
   @action
