@@ -514,11 +514,9 @@ class NativeLibrary {
       _generate_random_enc_key_ptr.asFunction<_dart_generate_random_enc_key>();
 
   ffi.Pointer<ffi.Int8> get_full_backup(
-    int coin,
     ffi.Pointer<ffi.Int8> key,
   ) {
     return _get_full_backup(
-      coin,
       key,
     );
   }
@@ -529,12 +527,10 @@ class NativeLibrary {
       _get_full_backup_ptr.asFunction<_dart_get_full_backup>();
 
   ffi.Pointer<ffi.Int8> restore_full_backup(
-    int coin,
     ffi.Pointer<ffi.Int8> key,
     ffi.Pointer<ffi.Int8> backup,
   ) {
     return _restore_full_backup(
-      coin,
       key,
       backup,
     );
@@ -1003,23 +999,19 @@ typedef _c_generate_random_enc_key = ffi.Pointer<ffi.Int8> Function();
 typedef _dart_generate_random_enc_key = ffi.Pointer<ffi.Int8> Function();
 
 typedef _c_get_full_backup = ffi.Pointer<ffi.Int8> Function(
-  ffi.Uint8 coin,
   ffi.Pointer<ffi.Int8> key,
 );
 
 typedef _dart_get_full_backup = ffi.Pointer<ffi.Int8> Function(
-  int coin,
   ffi.Pointer<ffi.Int8> key,
 );
 
 typedef _c_restore_full_backup = ffi.Pointer<ffi.Int8> Function(
-  ffi.Uint8 coin,
   ffi.Pointer<ffi.Int8> key,
   ffi.Pointer<ffi.Int8> backup,
 );
 
 typedef _dart_restore_full_backup = ffi.Pointer<ffi.Int8> Function(
-  int coin,
   ffi.Pointer<ffi.Int8> key,
   ffi.Pointer<ffi.Int8> backup,
 );

@@ -84,9 +84,9 @@ char *parse_payment_uri(uint8_t coin, char *uri);
 
 char *generate_random_enc_key(void);
 
-char *get_full_backup(uint8_t coin, char *key);
+char *get_full_backup(char *key);
 
-char *restore_full_backup(uint8_t coin, char *key, char *backup);
+char *restore_full_backup(char *key, char *backup);
 
 void store_share_secret(uint8_t coin, uint32_t account, char *secret);
 

@@ -6,7 +6,10 @@ use once_cell::sync::OnceCell;
 use std::fs::File;
 use std::io::Read;
 use std::sync::{Mutex, MutexGuard};
-use sync::{broadcast_tx, get_coin_type, ChainError, CoinType, KeyHelpers, MemPool, Wallet};
+use sync::{
+    broadcast_tx, decrypt_backup, encrypt_backup, get_coin_type, ChainError, CoinType, KeyHelpers,
+    MemPool, Wallet,
+};
 use tokio::runtime::Runtime;
 use tokio::time::Duration;
 use zcash_multisig::{
@@ -493,19 +496,27 @@ pub fn generate_random_enc_key() -> String {
     log_result(sync::generate_random_enc_key())
 }
 
-pub fn get_full_backup(coin: u8, key: &str) -> String {
+pub fn get_full_backup(key: &str) -> String {
     let res = || {
-        let wallet = get_wallet_lock(coin)?;
-        let backup = wallet.get_full_backup(key)?;
+        let mut accounts = vec![];
+        for coin in [0, 1] {
+            let wallet = get_wallet_lock(coin)?;
+            accounts.extend(wallet.get_full_backup()?);
+        }
+
+        let backup = encrypt_backup(&accounts, key)?;
         Ok(backup)
     };
     log_result(res())
 }
 
-pub fn restore_full_backup(coin: u8, key: &str, backup: &str) -> String {
+pub fn restore_full_backup(key: &str, backup: &str) -> String {
     let res = || {
-        let wallet = get_wallet_lock(coin)?;
-        wallet.restore_full_backup(key, backup)?;
+        let accounts = decrypt_backup(key, backup)?;
+        for coin in [0, 1] {
+            let wallet = get_wallet_lock(coin)?;
+            wallet.restore_full_backup(&accounts)?;
+        }
         Ok(String::new())
     };
     log_result_string(res())

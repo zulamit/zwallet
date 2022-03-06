@@ -252,13 +252,13 @@ class WarpApi {
     return warp_api_lib.generate_random_enc_key().cast<Utf8>().toDartString();
   }
 
-  static String getFullBackup(int coin, String key) {
-    final backup = warp_api_lib.get_full_backup(coin, key.toNativeUtf8().cast<Int8>());
+  static String getFullBackup(String key) {
+    final backup = warp_api_lib.get_full_backup(key.toNativeUtf8().cast<Int8>());
     return backup.cast<Utf8>().toDartString();
   }
 
-  static String restoreFullBackup(int coin, String key, String backup) {
-    final res = warp_api_lib.restore_full_backup(coin, key.toNativeUtf8().cast<Int8>(), backup.toNativeUtf8().cast<Int8>());
+  static String restoreFullBackup(String key, String backup) {
+    final res = warp_api_lib.restore_full_backup(key.toNativeUtf8().cast<Int8>(), backup.toNativeUtf8().cast<Int8>());
     return res.cast<Utf8>().toDartString();
   }
 

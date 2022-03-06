@@ -76,7 +76,7 @@ class FullBackupPage extends StatelessWidget {
   FullBackupPage.init(String encKey)
       : this.encKey = encKey,
         this.controller = TextEditingController(text: encKey),
-        this.backup = WarpApi.getFullBackup(active.coin, encKey); // TODO
+        this.backup = WarpApi.getFullBackup(encKey);
 
   FullBackupPage() : this.init(WarpApi.generateEncKey());
 
@@ -141,14 +141,14 @@ class _FullRestoreState extends State<FullRestorePage> {
       final file = File(filename);
       final backup = await file.readAsString();
       final key = controller.text;
-      final res = WarpApi.restoreFullBackup(active.coin, key, backup); // TODO
+      final res = WarpApi.restoreFullBackup(key, backup);
 
       if (res.isNotEmpty) {
         final snackBar = SnackBar(content: Text(res));
         rootScaffoldMessengerKey.currentState?.showSnackBar(snackBar);
       }
       else {
-        await active.update();
+        await accounts.refresh();
         syncStatus.setAccountRestored(true);
         Navigator.of(context).pop();
       }
