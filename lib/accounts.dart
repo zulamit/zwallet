@@ -73,7 +73,7 @@ abstract class _AccountManager2 with Store {
     final List<Map> res = await db.rawQuery(
         "WITH notes AS (SELECT a.id_account, a.name, a.address, CASE WHEN r.spent IS NULL THEN r.value ELSE 0 END AS nv FROM accounts a LEFT JOIN received_notes r ON a.id_account = r.account),"
             "accounts2 AS (SELECT id_account, name, address, COALESCE(sum(nv), 0) AS balance FROM notes GROUP by id_account) "
-            "SELECT a.id_account, a.name, a.address, a.balance, ss.idx, ss.secret, ss.participants, ss.threshold FROM accounts2 a LEFT JOIN secret_shares ss ON a.id_account = ss.account",
+            "SELECT a.id_account, a.name, a.address, a.balance FROM accounts2 a",
         []);
     for (var r in res) {
       final int id = r['id_account'];
@@ -312,13 +312,14 @@ Future<Backup> getBackup(AccountId account) async {
   final c = settings.coins[account.coin].def;
   final db = c.db;
   final List<Map> res = await db.rawQuery(
-      "SELECT name, seed, sk, ivk FROM accounts WHERE id_account = ?1",
+      "SELECT name, seed, aindex, sk, ivk FROM accounts WHERE id_account = ?1",
       [account.id]);
   if (res.isEmpty) throw Exception("Account N/A");
   // final share = await getShareInfo(account); // Multisig
   final row = res[0];
   final name = row['name'];
   final seed = row['seed'];
+  final index = row['aindex'];
   final sk = row['sk'];
   final ivk = row['ivk'];
   int type = 0;
@@ -327,5 +328,5 @@ Future<Backup> getBackup(AccountId account) async {
   else if (sk != null)
     type = 1;
   else if (ivk != null) type = 2;
-  return Backup(type, name, seed, sk, ivk, null);
+  return Backup(type, name, seed, index, sk, ivk, null);
 }

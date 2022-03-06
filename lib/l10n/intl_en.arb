@@ -57,7 +57,7 @@
   "seed": "Seed",
   "confirmDeleteAccount": "Are you SURE you want to DELETE this account? You MUST have a BACKUP to recover it. This operation is NOT reversible.",
   "changeAccountName": "Change Account Name",
-  "backupDataRequiredForRestore": "Backup Data - Required for Restore",
+  "backupDataRequiredForRestore": "Backup Data - {name} - Required for Restore",
   "secretKey": "Secret Key",
   "viewingKey": "Viewing Key",
   "tapAnIconToShowTheQrCode": "Tap an icon to show the QR code",
@@ -193,5 +193,6 @@
   "fullRestore": "Full Restore",
   "loadBackup": "Load Backup",
   "backupAllAccounts": "Backup All Accounts",
-  "simpleMode": "Simple Mode"
+  "simpleMode": "Simple Mode",
+  "accountIndex": "Account Index"
 }

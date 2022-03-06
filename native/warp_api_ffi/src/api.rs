@@ -95,10 +95,10 @@ pub fn reset_app() {
     log_result(res())
 }
 
-pub fn new_account(coin: u8, name: &str, data: &str) -> i32 {
+pub fn new_account(coin: u8, name: &str, data: &str, index: u32) -> i32 {
     let res = || {
         let wallet = get_wallet_lock(coin)?;
-        wallet.new_account(name, data)
+        wallet.new_account(name, data, index)
     };
     log_result(res())
 }

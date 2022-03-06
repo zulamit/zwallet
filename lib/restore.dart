@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:warp_api/warp_api.dart';
@@ -18,10 +19,11 @@ class _RestorePageState extends State<RestorePage> {
   final _formKey = GlobalKey<FormState>();
   final _keyController = TextEditingController();
   final _nameController = TextEditingController();
+  final _accountIndexController = TextEditingController(text: "0");
   final _shareController = TextEditingController();
   var _validKey = true;
-  var _isVK = false;
   var _coin = 0;
+  var _showIndex = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,14 +51,14 @@ class _RestorePageState extends State<RestorePage> {
                             child: Text('Ycash'), value: 1),
                       ]),
                   TextFormField(
-                    decoration: InputDecoration(labelText: s.accountName),
-                    controller: _nameController,
-                    validator: (String? name) {
-                      if (name == null || name.isEmpty)
-                        return s.accountNameIsRequired;
-                      return null;
-                    },
-                  ),
+                      decoration: InputDecoration(labelText: s.accountName),
+                      controller: _nameController,
+                      validator: (String? name) {
+                        if (name == null || name.isEmpty)
+                          return s.accountNameIsRequired;
+                        return null;
+                      },
+                    ),
                   Row(
                     children: [
                       Expanded(
@@ -70,8 +72,9 @@ class _RestorePageState extends State<RestorePage> {
                         controller: _keyController,
                         onChanged: _checkKey,
                       )),
-                      IconButton(
-                          icon: new Icon(MdiIcons.qrcodeScan), onPressed: _onScan)
+                      GestureDetector(onLongPress: _toggleShowAccountIndex,
+                        child: IconButton(
+                          icon: new Icon(MdiIcons.qrcodeScan), onPressed: _onScan))
                     ],
                   ),
                   // if (_isVK && coin.supportsMultisig) Row(
@@ -90,6 +93,18 @@ class _RestorePageState extends State<RestorePage> {
                   //         icon: new Icon(MdiIcons.qrcodeScan), onPressed: _onScanShare)
                   //   ],
                   // ),
+                  if (_showIndex) TextFormField(
+                    decoration: InputDecoration(labelText: s.accountIndex),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+                    controller: _accountIndexController,
+                    validator: (String? name) {
+                      if (name == null || name.isEmpty)
+                        return s.accountNameIsRequired;
+                      return null;
+                    },
+                  ),
+
                   ButtonBar(children:
                   confirmButtons(context, _validKey ? _onOK : null, okLabel: s.addnew, okIcon: Icon(Icons.add)))
                 ]))))));
@@ -98,9 +113,10 @@ class _RestorePageState extends State<RestorePage> {
   _onOK() async {
     final s = S.of(context);
     final form = _formKey.currentState!;
+    final accountIndex = int.parse(_accountIndexController.text);
     if (form.validate()) {
       final account =
-          WarpApi.newAccount(_coin, _nameController.text, _keyController.text);
+        WarpApi.newAccount(_coin, _nameController.text, _keyController.text, accountIndex);
       if (account < 0) {
         showDialog(
             context: context,
@@ -135,11 +151,17 @@ class _RestorePageState extends State<RestorePage> {
     }
   }
 
+  _toggleShowAccountIndex() {
+    setState(() {
+      _showIndex = !_showIndex;
+    });
+  }
+
   _checkKey(key) {
     setState(() {
       final keyType = WarpApi.validKey(_coin, key);
       _validKey = key == "" || keyType >= 0;
-      _isVK = keyType == 2;
+      // _isVK = keyType == 2;
     });
   }
 

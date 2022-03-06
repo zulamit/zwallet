@@ -93,9 +93,9 @@ class WarpApi {
     warp_api_lib.reset_app();
   }
 
-  static int newAccount(int coin, String name, String key) {
+  static int newAccount(int coin, String name, String key, int index) {
     return warp_api_lib.new_account(coin,
-        name.toNativeUtf8().cast<Int8>(), key.toNativeUtf8().cast<Int8>());
+        name.toNativeUtf8().cast<Int8>(), key.toNativeUtf8().cast<Int8>(), index);
   }
 
   static void skipToLastHeight(int coin) {

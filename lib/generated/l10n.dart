@@ -630,13 +630,13 @@ class S {
     );
   }
 
-  /// `Backup Data - Required for Restore`
-  String get backupDataRequiredForRestore {
+  /// `Backup Data - {name} - Required for Restore`
+  String backupDataRequiredForRestore(Object name) {
     return Intl.message(
-      'Backup Data - Required for Restore',
+      'Backup Data - $name - Required for Restore',
       name: 'backupDataRequiredForRestore',
       desc: '',
-      args: [],
+      args: [name],
     );
   }
 
@@ -1997,6 +1997,16 @@ class S {
     return Intl.message(
       'Simple Mode',
       name: 'simpleMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account Index`
+  String get accountIndex {
+    return Intl.message(
+      'Account Index',
+      name: 'accountIndex',
       desc: '',
       args: [],
     );

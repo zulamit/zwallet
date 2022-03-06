@@ -29,13 +29,15 @@ class BackupState extends State<BackupPage> {
 
   Future<bool> _init() async {
     backup = await getBackup(widget.accountId ?? AccountId(active.coin, active.id));
-    _backupController.text = backup.value();
+    _backupController.text = backupData;
     _skController.text = backup.sk ?? "";
     _ivkController.text = backup.ivk;
     final share = backup.share;
     _shareController.text = share?.value ?? "";
     return true;
   }
+
+  String get backupData => backup.value() + (backup.index != 0 ? " (Index: ${backup.index})" : "");
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +60,8 @@ class BackupState extends State<BackupPage> {
         children: [
           TextField(
             decoration: InputDecoration(
-                labelText: S.of(context).backupDataRequiredForRestore, prefixIcon: IconButton(icon: Icon(Icons.save),
-                onPressed: () => _showQR(backup.value(), "$name - backup"))),
+                labelText: s.backupDataRequiredForRestore(name), prefixIcon: IconButton(icon: Icon(Icons.save),
+                onPressed: () => _showQR(backupData, "$name - backup"))),
             controller: _backupController,
             minLines: 3,
             maxLines: 10,

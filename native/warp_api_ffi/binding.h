@@ -29,7 +29,7 @@ char *new_address(uint8_t coin, uint32_t account);
 
 void set_mempool_account(uint8_t coin, uint32_t account);
 
-int32_t new_account(uint8_t coin, char *name, char *data);
+int32_t new_account(uint8_t coin, char *name, char *data, uint32_t index);
 
 int64_t get_mempool_balance(uint8_t coin);
 

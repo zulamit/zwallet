@@ -150,11 +150,13 @@ class NativeLibrary {
     int coin,
     ffi.Pointer<ffi.Int8> name,
     ffi.Pointer<ffi.Int8> data,
+    int index,
   ) {
     return _new_account(
       coin,
       name,
       data,
+      index,
     );
   }
 
@@ -756,12 +758,14 @@ typedef _c_new_account = ffi.Int32 Function(
   ffi.Uint8 coin,
   ffi.Pointer<ffi.Int8> name,
   ffi.Pointer<ffi.Int8> data,
+  ffi.Uint32 index,
 );
 
 typedef _dart_new_account = int Function(
   int coin,
   ffi.Pointer<ffi.Int8> name,
   ffi.Pointer<ffi.Int8> data,
+  int index,
 );
 
 typedef _c_get_mempool_balance = ffi.Int64 Function(

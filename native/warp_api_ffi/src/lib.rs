@@ -56,10 +56,15 @@ pub unsafe extern "C" fn set_mempool_account(coin: u8, account: u32) {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn new_account(coin: u8, name: *mut c_char, data: *mut c_char) -> i32 {
+pub unsafe extern "C" fn new_account(
+    coin: u8,
+    name: *mut c_char,
+    data: *mut c_char,
+    index: u32,
+) -> i32 {
     let name = CStr::from_ptr(name).to_string_lossy();
     let data = CStr::from_ptr(data).to_string_lossy();
-    api::new_account(coin, &name, &data)
+    api::new_account(coin, &name, &data, index)
 }
 
 #[no_mangle]

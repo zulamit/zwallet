@@ -525,26 +525,6 @@ abstract class _AccountManager with Store {
     return WarpApi.newAddress(active.coin, active.id);
   }
 
-  Future<Backup> getBackup(int account) async {
-    final List<Map> res = await db.rawQuery(
-        "SELECT name, seed, sk, ivk FROM accounts WHERE id_account = ?1",
-        [account]);
-    if (res.isEmpty) throw Exception("Account N/A");
-    final share = await getShareInfo(account);
-    final row = res[0];
-    final name = row['name'];
-    final seed = row['seed'];
-    final sk = row['sk'];
-    final ivk = row['ivk'];
-    int type = 0;
-    if (seed != null)
-      type = 0;
-    else if (sk != null)
-      type = 1;
-    else if (ivk != null) type = 2;
-    return Backup(type, name, seed, sk, ivk, share);
-  }
-
   Future<int> _getBalance(int accountId) async {
     final List<Map> res = await db.rawQuery(
         "SELECT SUM(value) AS value FROM received_notes WHERE account = ?1 AND (spent IS NULL OR spent = 0)",
@@ -596,17 +576,19 @@ abstract class _AccountManager with Store {
   }
 
   Future<List<Account>> _list() async {
+    // final List<Map> res = await db.rawQuery(
+    //     "WITH notes AS (SELECT a.id_account, a.name, a.address, CASE WHEN r.spent IS NULL THEN r.value ELSE 0 END AS nv FROM accounts a LEFT JOIN received_notes r ON a.id_account = r.account),"
+    //     "accounts2 AS (SELECT id_account, name, address, COALESCE(sum(nv), 0) AS balance FROM notes GROUP by id_account) "
+    //     "SELECT a.id_account, a.name, a.address, a.balance, ss.idx, ss.secret, ss.participants, ss.threshold FROM accounts2 a LEFT JOIN secret_shares ss ON a.id_account = ss.account",
+    //     []);
     final List<Map> res = await db.rawQuery(
         "WITH notes AS (SELECT a.id_account, a.name, a.address, CASE WHEN r.spent IS NULL THEN r.value ELSE 0 END AS nv FROM accounts a LEFT JOIN received_notes r ON a.id_account = r.account),"
         "accounts2 AS (SELECT id_account, name, address, COALESCE(sum(nv), 0) AS balance FROM notes GROUP by id_account) "
-        "SELECT a.id_account, a.name, a.address, a.balance, ss.idx, ss.secret, ss.participants, ss.threshold FROM accounts2 a LEFT JOIN secret_shares ss ON a.id_account = ss.account",
+        "SELECT a.id_account, a.name, a.address, a.balance FROM accounts2 a",
         []);
     return res.map((r) {
-      final shareInfo = r['secret'] != null
-          ? ShareInfo(r['idx'], r['threshold'], r['participants'], r['secret'])
-          : null;
       return Account(0, // TODO
-          r['id_account'], r['name'], r['address'], r['balance'], 0, shareInfo);
+          r['id_account'], r['name'], r['address'], r['balance'], 0, null);
     }).toList();
   }
 
@@ -1295,11 +1277,12 @@ class Backup {
   final int type;
   final String name;
   final String? seed;
+  final int index;
   final String? sk;
   final String ivk;
   final ShareInfo? share;
 
-  Backup(this.type, this.name, this.seed, this.sk, this.ivk, this.share);
+  Backup(this.type, this.name, this.seed, this.index, this.sk, this.ivk, this.share);
 
   String value() {
     switch (type) {
