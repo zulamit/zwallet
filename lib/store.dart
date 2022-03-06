@@ -38,20 +38,26 @@ class LWDServer {
 
   Future<String> loadPrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    choice = prefs.getString('${coinDef.ticker}.lwd_choice') ?? choice;
-    customUrl = prefs.getString('${coinDef.ticker}.lwd_custom') ?? "";
-    savePrefs(choice, customUrl);
+    final ticker = coinDef.ticker;
+    final _choice = prefs.getString('$ticker.lwd_choice');
+    final _customUrl = prefs.getString('$ticker.lwd_custom');
+    if (_choice != null && _customUrl != null) {
+      choice = _choice;
+      customUrl = _customUrl;
+    }
+    else {
+      await savePrefs(choice, customUrl);
+    }
     return getLWDUrl();
   }
 
-  void savePrefs(String _choice, String _customUrl) {
+  Future<void> savePrefs(String _choice, String _customUrl) async {
     choice = _choice;
     customUrl = _customUrl;
-    Future.microtask(() async {
-      final prefs = await SharedPreferences.getInstance();
-      prefs.setString('${coinDef.ticker}.lwd_choice', _choice);
-      prefs.setString('${coinDef.ticker}.lwd_custom', _customUrl);
-    });
+    final ticker = coinDef.ticker;
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('$ticker.lwd_choice', _choice);
+    prefs.setString('$ticker.lwd_custom', _customUrl);
   }
 
   String getLWDUrl() {

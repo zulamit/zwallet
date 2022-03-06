@@ -337,7 +337,8 @@ class _ServerSelectState extends State<ServerSelect> with
 
   void _save(_) async {
     if (_saved) return;
-    settings.servers[coin].savePrefs(choice, customUrl);
+    await settings.servers[coin].savePrefs(choice, customUrl);
+    _saved = true;
   }
 
   @override
