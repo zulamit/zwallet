@@ -1,11 +1,13 @@
+import 'package:ZYWallet/accounts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:warp_api/warp_api.dart';
+import 'backup.dart';
 import 'main.dart';
 import 'store.dart';
-import 'backup.dart';
 import 'generated/l10n.dart';
-
 import 'about.dart';
 
 class AccountManagerPage extends StatefulWidget {
@@ -78,8 +80,33 @@ class AccountManagerState extends State<AccountManagerPage> {
                       ));
                     });},
                 )),
-        floatingActionButton: GestureDetector(onLongPress: _onFullRestore, child: FloatingActionButton(
-            onPressed: _onRestore, child: Icon(Icons.add))));
+        floatingActionButton: SpeedDial(
+          icon: Icons.add,
+          onPress: _onRestore,
+          children: [
+            SpeedDialChild(
+              child: Icon(Icons.download),
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,
+              label: 'Restore Batch',
+              onTap: _onFullRestore,
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.upload),
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              label: 'Save Batch',
+              onTap: _onFullBackup,
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.subdirectory_arrow_right),
+              backgroundColor: Colors.green,
+              foregroundColor: Colors.white,
+              label: 'New Sub-account',
+              onTap: _onNewSubaccount,
+            ),
+          ]
+        ));
   }
 
   Future<bool> _onAccountDelete(Account account) async {
@@ -164,6 +191,16 @@ class AccountManagerState extends State<AccountManagerPage> {
 
   _settings() {
     Navigator.of(this.context).pushNamed('/settings');
+  }
+
+  _onNewSubaccount() async {
+    final a = WarpApi.newSubAccount(active.coin, active.id, S.of(context).subAccountOf(active.account.name));
+    print("--> $a");
+    await accounts.refresh();
+  }
+  
+  _onFullBackup() {
+    Navigator.of(context).pushNamed('/fullBackup');
   }
 
   _onFullRestore() {

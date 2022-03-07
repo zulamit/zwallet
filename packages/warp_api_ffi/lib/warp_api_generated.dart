@@ -165,6 +165,23 @@ class NativeLibrary {
   late final _dart_new_account _new_account =
       _new_account_ptr.asFunction<_dart_new_account>();
 
+  int new_sub_account(
+    int coin,
+    int id,
+    ffi.Pointer<ffi.Int8> name,
+  ) {
+    return _new_sub_account(
+      coin,
+      id,
+      name,
+    );
+  }
+
+  late final _new_sub_account_ptr =
+      _lookup<ffi.NativeFunction<_c_new_sub_account>>('new_sub_account');
+  late final _dart_new_sub_account _new_sub_account =
+      _new_sub_account_ptr.asFunction<_dart_new_sub_account>();
+
   int get_mempool_balance(
     int coin,
   ) {
@@ -762,6 +779,18 @@ typedef _dart_new_account = int Function(
   ffi.Pointer<ffi.Int8> name,
   ffi.Pointer<ffi.Int8> data,
   int index,
+);
+
+typedef _c_new_sub_account = ffi.Int32 Function(
+  ffi.Uint8 coin,
+  ffi.Uint32 id,
+  ffi.Pointer<ffi.Int8> name,
+);
+
+typedef _dart_new_sub_account = int Function(
+  int coin,
+  int id,
+  ffi.Pointer<ffi.Int8> name,
 );
 
 typedef _c_get_mempool_balance = ffi.Int64 Function(

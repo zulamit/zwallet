@@ -50,9 +50,11 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m12(aZEC, ticker, address) =>
       "Envoi de ${aZEC} ${ticker} à ${address}";
 
-  static String m13(text) => "${text} copied to clipboard";
+  static String m13(name) => "Sous Compte de ${name}";
 
-  static String m14(currency) => "Utiliser ${currency}";
+  static String m14(text) => "${text} copied to clipboard";
+
+  static String m15(currency) => "Utiliser ${currency}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -69,7 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountHasSomeBalanceAreYouSureYouWantTo":
             MessageLookupByLibrary.simpleMessage(
                 "Ce compte a un solde. Voulez vous l\'effacer?"),
-        "accountIndex": MessageLookupByLibrary.simpleMessage("Account Index"),
+        "accountIndex": MessageLookupByLibrary.simpleMessage("Index du Compte"),
         "accountName": MessageLookupByLibrary.simpleMessage("Nom du compte"),
         "accountNameIsRequired":
             MessageLookupByLibrary.simpleMessage("Le nom du compte est requis"),
@@ -289,11 +291,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Masquage en cours..."),
         "sign": MessageLookupByLibrary.simpleMessage("Sign"),
         "simple": MessageLookupByLibrary.simpleMessage("Simple"),
-        "simpleMode": MessageLookupByLibrary.simpleMessage("Simple Mode"),
+        "simpleMode": MessageLookupByLibrary.simpleMessage("Mode Simple"),
         "spendable": MessageLookupByLibrary.simpleMessage("Dépensable"),
         "spendableBalance":
             MessageLookupByLibrary.simpleMessage("Montant dépensable"),
         "splitAccount": MessageLookupByLibrary.simpleMessage("Split Account"),
+        "subAccountOf": m13,
         "synching":
             MessageLookupByLibrary.simpleMessage("Synchronisation en cours"),
         "table": MessageLookupByLibrary.simpleMessage("Tableau"),
@@ -308,7 +311,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Appuyez sur le code QR pour l\'adresse transparente"),
         "tapTransactionForDetails": MessageLookupByLibrary.simpleMessage(
             "Presser sur une Transaction pour plus de details"),
-        "textCopiedToClipboard": m13,
+        "textCopiedToClipboard": m14,
         "theme": MessageLookupByLibrary.simpleMessage("Thème"),
         "themeEditor": MessageLookupByLibrary.simpleMessage("Editeur de Thème"),
         "thisAccountAlreadyExists":
@@ -337,7 +340,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Solde Transparent"),
         "unsignedTransactionFile": MessageLookupByLibrary.simpleMessage(
             "Fichier de transaction non signée"),
-        "useSettingscurrency": m14,
+        "useSettingscurrency": m15,
         "useTransparentBalance": MessageLookupByLibrary.simpleMessage(
             "Utiliser le Solde Transparent"),
         "useUa": MessageLookupByLibrary.simpleMessage("Utiliser UA"),

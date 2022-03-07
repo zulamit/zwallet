@@ -98,6 +98,11 @@ class WarpApi {
         name.toNativeUtf8().cast<Int8>(), key.toNativeUtf8().cast<Int8>(), index);
   }
 
+  static int newSubAccount(int coin, int accountId, String name) {
+    return warp_api_lib.new_sub_account(coin, accountId,
+        name.toNativeUtf8().cast<Int8>());
+  }
+
   static void skipToLastHeight(int coin) {
     warp_api_lib.skip_to_last_height(coin);
   }

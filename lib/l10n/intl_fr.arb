@@ -191,6 +191,7 @@
   "fullRestore": "Restauration complète",
   "loadBackup": "Recharger une sauvegarde",
   "backupAllAccounts": "Sauver tous les comptes",
-  "simpleMode": "Simple Mode",
-  "accountIndex": "Account Index"
+  "simpleMode": "Mode Simple",
+  "accountIndex": "Index du Compte",
+  "subAccountOf": "Sous Compte de {name}"
 }

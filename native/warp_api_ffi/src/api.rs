@@ -106,6 +106,15 @@ pub fn new_account(coin: u8, name: &str, data: &str, index: u32) -> i32 {
     log_result(res())
 }
 
+pub fn new_sub_account(coin: u8, id: u32, name: &str) -> i32 {
+    let res = || {
+        let wallet = get_wallet_lock(coin)?;
+        let id = wallet.new_sub_account(id, name)?;
+        Ok(id)
+    };
+    log_result(res())
+}
+
 fn get_wallet_lock(coin: u8) -> anyhow::Result<MutexGuard<'static, Wallet>> {
     match coin {
         1 => get_lock(&YWALLET),

@@ -2011,6 +2011,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Sub Account of {name}`
+  String subAccountOf(Object name) {
+    return Intl.message(
+      'Sub Account of $name',
+      name: 'subAccountOf',
+      desc: '',
+      args: [name],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -97,17 +97,12 @@ class BackupState extends State<BackupPage> {
           ),
           Padding(padding: EdgeInsets.symmetric(vertical: 4)),
           Text(s.tapAnIconToShowTheQrCode),
-          Container(margin: EdgeInsets.all(8), padding: EdgeInsets.all(8), decoration: BoxDecoration(border: Border.all(width: 2, color: theme.primaryColor), borderRadius: BorderRadius.circular(4)),child:
-          GestureDetector(onLongPress: _onFullBackup, child: Text(s.backupWarning,
-          style: theme.textTheme.subtitle1!.copyWith(color: theme.primaryColor)))),
+          Container(margin: EdgeInsets.all(8), padding: EdgeInsets.all(8), decoration: BoxDecoration(border: Border.all(width: 2, color: theme.primaryColor), borderRadius: BorderRadius.circular(4)),
+            child: Text(s.backupWarning, style: theme.textTheme.subtitle1!.copyWith(color: theme.primaryColor))),
         ]
       ),
     ));
   }
 
   _showQR(String text, String title) => showQR(context, text, title);
-
-  _onFullBackup() {
-    Navigator.of(context).pushNamed('/fullBackup');
-  }
 }

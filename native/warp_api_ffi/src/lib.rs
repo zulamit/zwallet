@@ -68,6 +68,12 @@ pub unsafe extern "C" fn new_account(
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn new_sub_account(coin: u8, id: u32, name: *mut c_char) -> i32 {
+    let name = CStr::from_ptr(name).to_string_lossy();
+    api::new_sub_account(coin, id, &name)
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn get_mempool_balance(coin: u8) -> i64 {
     api::get_mempool_balance(coin)
 }

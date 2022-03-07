@@ -31,6 +31,8 @@ void set_mempool_account(uint8_t coin, uint32_t account);
 
 int32_t new_account(uint8_t coin, char *name, char *data, uint32_t index);
 
+int32_t new_sub_account(uint8_t coin, uint32_t id, char *name);
+
 int64_t get_mempool_balance(uint8_t coin);
 
 const char *send_multi_payment(uint8_t coin,

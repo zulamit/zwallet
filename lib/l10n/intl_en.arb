@@ -194,5 +194,6 @@
   "loadBackup": "Load Backup",
   "backupAllAccounts": "Backup All Accounts",
   "simpleMode": "Simple Mode",
-  "accountIndex": "Account Index"
+  "accountIndex": "Account Index",
+  "subAccountOf": "Sub Account of {name}"
 }
