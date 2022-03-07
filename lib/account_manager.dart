@@ -57,6 +57,7 @@ class AccountManagerState extends State<AccountManagerPage> {
                           child: Dismissible(
                         key: Key(a.name),
                         child: ListTile(
+                          leading: CircleAvatar(backgroundImage: settings.coins[a.coin].def.image),
                           title: Text(a.name,
                               style: theme.textTheme.headline5
                                 ?.merge(TextStyle(fontWeight: weight))
