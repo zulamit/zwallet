@@ -178,4 +178,53 @@ a line&lt;/p>
 &lt;ul>
 &lt;li>USB drive is safer than Cloud storage but in any case, the files
 do not contain any information that could be used to reveal your secret key&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;/ul></description></item><item><title>Docs: Sub-Account</title><link>https://hhanh00.github.io/zwallet/docs/advanced/sub-account/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/sub-account/</guid><description>
+&lt;h2 id="main-account">Main Account&lt;/h2>
+&lt;p>Your main account is displayed in &lt;strong>bold face&lt;/strong>.
+There is one main account for each coin. When you spend
+and receive coins from the dashboard shortcuts, the funds
+will be directed to the main account.&lt;/p>
+&lt;p>The main account is the last account you selected for that
+particular coin.&lt;/p>
+&lt;img src="../img/Screenshot_20220403-144433.jpg">
+&lt;h2 id="sub-accounts">Sub Accounts&lt;/h2>
+&lt;p>A seed phrase can derive a multitude of accounts. By default,
+Ywallet uses only the &lt;em>first&lt;/em> account.&lt;/p>
+&lt;p>However, if you want to create additional accounts with the
+same seed, you can tell it to use additional account indexes.&lt;/p>
+&lt;p>The first account is at index 0.&lt;/p>
+&lt;p>To create a sub-account for the current selected account, long press
+the &amp;lsquo;+&amp;rsquo; button, and select &amp;ldquo;New Sub-account&amp;rdquo;.&lt;/p>
+&lt;img src="../img/Screenshot_20220403-144441.jpg">
+&lt;p>You&amp;rsquo;ll be asked to provide a new name:&lt;/p>
+&lt;img src="../img/Screenshot_20220403-144452.jpg">
+&lt;p>You can repeat this operation multiple times if you need more
+sub-accounts.&lt;/p>
+&lt;p>Important Note: Ywallet recommends using a seed per account and not
+using sub-accounts. This feature is intended in case you want
+to recover accounts from other wallets that use this feature.
+Since shielded addresses are not visible on the blockchain,
+there is no advantage in using more than one.
+In case you want to give a unique address, diversified addresses
+(or snap addresses in Ywallet) offer a better solution.&lt;/p>
+&lt;h2 id="backup">Backup&lt;/h2>
+&lt;p>The backup of a sub-account contains the account index. This index
+is needed for recovery but it is not part of the seed phrase.&lt;/p>
+&lt;p>Ywallet detects this format automatically but be aware that other
+wallets will not consider it valid.&lt;/p>
+&lt;img src="../img/Screenshot_20220403-144639.jpg"></description></item><item><title>Docs: Batch Save/Load</title><link>https://hhanh00.github.io/zwallet/docs/advanced/batch-save/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/batch-save/</guid><description>
+&lt;h2 id="save-all-your-accounts">Save all your Accounts&lt;/h2>
+&lt;img src="../img/Screenshot_20220403-144700.jpg">
+&lt;ol>
+&lt;li>&lt;strong>Save the encryption key!&lt;/strong>&lt;/li>
+&lt;li>Save the backup file&lt;/li>
+&lt;/ol>
+&lt;p>The backup cannot be restored without
+the encryption key.
+Note: Every backup gets its unique encryption key (even if the accounts are the same)&lt;/p>
+&lt;h2 id="restore-a-full-backup">Restore a full backup&lt;/h2>
+&lt;img src="../img/Screenshot_20220403-144800.jpg">
+&lt;ol>
+&lt;li>Enter or paste the encryption key&lt;/li>
+&lt;li>Load the backup file&lt;/li>
+&lt;/ol></description></item></channel></rss>

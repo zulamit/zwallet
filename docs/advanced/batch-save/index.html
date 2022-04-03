@@ -14,28 +14,32 @@
 <link rel=icon type=image/png href=/zwallet/favicons/android-96x96.png sizes=96x96>
 <link rel=icon type=image/png href=/zwallet/favicons/android-144x144.png sizes=144x144>
 <link rel=icon type=image/png href=/zwallet/favicons/android-192x192.png sizes=192x192>
-<title>Save to Blockchain | ZWallet</title>
-<meta name=description content="
+<title>Batch Save/Load | ZWallet</title>
+<meta name=description content="Save all your Accounts
 
-Changes to your contacts are first saved locally on your device.
 
-Tap this button if you want to store them in the blockchain.
-The app will make a …">
-<meta property="og:title" content="Save to Blockchain">
-<meta property="og:description" content="Changes to your contacts are first saved locally on your device.
- Tap this button if you want to store them in the blockchain. The app will make a transaction that saves your contact list. It costs 0.01 mY/ZEC  Remarks  Contacts that are saved in the blockchain are recovered when the account is restored from its seed  ">
+
+Save the encryption key!
+Save the backup file
+
+The backup cannot be restored without
+the encryption key.
+Note: Every backup …">
+<meta property="og:title" content="Batch Save/Load">
+<meta property="og:description" content="Save all your Accounts  Save the encryption key! Save the backup file  The backup cannot be restored without the encryption key. Note: Every backup gets its unique encryption key (even if the accounts are the same)
+Restore a full backup  Enter or paste the encryption key Load the backup file  ">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://hhanh00.github.io/zwallet/docs/contact/save/"><meta property="article:section" content="docs">
+<meta property="og:url" content="https://hhanh00.github.io/zwallet/docs/advanced/batch-save/"><meta property="article:section" content="docs">
 <meta property="article:modified_time" content="2022-04-04T00:58:53+08:00">
-<meta itemprop=name content="Save to Blockchain">
-<meta itemprop=description content="Changes to your contacts are first saved locally on your device.
- Tap this button if you want to store them in the blockchain. The app will make a transaction that saves your contact list. It costs 0.01 mY/ZEC  Remarks  Contacts that are saved in the blockchain are recovered when the account is restored from its seed  ">
+<meta itemprop=name content="Batch Save/Load">
+<meta itemprop=description content="Save all your Accounts  Save the encryption key! Save the backup file  The backup cannot be restored without the encryption key. Note: Every backup gets its unique encryption key (even if the accounts are the same)
+Restore a full backup  Enter or paste the encryption key Load the backup file  ">
 <meta itemprop=dateModified content="2022-04-04T00:58:53+08:00">
-<meta itemprop=wordCount content="56">
+<meta itemprop=wordCount content="50">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Save to Blockchain">
-<meta name=twitter:description content="Changes to your contacts are first saved locally on your device.
- Tap this button if you want to store them in the blockchain. The app will make a transaction that saves your contact list. It costs 0.01 mY/ZEC  Remarks  Contacts that are saved in the blockchain are recovered when the account is restored from its seed  ">
+<meta name=twitter:title content="Batch Save/Load">
+<meta name=twitter:description content="Save all your Accounts  Save the encryption key! Save the backup file  The backup cannot be restored without the encryption key. Note: Every backup gets its unique encryption key (even if the accounts are the same)
+Restore a full backup  Enter or paste the encryption key Load the backup file  ">
 <link rel=preload href=/zwallet/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css as=style>
 <link href=/zwallet/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css rel=stylesheet integrity>
 <script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
@@ -101,16 +105,16 @@ The app will make a …">
 <a href=/zwallet/docs/account/watch-only/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsaccountwatch-only><span>Watch Only</span></a>
 </li>
 </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zwalletdocscontact-li>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-zwalletdocscontact-li>
 <a href=/zwallet/docs/contact/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zwalletdocscontact><span>Contacts</span></a>
 <ul class="ul-2 foldable">
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocscontactmanage-li>
 <a href=/zwallet/docs/contact/manage/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocscontactmanage><span>Add/Edit/Delete</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-zwalletdocscontactsave-li>
-<a href=/zwallet/docs/contact/save/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-zwalletdocscontactsave><span class=td-sidebar-nav-active-item>Save to Blockchain</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocscontactsave-li>
+<a href=/zwallet/docs/contact/save/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocscontactsave><span>Save to Blockchain</span></a>
 </li>
 </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-zwalletdocsadvanced-li>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zwalletdocsadvanced-li>
 <a href=/zwallet/docs/advanced/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zwalletdocsadvanced><span>Advanced Usage</span></a>
 <ul class="ul-2 foldable">
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsadvancedauto-shield-li>
@@ -129,8 +133,8 @@ The app will make a …">
 <a href=/zwallet/docs/advanced/cold-storage/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedcold-storage><span>Cold Storage</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsadvancedsub-account-li>
 <a href=/zwallet/docs/advanced/sub-account/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedsub-account><span>Sub-Account</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsadvancedbatch-save-li>
-<a href=/zwallet/docs/advanced/batch-save/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedbatch-save><span>Batch Save/Load</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-zwalletdocsadvancedbatch-save-li>
+<a href=/zwallet/docs/advanced/batch-save/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedbatch-save><span class=td-sidebar-nav-active-item>Batch Save/Load</span></a>
 </li>
 </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-zwalletdocssettings-li>
@@ -161,7 +165,7 @@ The app will make a …">
 </aside>
 <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a id=print href=https://hhanh00.github.io/zwallet/docs/contact/_print/><i class="fa fa-print fa-fw"></i> Print entire section</a>
+<a id=print href=https://hhanh00.github.io/zwallet/docs/advanced/_print/><i class="fa fa-print fa-fw"></i> Print entire section</a>
 </div>
 </aside>
 <main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
@@ -171,29 +175,32 @@ The app will make a …">
 <a href=https://hhanh00.github.io/zwallet/docs/>Documentation</a>
 </li>
 <li class=breadcrumb-item>
-<a href=https://hhanh00.github.io/zwallet/docs/contact/>Contacts</a>
+<a href=https://hhanh00.github.io/zwallet/docs/advanced/>Advanced Usage</a>
 </li>
 <li class="breadcrumb-item active" aria-current=page>
-<a href=https://hhanh00.github.io/zwallet/docs/contact/save/>Save to Blockchain</a>
+<a href=https://hhanh00.github.io/zwallet/docs/advanced/batch-save/>Batch Save/Load</a>
 </li>
 </ol>
 </nav>
 <div class=td-content>
-<h1>Save to Blockchain</h1>
+<h1>Batch Save/Load</h1>
 <header class=article-meta>
 </header>
-<img src=../img/IMG_0085.PNG>
-<p>Changes to your contacts are first saved locally on your device.</p>
+<h2 id=save-all-your-accounts>Save all your Accounts</h2>
+<img src=../img/Screenshot_20220403-144700.jpg>
 <ol>
-<li>Tap this button if you want to store them in the blockchain.
-The app will make a transaction that saves your contact list. It costs
-0.01 mY/ZEC</li>
+<li><strong>Save the encryption key!</strong></li>
+<li>Save the backup file</li>
 </ol>
-<h2 id=remarks>Remarks</h2>
-<ul>
-<li>Contacts that are saved in the blockchain are recovered when the
-account is restored from its seed</li>
-</ul>
+<p>The backup cannot be restored without
+the encryption key.
+Note: Every backup gets its unique encryption key (even if the accounts are the same)</p>
+<h2 id=restore-a-full-backup>Restore a full backup</h2>
+<img src=../img/Screenshot_20220403-144800.jpg>
+<ol>
+<li>Enter or paste the encryption key</li>
+<li>Load the backup file</li>
+</ol>
 </div>
 </main>
 </div>

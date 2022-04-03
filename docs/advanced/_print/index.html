@@ -66,6 +66,8 @@ This is the multi-page printable view of this section.
 <li>5: <a href=#pg-e1d0a845a9f5b64f08650a08a212b6d4>Wallet Profit and Loss</a></li>
 <li>6: <a href=#pg-122f4a1ad4b9543ab11e45cd260405d1>MultiPay</a></li>
 <li>7: <a href=#pg-dccbc9466d63e60ae98edb30e20fe45f>Cold Storage</a></li>
+<li>8: <a href=#pg-d6784684a17c49c034cc572553f7f83c>Sub-Account</a></li>
+<li>9: <a href=#pg-0887402f9129bda26b9d56b4dc411540>Batch Save/Load</a></li>
 </ul>
 <div class=content>
 </div>
@@ -270,6 +272,61 @@ a line</p>
 <li>USB drive is safer than Cloud storage but in any case, the files
 do not contain any information that could be used to reveal your secret key</li>
 </ul>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-d6784684a17c49c034cc572553f7f83c>8 - Sub-Account</h1>
+<h2 id=main-account>Main Account</h2>
+<p>Your main account is displayed in <strong>bold face</strong>.
+There is one main account for each coin. When you spend
+and receive coins from the dashboard shortcuts, the funds
+will be directed to the main account.</p>
+<p>The main account is the last account you selected for that
+particular coin.</p>
+<img src=../img/Screenshot_20220403-144433.jpg>
+<h2 id=sub-accounts>Sub Accounts</h2>
+<p>A seed phrase can derive a multitude of accounts. By default,
+Ywallet uses only the <em>first</em> account.</p>
+<p>However, if you want to create additional accounts with the
+same seed, you can tell it to use additional account indexes.</p>
+<p>The first account is at index 0.</p>
+<p>To create a sub-account for the current selected account, long press
+the &lsquo;+&rsquo; button, and select &ldquo;New Sub-account&rdquo;.</p>
+<img src=../img/Screenshot_20220403-144441.jpg>
+<p>You&rsquo;ll be asked to provide a new name:</p>
+<img src=../img/Screenshot_20220403-144452.jpg>
+<p>You can repeat this operation multiple times if you need more
+sub-accounts.</p>
+<p>Important Note: Ywallet recommends using a seed per account and not
+using sub-accounts. This feature is intended in case you want
+to recover accounts from other wallets that use this feature.
+Since shielded addresses are not visible on the blockchain,
+there is no advantage in using more than one.
+In case you want to give a unique address, diversified addresses
+(or snap addresses in Ywallet) offer a better solution.</p>
+<h2 id=backup>Backup</h2>
+<p>The backup of a sub-account contains the account index. This index
+is needed for recovery but it is not part of the seed phrase.</p>
+<p>Ywallet detects this format automatically but be aware that other
+wallets will not consider it valid.</p>
+<img src=../img/Screenshot_20220403-144639.jpg>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-0887402f9129bda26b9d56b4dc411540>9 - Batch Save/Load</h1>
+<h2 id=save-all-your-accounts>Save all your Accounts</h2>
+<img src=../img/Screenshot_20220403-144700.jpg>
+<ol>
+<li><strong>Save the encryption key!</strong></li>
+<li>Save the backup file</li>
+</ol>
+<p>The backup cannot be restored without
+the encryption key.
+Note: Every backup gets its unique encryption key (even if the accounts are the same)</p>
+<h2 id=restore-a-full-backup>Restore a full backup</h2>
+<img src=../img/Screenshot_20220403-144800.jpg>
+<ol>
+<li>Enter or paste the encryption key</li>
+<li>Load the backup file</li>
+</ol>
 </div>
 </main>
 </div>

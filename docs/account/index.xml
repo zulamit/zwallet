@@ -117,9 +117,7 @@ You may have to scroll the footer to the left if your screen is too small.&lt;/l
 &lt;/ol>
 &lt;h2 id="transaction-details">Transaction Details&lt;/h2>
 &lt;p>Tap on a transaction to show the details of the transactions&lt;/p>
-&lt;p>&lt;img src="../img/IMG_0082.PNG">
-&lt;img src="../img/IMG_0083.PNG">
-&lt;/p>
+&lt;img src="../img/Screenshot_20220403-144819.jpg">
 &lt;ol>
 &lt;li>Opens the transaction in an external block explorer&lt;/li>
 &lt;/ol>
@@ -138,11 +136,12 @@ shown in red&lt;/li>
 &lt;p>The app keeps up to date with the blockchain automatically. It checks
 the current status of the blockchain every 15s.&lt;/p>
 &lt;h2 id="rescan">Rescan&lt;/h2>
-&lt;p>You can manually trigger a complete rescan (from the first block).&lt;/p>
-&lt;img src="../img/IMG_0054.PNG">
-&lt;ol>
-&lt;li>Choose &amp;ldquo;Rescan&amp;rdquo; on the app menu&lt;/li>
-&lt;/ol>
+&lt;p>You can manually trigger a rescan.&lt;/p>
+&lt;img srcset="../img/2022-04-04_0-48-11.png 2x">
+&lt;p>Either from the first block, or from
+a given date (1).&lt;/p>
+&lt;img srcset="../img/2022-04-04_0-33-39.png 2x">
+&lt;img srcset="../img/2022-04-04_0-39-26.png 2x">
 &lt;h2 id="scan-progress-status">Scan Progress Status&lt;/h2>
 &lt;img src="../img/IMG_0055.PNG">
 &lt;ol>

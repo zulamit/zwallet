@@ -14,28 +14,32 @@
 <link rel=icon type=image/png href=/zwallet/favicons/android-96x96.png sizes=96x96>
 <link rel=icon type=image/png href=/zwallet/favicons/android-144x144.png sizes=144x144>
 <link rel=icon type=image/png href=/zwallet/favicons/android-192x192.png sizes=192x192>
-<title>Save to Blockchain | ZWallet</title>
-<meta name=description content="
-
-Changes to your contacts are first saved locally on your device.
-
-Tap this button if you want to store them in the blockchain.
-The app will make a …">
-<meta property="og:title" content="Save to Blockchain">
-<meta property="og:description" content="Changes to your contacts are first saved locally on your device.
- Tap this button if you want to store them in the blockchain. The app will make a transaction that saves your contact list. It costs 0.01 mY/ZEC  Remarks  Contacts that are saved in the blockchain are recovered when the account is restored from its seed  ">
+<title>Sub-Account | ZWallet</title>
+<meta name=description content="Main Account
+Your main account is displayed in bold face.
+There is one main account for each coin. When you spend
+and receive coins from the dashboard …">
+<meta property="og:title" content="Sub-Account">
+<meta property="og:description" content="Main Account Your main account is displayed in bold face. There is one main account for each coin. When you spend and receive coins from the dashboard shortcuts, the funds will be directed to the main account.
+The main account is the last account you selected for that particular coin.
+Sub Accounts A seed phrase can derive a multitude of accounts. By default, Ywallet uses only the first account.
+However, if you want to create additional accounts with the same seed, you can tell it to use additional account indexes.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://hhanh00.github.io/zwallet/docs/contact/save/"><meta property="article:section" content="docs">
+<meta property="og:url" content="https://hhanh00.github.io/zwallet/docs/advanced/sub-account/"><meta property="article:section" content="docs">
 <meta property="article:modified_time" content="2022-04-04T00:58:53+08:00">
-<meta itemprop=name content="Save to Blockchain">
-<meta itemprop=description content="Changes to your contacts are first saved locally on your device.
- Tap this button if you want to store them in the blockchain. The app will make a transaction that saves your contact list. It costs 0.01 mY/ZEC  Remarks  Contacts that are saved in the blockchain are recovered when the account is restored from its seed  ">
+<meta itemprop=name content="Sub-Account">
+<meta itemprop=description content="Main Account Your main account is displayed in bold face. There is one main account for each coin. When you spend and receive coins from the dashboard shortcuts, the funds will be directed to the main account.
+The main account is the last account you selected for that particular coin.
+Sub Accounts A seed phrase can derive a multitude of accounts. By default, Ywallet uses only the first account.
+However, if you want to create additional accounts with the same seed, you can tell it to use additional account indexes.">
 <meta itemprop=dateModified content="2022-04-04T00:58:53+08:00">
-<meta itemprop=wordCount content="56">
+<meta itemprop=wordCount content="245">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Save to Blockchain">
-<meta name=twitter:description content="Changes to your contacts are first saved locally on your device.
- Tap this button if you want to store them in the blockchain. The app will make a transaction that saves your contact list. It costs 0.01 mY/ZEC  Remarks  Contacts that are saved in the blockchain are recovered when the account is restored from its seed  ">
+<meta name=twitter:title content="Sub-Account">
+<meta name=twitter:description content="Main Account Your main account is displayed in bold face. There is one main account for each coin. When you spend and receive coins from the dashboard shortcuts, the funds will be directed to the main account.
+The main account is the last account you selected for that particular coin.
+Sub Accounts A seed phrase can derive a multitude of accounts. By default, Ywallet uses only the first account.
+However, if you want to create additional accounts with the same seed, you can tell it to use additional account indexes.">
 <link rel=preload href=/zwallet/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css as=style>
 <link href=/zwallet/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css rel=stylesheet integrity>
 <script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
@@ -101,16 +105,16 @@ The app will make a …">
 <a href=/zwallet/docs/account/watch-only/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsaccountwatch-only><span>Watch Only</span></a>
 </li>
 </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zwalletdocscontact-li>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-zwalletdocscontact-li>
 <a href=/zwallet/docs/contact/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zwalletdocscontact><span>Contacts</span></a>
 <ul class="ul-2 foldable">
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocscontactmanage-li>
 <a href=/zwallet/docs/contact/manage/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocscontactmanage><span>Add/Edit/Delete</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-zwalletdocscontactsave-li>
-<a href=/zwallet/docs/contact/save/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-zwalletdocscontactsave><span class=td-sidebar-nav-active-item>Save to Blockchain</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocscontactsave-li>
+<a href=/zwallet/docs/contact/save/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocscontactsave><span>Save to Blockchain</span></a>
 </li>
 </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-zwalletdocsadvanced-li>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zwalletdocsadvanced-li>
 <a href=/zwallet/docs/advanced/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zwalletdocsadvanced><span>Advanced Usage</span></a>
 <ul class="ul-2 foldable">
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsadvancedauto-shield-li>
@@ -127,8 +131,8 @@ The app will make a …">
 <a href=/zwallet/docs/advanced/multipay/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedmultipay><span>MultiPay</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsadvancedcold-storage-li>
 <a href=/zwallet/docs/advanced/cold-storage/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedcold-storage><span>Cold Storage</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsadvancedsub-account-li>
-<a href=/zwallet/docs/advanced/sub-account/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedsub-account><span>Sub-Account</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-zwalletdocsadvancedsub-account-li>
+<a href=/zwallet/docs/advanced/sub-account/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedsub-account><span class=td-sidebar-nav-active-item>Sub-Account</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsadvancedbatch-save-li>
 <a href=/zwallet/docs/advanced/batch-save/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedbatch-save><span>Batch Save/Load</span></a>
 </li>
@@ -161,7 +165,7 @@ The app will make a …">
 </aside>
 <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a id=print href=https://hhanh00.github.io/zwallet/docs/contact/_print/><i class="fa fa-print fa-fw"></i> Print entire section</a>
+<a id=print href=https://hhanh00.github.io/zwallet/docs/advanced/_print/><i class="fa fa-print fa-fw"></i> Print entire section</a>
 </div>
 </aside>
 <main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
@@ -171,29 +175,51 @@ The app will make a …">
 <a href=https://hhanh00.github.io/zwallet/docs/>Documentation</a>
 </li>
 <li class=breadcrumb-item>
-<a href=https://hhanh00.github.io/zwallet/docs/contact/>Contacts</a>
+<a href=https://hhanh00.github.io/zwallet/docs/advanced/>Advanced Usage</a>
 </li>
 <li class="breadcrumb-item active" aria-current=page>
-<a href=https://hhanh00.github.io/zwallet/docs/contact/save/>Save to Blockchain</a>
+<a href=https://hhanh00.github.io/zwallet/docs/advanced/sub-account/>Sub-Account</a>
 </li>
 </ol>
 </nav>
 <div class=td-content>
-<h1>Save to Blockchain</h1>
+<h1>Sub-Account</h1>
 <header class=article-meta>
 </header>
-<img src=../img/IMG_0085.PNG>
-<p>Changes to your contacts are first saved locally on your device.</p>
-<ol>
-<li>Tap this button if you want to store them in the blockchain.
-The app will make a transaction that saves your contact list. It costs
-0.01 mY/ZEC</li>
-</ol>
-<h2 id=remarks>Remarks</h2>
-<ul>
-<li>Contacts that are saved in the blockchain are recovered when the
-account is restored from its seed</li>
-</ul>
+<h2 id=main-account>Main Account</h2>
+<p>Your main account is displayed in <strong>bold face</strong>.
+There is one main account for each coin. When you spend
+and receive coins from the dashboard shortcuts, the funds
+will be directed to the main account.</p>
+<p>The main account is the last account you selected for that
+particular coin.</p>
+<img src=../img/Screenshot_20220403-144433.jpg>
+<h2 id=sub-accounts>Sub Accounts</h2>
+<p>A seed phrase can derive a multitude of accounts. By default,
+Ywallet uses only the <em>first</em> account.</p>
+<p>However, if you want to create additional accounts with the
+same seed, you can tell it to use additional account indexes.</p>
+<p>The first account is at index 0.</p>
+<p>To create a sub-account for the current selected account, long press
+the &lsquo;+&rsquo; button, and select &ldquo;New Sub-account&rdquo;.</p>
+<img src=../img/Screenshot_20220403-144441.jpg>
+<p>You&rsquo;ll be asked to provide a new name:</p>
+<img src=../img/Screenshot_20220403-144452.jpg>
+<p>You can repeat this operation multiple times if you need more
+sub-accounts.</p>
+<p>Important Note: Ywallet recommends using a seed per account and not
+using sub-accounts. This feature is intended in case you want
+to recover accounts from other wallets that use this feature.
+Since shielded addresses are not visible on the blockchain,
+there is no advantage in using more than one.
+In case you want to give a unique address, diversified addresses
+(or snap addresses in Ywallet) offer a better solution.</p>
+<h2 id=backup>Backup</h2>
+<p>The backup of a sub-account contains the account index. This index
+is needed for recovery but it is not part of the seed phrase.</p>
+<p>Ywallet detects this format automatically but be aware that other
+wallets will not consider it valid.</p>
+<img src=../img/Screenshot_20220403-144639.jpg>
 </div>
 </main>
 </div>
