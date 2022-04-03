@@ -26,9 +26,19 @@ a:link {
 - Windows: [ZIP](https://github.com/hhanh00/zwallet/releases/download/v0.0.1%2B1/zwallet.zip)
 - Linux: [TGZ](https://github.com/hhanh00/zwallet/releases/download/v0.0.1%2B1/zwallet.tgz)
 
-ZWallet (the Zcash wallet version) is no longer updated on Mobile since YWallet now supports both
-Zcash and Ycash. On desktop, the app is still called ZWallet.
+> ZWallet (the Zcash wallet version) is no longer updated since YWallet now supports both Zcash and Ycash. 
 
-TL/DR: It's all the same code really.
-{{% /blocks/cover %}}
+# Android
+<img srcset="../img/android.jpg 2x">
 
+# Iphone
+<img srcset="../img/iphone.png 2x">
+
+# Linux
+<img srcset="../img/linux.png 2x">
+
+# Mac OS
+<img srcset="../img/macos.png 4x">
+
+# Windows
+<img srcset="../img/windows.png 2x">

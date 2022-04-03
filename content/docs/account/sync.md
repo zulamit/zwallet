@@ -10,11 +10,17 @@ the current status of the blockchain every 15s.
 
 ## Rescan
 
-You can manually trigger a complete rescan (from the first block).
+You can manually trigger a rescan.
 
-{{< img IMG_0054.PNG >}}
+{{< img2 2022-04-04_0-48-11.png >}}
 
-1. Choose "Rescan" on the app menu
+Either from the first block, or from
+a given date (1).
+
+{{< img2 2022-04-04_0-33-39.png >}}
+
+{{< img2 2022-04-04_0-39-26.png >}}
+
 
 ## Scan Progress Status
 

@@ -20,12 +20,13 @@ At this point, you do not have any accounts. Let's get you a new one.
 1. Press the button + in the bottom right corner. It opens the account
 creation and restoration page. 
 
-{{< img IMG_0035.PNG >}}
+{{< img2 2022-04-04_1-01-22.png >}}
 
-1. Give a name to your new account.
-2. But leave the field "Seed/Secret Key/Viewing Key" 
+1. Choose the currency
+2. Give a name to your new account.
+3. But leave the field "Seed/Secret Key/Viewing Key" 
 empty for a new account.
-3. Press the button "ADD". The app will show the account 
+4. Press the button "NEW...". The app will show the account 
 backup information. 
 
 

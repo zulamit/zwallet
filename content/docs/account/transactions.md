@@ -30,8 +30,7 @@ You may have to scroll the footer to the left if your screen is too small.
 
 Tap on a transaction to show the details of the transactions
 
-{{< img IMG_0082.PNG >}}
-{{< img IMG_0083.PNG >}}
+{{< img Screenshot_20220403-144819.jpg >}}
 
 1. Opens the transaction in an external block explorer
 
