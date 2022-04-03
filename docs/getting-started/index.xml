@@ -12,12 +12,13 @@ way to make sure your coins are safe.&lt;/p>
 &lt;li>Press the button + in the bottom right corner. It opens the account
 creation and restoration page.&lt;/li>
 &lt;/ol>
-&lt;img src="../img/IMG_0035.PNG">
+&lt;img srcset="../img/2022-04-04_1-01-22.png 2x">
 &lt;ol>
+&lt;li>Choose the currency&lt;/li>
 &lt;li>Give a name to your new account.&lt;/li>
 &lt;li>But leave the field &amp;ldquo;Seed/Secret Key/Viewing Key&amp;rdquo;
 empty for a new account.&lt;/li>
-&lt;li>Press the button &amp;ldquo;ADD&amp;rdquo;. The app will show the account
+&lt;li>Press the button &amp;ldquo;NEW&amp;hellip;&amp;rdquo;. The app will show the account
 backup information.&lt;/li>
 &lt;/ol>
 &lt;img src="../img/IMG_0036.PNG">
