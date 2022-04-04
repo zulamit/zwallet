@@ -29,16 +29,16 @@ a:link {
 > ZWallet (the Zcash wallet version) is no longer updated since YWallet now supports both Zcash and Ycash. 
 
 # Android
-<img srcset="../img/android.jpg 2x">
+{{<img2 android.jpg >}}
 
 # Iphone
-<img srcset="../img/iphone.png 2x">
+{{<img2 iphone.png >}}
 
 # Linux
-<img srcset="../img/linux.png 2x">
+{{<img2 linux.png >}}
 
 # Mac OS
-<img srcset="../img/macos.png 4x">
+{{<img2 macos.png >}}
 
 # Windows
-<img srcset="../img/windows.png 2x">
+{{<img2 windows.png >}}
