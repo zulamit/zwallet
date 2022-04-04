@@ -404,11 +404,11 @@ multiple recipients.&lt;/p>
 the current status of the blockchain every 15s.&lt;/p>
 &lt;h2 id="rescan">Rescan&lt;/h2>
 &lt;p>You can manually trigger a rescan.&lt;/p>
-&lt;img srcset="../img/2022-04-04_0-48-11.png 2x">
+&lt;img class="img" srcset="../img/2022-04-04_0-48-11.png 2x">
 &lt;p>Either from the first block, or from
 a given date (1).&lt;/p>
-&lt;img srcset="../img/2022-04-04_0-33-39.png 2x">
-&lt;img srcset="../img/2022-04-04_0-39-26.png 2x">
+&lt;img class="img" srcset="../img/2022-04-04_0-33-39.png 2x">
+&lt;img class="img" srcset="../img/2022-04-04_0-39-26.png 2x">
 &lt;h2 id="scan-progress-status">Scan Progress Status&lt;/h2>
 &lt;img src="../img/IMG_0055.PNG">
 &lt;ol>
@@ -566,7 +566,7 @@ way to make sure your coins are safe.&lt;/p>
 &lt;li>Press the button + in the bottom right corner. It opens the account
 creation and restoration page.&lt;/li>
 &lt;/ol>
-&lt;img srcset="../img/2022-04-04_1-01-22.png 2x">
+&lt;img class="img" srcset="../img/2022-04-04_1-01-22.png 2x">
 &lt;ol>
 &lt;li>Choose the currency&lt;/li>
 &lt;li>Give a name to your new account.&lt;/li>
