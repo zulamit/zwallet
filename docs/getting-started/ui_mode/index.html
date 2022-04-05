@@ -14,28 +14,26 @@
 <link rel=icon type=image/png href=/zwallet/favicons/android-96x96.png sizes=96x96>
 <link rel=icon type=image/png href=/zwallet/favicons/android-144x144.png sizes=144x144>
 <link rel=icon type=image/png href=/zwallet/favicons/android-192x192.png sizes=192x192>
-<title>Server | ZWallet</title>
-<meta name=description content="
+<title>UI Mode | ZWallet</title>
+<meta name=description content="The first time YWallet is launched, it starts in &ldquo;Simple Mode&rdquo;
+where only the basic UI elements are shown.
 
-Choose the server that the wallet connects to
-
-Lightwalletd is the server deployment sponsored by the zcash organization
-Enter the URL of your own …">
-<meta property="og:title" content="Server">
-<meta property="og:description" content="Choose the server that the wallet connects to
- Lightwalletd is the server deployment sponsored by the zcash organization Enter the URL of your own deployment. For example, https://lwd.example.com:9067  ">
+Account Information …">
+<meta property="og:title" content="UI Mode">
+<meta property="og:description" content="The first time YWallet is launched, it starts in &ldquo;Simple Mode&rdquo; where only the basic UI elements are shown.
+ Account Information Transaction History Contacts  To show the rest of the UI, switch to &ldquo;Advanced Mode&rdquo; in the application settings">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://hhanh00.github.io/zwallet/docs/settings/server/"><meta property="article:section" content="docs">
+<meta property="og:url" content="https://hhanh00.github.io/zwallet/docs/getting-started/ui_mode/"><meta property="article:section" content="docs">
 <meta property="article:modified_time" content="2022-04-05T09:38:19+08:00">
-<meta itemprop=name content="Server">
-<meta itemprop=description content="Choose the server that the wallet connects to
- Lightwalletd is the server deployment sponsored by the zcash organization Enter the URL of your own deployment. For example, https://lwd.example.com:9067  ">
+<meta itemprop=name content="UI Mode">
+<meta itemprop=description content="The first time YWallet is launched, it starts in &ldquo;Simple Mode&rdquo; where only the basic UI elements are shown.
+ Account Information Transaction History Contacts  To show the rest of the UI, switch to &ldquo;Advanced Mode&rdquo; in the application settings">
 <meta itemprop=dateModified content="2022-04-05T09:38:19+08:00">
-<meta itemprop=wordCount content="28">
+<meta itemprop=wordCount content="39">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Server">
-<meta name=twitter:description content="Choose the server that the wallet connects to
- Lightwalletd is the server deployment sponsored by the zcash organization Enter the URL of your own deployment. For example, https://lwd.example.com:9067  ">
+<meta name=twitter:title content="UI Mode">
+<meta name=twitter:description content="The first time YWallet is launched, it starts in &ldquo;Simple Mode&rdquo; where only the basic UI elements are shown.
+ Account Information Transaction History Contacts  To show the rest of the UI, switch to &ldquo;Advanced Mode&rdquo; in the application settings">
 <link rel=preload href=/zwallet/scss/main.min.6a5aa9d4f1e93a98b35398958491e943313a7a244ee6556d52a2b5541ac52479.css as=style>
 <link href=/zwallet/scss/main.min.6a5aa9d4f1e93a98b35398958491e943313a7a244ee6556d52a2b5541ac52479.css rel=stylesheet integrity>
 <script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
@@ -69,11 +67,11 @@ Enter the URL of your own …">
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zwalletdocs-li>
 <a href=/zwallet/docs/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id=m-zwalletdocs><span>Documentation</span></a>
 <ul class=ul-1>
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-zwalletdocsgetting-started-li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zwalletdocsgetting-started-li>
 <a href=/zwallet/docs/getting-started/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zwalletdocsgetting-started><span>Getting Started</span></a>
 <ul class="ul-2 foldable">
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsgetting-startedui_mode-li>
-<a href=/zwallet/docs/getting-started/ui_mode/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsgetting-startedui_mode><span>UI Mode</span></a>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-zwalletdocsgetting-startedui_mode-li>
+<a href=/zwallet/docs/getting-started/ui_mode/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsgetting-startedui_mode><span class=td-sidebar-nav-active-item>UI Mode</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsgetting-startedfirst-account-li>
 <a href=/zwallet/docs/getting-started/first-account/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsgetting-startedfirst-account><span>Your first account</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsgetting-startedaccount-summary-li>
@@ -135,11 +133,11 @@ Enter the URL of your own …">
 <a href=/zwallet/docs/advanced/batch-save/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedbatch-save><span>Batch Save/Load</span></a>
 </li>
 </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zwalletdocssettings-li>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-zwalletdocssettings-li>
 <a href=/zwallet/docs/settings/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zwalletdocssettings><span>Settings</span></a>
 <ul class="ul-2 foldable">
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-zwalletdocssettingsserver-li>
-<a href=/zwallet/docs/settings/server/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-zwalletdocssettingsserver><span class=td-sidebar-nav-active-item>Server</span></a>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocssettingsserver-li>
+<a href=/zwallet/docs/settings/server/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocssettingsserver><span>Server</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocssettingstheme-li>
 <a href=/zwallet/docs/settings/theme/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocssettingstheme><span>Theme</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocssettingsauto-shield-li>
@@ -163,7 +161,7 @@ Enter the URL of your own …">
 </aside>
 <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a id=print href=https://hhanh00.github.io/zwallet/docs/settings/_print/><i class="fa fa-print fa-fw"></i> Print entire section</a>
+<a id=print href=https://hhanh00.github.io/zwallet/docs/getting-started/_print/><i class="fa fa-print fa-fw"></i> Print entire section</a>
 </div>
 </aside>
 <main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
@@ -173,23 +171,27 @@ Enter the URL of your own …">
 <a href=https://hhanh00.github.io/zwallet/docs/>Documentation</a>
 </li>
 <li class=breadcrumb-item>
-<a href=https://hhanh00.github.io/zwallet/docs/settings/>Settings</a>
+<a href=https://hhanh00.github.io/zwallet/docs/getting-started/>Getting Started</a>
 </li>
 <li class="breadcrumb-item active" aria-current=page>
-<a href=https://hhanh00.github.io/zwallet/docs/settings/server/>Server</a>
+<a href=https://hhanh00.github.io/zwallet/docs/getting-started/ui_mode/>UI Mode</a>
 </li>
 </ol>
 </nav>
 <div class=td-content>
-<h1>Server</h1>
+<h1>UI Mode</h1>
 <header class=article-meta>
 </header>
-<img src=../img/IMG_0099.PNG>
-<p>Choose the server that the wallet connects to</p>
-<ol>
-<li>Lightwalletd is the server deployment sponsored by the zcash organization</li>
-<li>Enter the URL of your own deployment. For example, <code>https://lwd.example.com:9067</code></li>
-</ol>
+<p>The first time YWallet is launched, it starts in &ldquo;Simple Mode&rdquo;
+where only the basic UI elements are shown.</p>
+<ul>
+<li>Account Information</li>
+<li>Transaction History</li>
+<li>Contacts</li>
+</ul>
+<p>To show the rest of the UI, switch to &ldquo;Advanced Mode&rdquo; in the
+application settings</p>
+<img class=img srcset="../img/2022-04-05_9-31-05.png 2x">
 </div>
 </main>
 </div>

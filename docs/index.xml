@@ -474,7 +474,17 @@ a line&lt;/p>
 &lt;ul>
 &lt;li>USB drive is safer than Cloud storage but in any case, the files
 do not contain any information that could be used to reveal your secret key&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Watch Only</title><link>https://hhanh00.github.io/zwallet/docs/account/watch-only/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/watch-only/</guid><description>
+&lt;/ul></description></item><item><title>Docs: UI Mode</title><link>https://hhanh00.github.io/zwallet/docs/getting-started/ui_mode/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/getting-started/ui_mode/</guid><description>
+&lt;p>The first time YWallet is launched, it starts in &amp;ldquo;Simple Mode&amp;rdquo;
+where only the basic UI elements are shown.&lt;/p>
+&lt;ul>
+&lt;li>Account Information&lt;/li>
+&lt;li>Transaction History&lt;/li>
+&lt;li>Contacts&lt;/li>
+&lt;/ul>
+&lt;p>To show the rest of the UI, switch to &amp;ldquo;Advanced Mode&amp;rdquo; in the
+application settings&lt;/p>
+&lt;img class="img" srcset="../img/2022-04-05_9-31-05.png 2x"></description></item><item><title>Docs: Watch Only</title><link>https://hhanh00.github.io/zwallet/docs/account/watch-only/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/watch-only/</guid><description>
 &lt;p>You can turn a regular account into a watch-only account. This prevents
 you or anyone from spending from it. You will still be able to receive coins
 and monitor the balance.&lt;/p>
