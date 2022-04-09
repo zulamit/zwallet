@@ -10,4 +10,9 @@ img {
     max-width: 100%;
 }
 
-  
+.img-bordered {
+    border-width: 4px;
+    border-radius: 20px;
+    border-style: solid;
+    padding: 16px;
+}
