@@ -578,7 +578,7 @@ attempt to rebuild your database and &lt;em>may&lt;/em> leave it in a worse
 state than it is.&lt;/p>
 &lt;p>Please read and follow these instructions carefully:&lt;/p>
 &lt;ol>
-&lt;li>Go to the About Page&lt;/li>
+&lt;li>Go to the About Page. &lt;strong>Make sure you have version 1.2.3 or above&lt;/strong>&lt;/li>
 &lt;li>Long Press on the version number&lt;/li>
 &lt;li>Confirm you want to reset the app&lt;/li>
 &lt;li>Close and &lt;strong>restart&lt;/strong> the app. Because of app store policies,
