@@ -97,6 +97,7 @@ This is the multi-page printable view of this section.
 <li>4.7: <a href=#pg-dccbc9466d63e60ae98edb30e20fe45f>Cold Storage</a></li>
 <li>4.8: <a href=#pg-d6784684a17c49c034cc572553f7f83c>Sub-Account</a></li>
 <li>4.9: <a href=#pg-0887402f9129bda26b9d56b4dc411540>Batch Save/Load</a></li>
+<li>4.10: <a href=#pg-1085d42ec835dc38f71fd1f97e05088b>Reset</a></li>
 </ul>
 <li>5: <a href=#pg-c0a48f79d590b3d568daea4e981585f2>Settings</a></li>
 <ul>
@@ -869,6 +870,38 @@ Note: Every backup gets its unique encryption key (even if the accounts are the 
 <li>Enter or paste the encryption key</li>
 <li>Load the backup file</li>
 </ol>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-1085d42ec835dc38f71fd1f97e05088b>4.10 - Reset</h1>
+<p>After a major upgrade, the app may exhibit incorrect behavior.
+If this happens, the easiest way to fix the issue
+is to uninstall, reinstall and restore from seed.</p>
+<blockquote>
+<p>You should always have a safe copy of your seed phrase</p>
+</blockquote>
+<p>If your phone or computer crashes and you don&rsquo;t have the seed phrase,
+your funds are <strong>LOST</strong>.</p>
+<p>But if you really don&rsquo;t have the seed phrase and the app is still working
+you can try resetting it by following the instructions below.</p>
+<p>Resetting the app should be done as a last resort as it will
+attempt to rebuild your database and <em>may</em> leave it in a worse
+state than it is.</p>
+<p>Please read and follow these instructions carefully:</p>
+<ol>
+<li>Go to the About Page</li>
+<li>Long Press on the version number</li>
+<li>Confirm you want to reset the app</li>
+<li>Close and <strong>restart</strong> the app. Because of app store policies,
+an app is not allowed to restart programatically. Make sure you
+have closed the app. The app shows the &ldquo;Loading&rdquo; screen on
+restart</li>
+<li>Reselect your current account</li>
+<li>Rescan</li>
+</ol>
+<p><img class=img srcset="../img/2022-04-12_7-02-30.png 2x">
+<img class=img srcset="../img/2022-04-12_7-03-25.png 2x">
+<img class=img srcset="../img/2022-04-12_7-04-09.png 2x">
+</p>
 </div>
 <div class=td-content style=page-break-before:always>
 <h1 id=pg-c0a48f79d590b3d568daea4e981585f2>5 - Settings</h1>

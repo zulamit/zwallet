@@ -227,4 +227,33 @@ Note: Every backup gets its unique encryption key (even if the accounts are the 
 &lt;ol>
 &lt;li>Enter or paste the encryption key&lt;/li>
 &lt;li>Load the backup file&lt;/li>
-&lt;/ol></description></item></channel></rss>
+&lt;/ol></description></item><item><title>Docs: Reset</title><link>https://hhanh00.github.io/zwallet/docs/advanced/reset/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/reset/</guid><description>
+&lt;p>After a major upgrade, the app may exhibit incorrect behavior.
+If this happens, the easiest way to fix the issue
+is to uninstall, reinstall and restore from seed.&lt;/p>
+&lt;blockquote>
+&lt;p>You should always have a safe copy of your seed phrase&lt;/p>
+&lt;/blockquote>
+&lt;p>If your phone or computer crashes and you don&amp;rsquo;t have the seed phrase,
+your funds are &lt;strong>LOST&lt;/strong>.&lt;/p>
+&lt;p>But if you really don&amp;rsquo;t have the seed phrase and the app is still working
+you can try resetting it by following the instructions below.&lt;/p>
+&lt;p>Resetting the app should be done as a last resort as it will
+attempt to rebuild your database and &lt;em>may&lt;/em> leave it in a worse
+state than it is.&lt;/p>
+&lt;p>Please read and follow these instructions carefully:&lt;/p>
+&lt;ol>
+&lt;li>Go to the About Page&lt;/li>
+&lt;li>Long Press on the version number&lt;/li>
+&lt;li>Confirm you want to reset the app&lt;/li>
+&lt;li>Close and &lt;strong>restart&lt;/strong> the app. Because of app store policies,
+an app is not allowed to restart programatically. Make sure you
+have closed the app. The app shows the &amp;ldquo;Loading&amp;rdquo; screen on
+restart&lt;/li>
+&lt;li>Reselect your current account&lt;/li>
+&lt;li>Rescan&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img class="img" srcset="../img/2022-04-12_7-02-30.png 2x">
+&lt;img class="img" srcset="../img/2022-04-12_7-03-25.png 2x">
+&lt;img class="img" srcset="../img/2022-04-12_7-04-09.png 2x">
+&lt;/p></description></item></channel></rss>
