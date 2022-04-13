@@ -28,6 +28,8 @@ The same concept is applicable to Zcash.
 
 ## Preparing the unsigned transaction
 
+{{< img2 2022-04-13_17-52-43.png >}}
+
 If the account does not have a secret key either because it was restored
 from viewing key or because it was converted to Cold Storage,
 the button Send is dimmed. Instead of signing and broadcasting a transaction,
@@ -41,8 +43,13 @@ application.
 
 {{< img IMG_0094.PNG >}}
 
-
 ## Sign
+
+There are two options for signing the transaction. You can either use
+a command line tool (with no GUI) or use another phone/device with 
+YWallet that you keep offline.
+
+### Command Line Tool
 
 You can build the `sign` app from its [source code](https://github.com/hhanh00/zcash-sync)
 
@@ -72,6 +79,12 @@ sign tx.json tx.raw
 ```
 
 Then copy `tx.raw` back to a USB drive (or Cloud storage)
+
+### Offline Ywallet
+
+Use the "Sign" menu. It will ask you to open the unsigned transaction file
+and proceed to sign it. If the current account contains the secret key
+it will create a raw transaction and offer you to save it.
 
 ## Broadcast
 
