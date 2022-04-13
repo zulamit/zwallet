@@ -4,7 +4,7 @@ balance to the shielded address when it is greater than a
 configurable amount.&lt;/p>
 &lt;p>It runs when it detects a change in your balance and
 schedules a transaction immediately.&lt;/p>
-&lt;img src="../img/IMG_0088.PNG">
+&lt;img class="img" src="../img/IMG_0088.PNG">
 &lt;ol>
 &lt;li>Auto-Shield threshold. A value of 0 disables auto shielding&lt;/li>
 &lt;li>By default, shield when you pay. It can be overridden
@@ -24,12 +24,12 @@ transparent address belongs to you&lt;/li>
 &lt;p>By default, every received note that has enough confirmations can
 be picked in an outgoing transaction. With Coin Control, you can
 exclude some notes from being selected.&lt;/p>
-&lt;img src="../img/IMG_0047.PNG">
+&lt;img class="img" src="../img/IMG_0047.PNG">
 &lt;ol>
 &lt;li>Tap to select/deselect notes. Notes that are selected will &lt;strong>not&lt;/strong>
 be spent&lt;/li>
 &lt;/ol></description></item><item><title>Docs: Send Options</title><link>https://hhanh00.github.io/zwallet/docs/advanced/advanced-send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/advanced-send/</guid><description>
-&lt;img src="../img/IMG_0140.PNG">
+&lt;img class="img" src="../img/IMG_0140.PNG">
 &lt;ol>
 &lt;li>Show/Hide advanced options&lt;/li>
 &lt;li>Encrypted Memo&lt;/li>
@@ -49,7 +49,7 @@ shielded address.&lt;/li>
 &lt;/ul></description></item><item><title>Docs: Budget</title><link>https://hhanh00.github.io/zwallet/docs/advanced/budget/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/budget/</guid><description>
 &lt;p>The budget page shows your largest spending/payments and
 a chart of your past account balance.&lt;/p>
-&lt;img src="../img/IMG_0160.PNG">
+&lt;img class="img" src="../img/IMG_0160.PNG">
 &lt;p>The table shows the top 5 addresses where you spent the most.&lt;/p>
 &lt;ol>
 &lt;li>The length of each segment is proportional to its amount&lt;/li>
@@ -75,7 +75,7 @@ increased&lt;/li>
 &lt;/ul>
 &lt;p>The app tracks wallet in and outflows and evaluates profit and loss
 based on &lt;a href="https://en.wikipedia.org/wiki/Average_cost_method">the average cost method&lt;/a>.&lt;/p>
-&lt;img src="../img/IMG_0161.PNG">
+&lt;img class="img" src="../img/IMG_0161.PNG">
 &lt;ol>
 &lt;li>Historical Price&lt;/li>
 &lt;li>Realized P/L&lt;/li>
@@ -95,14 +95,14 @@ purchase or sale price. As a result, the P/L is only indicative&lt;/li>
 &lt;/ul></description></item><item><title>Docs: MultiPay</title><link>https://hhanh00.github.io/zwallet/docs/advanced/multipay/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/multipay/</guid><description>
 &lt;p>MultiPay allows you to create a single payment transaction with
 multiple recipients.&lt;/p>
-&lt;img src="../img/IMG_0089.PNG">
+&lt;img class="img" src="../img/IMG_0089.PNG">
 &lt;ol>
 &lt;li>Tap to add a recipient (&amp;ldquo;Add&amp;rdquo;)&lt;/li>
 &lt;li>Finish and send the transaction (&amp;ldquo;Send&amp;rdquo;)&lt;/li>
 &lt;/ol>
 &lt;h2 id="add-a-recipient">Add a recipient&lt;/h2>
 &lt;p>After tapping the button &amp;ldquo;+&amp;rdquo;&lt;/p>
-&lt;img src="../img/IMG_0090.PNG">
+&lt;img class="img" src="../img/IMG_0090.PNG">
 &lt;ol>
 &lt;li>Recipient address or contact name&lt;/li>
 &lt;li>Amount&lt;/li>
@@ -110,14 +110,14 @@ multiple recipients.&lt;/p>
 &lt;li>Add the recipient to the list&lt;/li>
 &lt;/ol>
 &lt;h2 id="recipients">Recipients&lt;/h2>
-&lt;img src="../img/IMG_0091.PNG">
+&lt;img class="img" src="../img/IMG_0091.PNG">
 &lt;ol>
 &lt;li>Address&lt;/li>
 &lt;li>Amount&lt;/li>
 &lt;/ol>
 &lt;h2 id="send">Send&lt;/h2>
 &lt;p>After pressing the button &amp;ldquo;Send&amp;rdquo;&lt;/p>
-&lt;img src="../img/IMG_0092.PNG">
+&lt;img class="img" src="../img/IMG_0092.PNG">
 &lt;ol>
 &lt;li>Confirm and send the transaction&lt;/li>
 &lt;/ol>
@@ -143,6 +143,7 @@ that is isolated from the Internet.&lt;/p>
 &lt;p>&lt;a href="https://en.bitcoin.it/wiki/Cold_storage">Cold Storage in the context of Bitcoin&lt;/a>&lt;/p>
 &lt;p>The same concept is applicable to Zcash.&lt;/p>
 &lt;h2 id="preparing-the-unsigned-transaction">Preparing the unsigned transaction&lt;/h2>
+&lt;img class="img" srcset="../img/2022-04-13_17-52-43.png 2x">
 &lt;p>If the account does not have a secret key either because it was restored
 from viewing key or because it was converted to Cold Storage,
 the button Send is dimmed. Instead of signing and broadcasting a transaction,
@@ -151,8 +152,12 @@ the Send page prepares an unsigned transaction.&lt;/p>
 a USB key, or to the Cloud.&lt;/p>
 &lt;p>The transaction file must be copied to the computer that has the &lt;code>sign&lt;/code>
 application.&lt;/p>
-&lt;img src="../img/IMG_0094.PNG">
+&lt;img class="img" src="../img/IMG_0094.PNG">
 &lt;h2 id="sign">Sign&lt;/h2>
+&lt;p>There are two options for signing the transaction. You can either use
+a command line tool (with no GUI) or use another phone/device with
+YWallet that you keep offline.&lt;/p>
+&lt;h3 id="command-line-tool">Command Line Tool&lt;/h3>
 &lt;p>You can build the &lt;code>sign&lt;/code> app from its &lt;a href="https://github.com/hhanh00/zcash-sync">source code&lt;/a>&lt;/p>
 &lt;p>To run the &lt;code>sign&lt;/code> app, you need to create an &lt;code>.env&lt;/code> file that has
 a line&lt;/p>
@@ -164,10 +169,14 @@ a line&lt;/p>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>For example,&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">sign tx.json tx.raw
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Then copy &lt;code>tx.raw&lt;/code> back to a USB drive (or Cloud storage)&lt;/p>
+&lt;h3 id="offline-ywallet">Offline Ywallet&lt;/h3>
+&lt;p>Use the &amp;ldquo;Sign&amp;rdquo; menu. It will ask you to open the unsigned transaction file
+and proceed to sign it. If the current account contains the secret key
+it will create a raw transaction and offer you to save it.&lt;/p>
 &lt;h2 id="broadcast">Broadcast&lt;/h2>
-&lt;p>&lt;img src="../img/IMG_0095.PNG">
-&lt;img src="../img/IMG_0097.PNG">
-&lt;img src="../img/IMG_0098.PNG">
+&lt;p>&lt;img class="img" src="../img/IMG_0095.PNG">
+&lt;img class="img" src="../img/IMG_0097.PNG">
+&lt;img class="img" src="../img/IMG_0098.PNG">
 &lt;/p>
 &lt;ol>
 &lt;li>Select &amp;ldquo;Broadcast&amp;rdquo; from the app menu&lt;/li>
@@ -186,7 +195,7 @@ and receive coins from the dashboard shortcuts, the funds
 will be directed to the main account.&lt;/p>
 &lt;p>The main account is the last account you selected for that
 particular coin.&lt;/p>
-&lt;img src="../img/Screenshot_20220403-144433.jpg">
+&lt;img class="img" src="../img/Screenshot_20220403-144433.jpg">
 &lt;h2 id="sub-accounts">Sub Accounts&lt;/h2>
 &lt;p>A seed phrase can derive a multitude of accounts. By default,
 Ywallet uses only the &lt;em>first&lt;/em> account.&lt;/p>
@@ -195,9 +204,9 @@ same seed, you can tell it to use additional account indexes.&lt;/p>
 &lt;p>The first account is at index 0.&lt;/p>
 &lt;p>To create a sub-account for the current selected account, long press
 the &amp;lsquo;+&amp;rsquo; button, and select &amp;ldquo;New Sub-account&amp;rdquo;.&lt;/p>
-&lt;img src="../img/Screenshot_20220403-144441.jpg">
+&lt;img class="img" src="../img/Screenshot_20220403-144441.jpg">
 &lt;p>You&amp;rsquo;ll be asked to provide a new name:&lt;/p>
-&lt;img src="../img/Screenshot_20220403-144452.jpg">
+&lt;img class="img" src="../img/Screenshot_20220403-144452.jpg">
 &lt;p>You can repeat this operation multiple times if you need more
 sub-accounts.&lt;/p>
 &lt;p>Important Note: Ywallet recommends using a seed per account and not
@@ -212,9 +221,9 @@ In case you want to give a unique address, diversified addresses
 is needed for recovery but it is not part of the seed phrase.&lt;/p>
 &lt;p>Ywallet detects this format automatically but be aware that other
 wallets will not consider it valid.&lt;/p>
-&lt;img src="../img/Screenshot_20220403-144639.jpg"></description></item><item><title>Docs: Batch Save/Load</title><link>https://hhanh00.github.io/zwallet/docs/advanced/batch-save/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/batch-save/</guid><description>
+&lt;img class="img" src="../img/Screenshot_20220403-144639.jpg"></description></item><item><title>Docs: Batch Save/Load</title><link>https://hhanh00.github.io/zwallet/docs/advanced/batch-save/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/batch-save/</guid><description>
 &lt;h2 id="save-all-your-accounts">Save all your Accounts&lt;/h2>
-&lt;img src="../img/Screenshot_20220403-144700.jpg">
+&lt;img class="img" src="../img/Screenshot_20220403-144700.jpg">
 &lt;ol>
 &lt;li>&lt;strong>Save the encryption key!&lt;/strong>&lt;/li>
 &lt;li>Save the backup file&lt;/li>
@@ -223,7 +232,7 @@ wallets will not consider it valid.&lt;/p>
 the encryption key.
 Note: Every backup gets its unique encryption key (even if the accounts are the same)&lt;/p>
 &lt;h2 id="restore-a-full-backup">Restore a full backup&lt;/h2>
-&lt;img src="../img/Screenshot_20220403-144800.jpg">
+&lt;img class="img" src="../img/Screenshot_20220403-144800.jpg">
 &lt;ol>
 &lt;li>Enter or paste the encryption key&lt;/li>
 &lt;li>Load the backup file&lt;/li>

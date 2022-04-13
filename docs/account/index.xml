@@ -1,6 +1,6 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Accounts</title><link>https://hhanh00.github.io/zwallet/docs/account/</link><description>Recent content in Accounts on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://hhanh00.github.io/zwallet/docs/account/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Account Manager</title><link>https://hhanh00.github.io/zwallet/docs/account/manager/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/manager/</guid><description>
 &lt;p>Open the account manager by selecting &amp;ldquo;Accounts&amp;rdquo; in the app menu.&lt;/p>
-&lt;img src="../img/IMG_0057.PNG">
+&lt;img class="img" src="../img/IMG_0057.PNG">
 &lt;ol>
 &lt;li>Name&lt;/li>
 &lt;li>Total Balance&lt;/li>
@@ -21,7 +21,7 @@ and the coins it contains.&lt;/p>
 &lt;blockquote>
 &lt;p>The account backup is the 24 words (in sequence) displayed on the Backup page (&lt;strong>seed phrase&lt;/strong>)&lt;/p>
 &lt;/blockquote>
-&lt;img src="../img/IMG_0071.PNG">
+&lt;img class="img" src="../img/IMG_0071.PNG">
 &lt;p>When you create a new account, the app will show you the Backup page automatically.
 If you need to recall that page, open the app menu and select &amp;ldquo;Backup&amp;rdquo;.&lt;/p>
 &lt;p>The content of the Backup page varies depending on the type of account:&lt;/p>
@@ -32,7 +32,7 @@ If you need to recall that page, open the app menu and select &amp;ldquo;Backup&
 &lt;/ul>
 &lt;h2 id="restore">Restore&lt;/h2>
 &lt;p>To restore an account, go to the &amp;ldquo;Accounts&amp;rdquo; page and click on the button &amp;ldquo;+&amp;rdquo;.&lt;/p>
-&lt;img src="../img/IMG_0072.PNG">
+&lt;img class="img" src="../img/IMG_0072.PNG">
 &lt;ol>
 &lt;li>Enter the account name&lt;/li>
 &lt;li>Enter the seed phrase, secret key, or viewing key&lt;/li>
@@ -45,7 +45,7 @@ the app will ask you if you want to rescan the blockchain if needed.&lt;/p>
 &lt;/blockquote></description></item><item><title>Docs: Notes</title><link>https://hhanh00.github.io/zwallet/docs/account/notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/notes/</guid><description>
 &lt;p>The Note Tab shows your received notes.&lt;/p>
 &lt;h2 id="display-and-sorting">Display and Sorting&lt;/h2>
-&lt;img src="../img/IMG_0058.PNG">
+&lt;img class="img" src="../img/IMG_0058.PNG">
 &lt;ol>
 &lt;li>Tap to toggle the display of Height or Number of Confirmations&lt;/li>
 &lt;li>Tap to sort by Date/Time (switches between ascending, descending, and unsorted)&lt;/li>
@@ -53,16 +53,16 @@ the app will ask you if you want to rescan the blockchain if needed.&lt;/p>
 &lt;li>Larger notes appear in bolder typeface&lt;/li>
 &lt;/ol>
 &lt;h2 id="status">Status&lt;/h2>
-&lt;p>&lt;img src="../img/IMG_0080.PNG">
-&lt;img src="../img/IMG_0081.PNG">
+&lt;p>&lt;img class="img" src="../img/IMG_0080.PNG">
+&lt;img class="img" src="../img/IMG_0081.PNG">
 &lt;/p>
 &lt;ol>
 &lt;li>Notes spent in &lt;em>unconfirmed&lt;/em> transactions are crossed out&lt;/li>
 &lt;li>Notes that don&amp;rsquo;t have enough confirmations (3 by default) are dimmed&lt;/li>
 &lt;/ol>
 &lt;h2 id="navigation">Navigation&lt;/h2>
-&lt;p>&lt;img src="../img/IMG_0077.PNG">
-&lt;img src="../img/IMG_0059.PNG">
+&lt;p>&lt;img class="img" src="../img/IMG_0077.PNG">
+&lt;img class="img" src="../img/IMG_0059.PNG">
 &lt;/p>
 &lt;ol>
 &lt;li>Current Page&lt;/li>
@@ -73,7 +73,7 @@ the app will ask you if you want to rescan the blockchain if needed.&lt;/p>
 &lt;li>Adjust the Number of rows per page.
 You may have to scroll the footer to the left if your screen is too small.&lt;/li>
 &lt;/ol></description></item><item><title>Docs: Payment URI</title><link>https://hhanh00.github.io/zwallet/docs/account/payment_uri/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/payment_uri/</guid><description>
-&lt;img src="../img/IMG_0143.PNG">
+&lt;img class="img" src="../img/IMG_0143.PNG">
 &lt;p>The Receive/Payment URI page is for making QR codes that encode&lt;/p>
 &lt;ol>
 &lt;li>your receiving address (shielded or transparent)&lt;/li>
@@ -87,7 +87,7 @@ can also tap the QR code to refresh it.&lt;/p>
 &lt;h2 id="quick-actions">Quick Actions&lt;/h2>
 &lt;p>You can start a send/receive transaction directly from the app launcher / dashboard
 by long pressing the app icon.&lt;/p>
-&lt;img src="../img/IMG_0142.PNG">
+&lt;img class="img" src="../img/IMG_0142.PNG">
 &lt;h2 id="remarks">Remarks&lt;/h2>
 &lt;ul>
 &lt;li>When the app scans a QR code and detects a payment QR, it automatically
@@ -96,9 +96,9 @@ fills the amount and memo.&lt;/li>
 open the app.&lt;/li>
 &lt;/ul></description></item><item><title>Docs: Transactions</title><link>https://hhanh00.github.io/zwallet/docs/account/transactions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/transactions/</guid><description>
 &lt;p>The History Tab shows the transaction history.&lt;/p>
-&lt;p>&lt;img src="../img/IMG_0064.PNG">
-&lt;img src="../img/IMG_0065.PNG">
-&lt;img src="../img/IMG_0066.PNG">
+&lt;p>&lt;img class="img" src="../img/IMG_0064.PNG">
+&lt;img class="img" src="../img/IMG_0065.PNG">
+&lt;img class="img" src="../img/IMG_0066.PNG">
 &lt;/p>
 &lt;ol>
 &lt;li>Tap to toggle the display of height / confirmations&lt;/li>
@@ -117,12 +117,12 @@ You may have to scroll the footer to the left if your screen is too small.&lt;/l
 &lt;/ol>
 &lt;h2 id="transaction-details">Transaction Details&lt;/h2>
 &lt;p>Tap on a transaction to show the details of the transactions&lt;/p>
-&lt;img src="../img/Screenshot_20220403-144819.jpg">
+&lt;img class="img" src="../img/Screenshot_20220403-144819.jpg">
 &lt;ol>
 &lt;li>Opens the transaction in an external block explorer&lt;/li>
 &lt;/ol>
 &lt;h2 id="export-to-csv">Export to CSV&lt;/h2>
-&lt;img src="../img/IMG_0137.PNG">
+&lt;img class="img" src="../img/IMG_0137.PNG">
 &lt;ol>
 &lt;li>Click on the &amp;lsquo;Save&amp;rsquo; icon to export your transaction history as a CSV file&lt;/li>
 &lt;/ol>
@@ -143,7 +143,7 @@ a given date (1).&lt;/p>
 &lt;img class="img" srcset="../img/2022-04-04_0-33-39.png 2x">
 &lt;img class="img" srcset="../img/2022-04-04_0-39-26.png 2x">
 &lt;h2 id="scan-progress-status">Scan Progress Status&lt;/h2>
-&lt;img src="../img/IMG_0055.PNG">
+&lt;img class="img" src="../img/IMG_0055.PNG">
 &lt;ol>
 &lt;li>Current block height being processed&lt;/li>
 &lt;li>Latest block height&lt;/li>
@@ -156,8 +156,8 @@ you or anyone from spending from it. You will still be able to receive coins
 and monitor the balance.&lt;/p>
 &lt;p>Making an account watch-only is &lt;strong>NOT&lt;/strong> reversible and you must have a backup
 of the seed phrase to restore the account later.&lt;/p>
-&lt;p>&lt;img src="../img/IMG_0073.PNG">
-&lt;img src="../img/IMG_0074.PNG">
+&lt;p>&lt;img class="img" src="../img/IMG_0073.PNG">
+&lt;img class="img" src="../img/IMG_0074.PNG">
 &lt;/p>
 &lt;ol>
 &lt;li>Select the Cold Storage option from the app menu&lt;/li>

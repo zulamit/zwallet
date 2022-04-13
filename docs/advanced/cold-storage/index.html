@@ -24,13 +24,13 @@ The account owner moves the file to another computer that holds the secret key (
 On the offline computer, he signs the transaction and generate a now valid transaction that he saves to another file.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://hhanh00.github.io/zwallet/docs/advanced/cold-storage/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2022-04-13T09:25:08+08:00">
+<meta property="article:modified_time" content="2022-04-13T23:03:39+08:00">
 <meta itemprop=name content="Cold Storage">
 <meta itemprop=description content="In a cold storage transaction, the mobile account does not have the secret key needed for spending. However, it is able to build an unsigned transaction and export it as a file.
 The account owner moves the file to another computer that holds the secret key (preferably offline and air-gapped for security).
 On the offline computer, he signs the transaction and generate a now valid transaction that he saves to another file.">
-<meta itemprop=dateModified content="2022-04-13T09:25:08+08:00">
-<meta itemprop=wordCount content="329">
+<meta itemprop=dateModified content="2022-04-13T23:03:39+08:00">
+<meta itemprop=wordCount content="402">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:title content="Cold Storage">
 <meta name=twitter:description content="In a cold storage transaction, the mobile account does not have the secret key needed for spending. However, it is able to build an unsigned transaction and export it as a file.
@@ -170,7 +170,12 @@ On the offline computer, he signs the transaction and generate a now valid trans
 <div class=td-toc><nav id=TableOfContents>
 <ul>
 <li><a href=#preparing-the-unsigned-transaction>Preparing the unsigned transaction</a></li>
-<li><a href=#sign>Sign</a></li>
+<li><a href=#sign>Sign</a>
+<ul>
+<li><a href=#command-line-tool>Command Line Tool</a></li>
+<li><a href=#offline-ywallet>Offline Ywallet</a></li>
+</ul>
+</li>
 <li><a href=#broadcast>Broadcast</a></li>
 <li><a href=#remarks>Remarks</a></li>
 </ul>
@@ -209,6 +214,7 @@ that is isolated from the Internet.</p>
 <p><a href=https://en.bitcoin.it/wiki/Cold_storage>Cold Storage in the context of Bitcoin</a></p>
 <p>The same concept is applicable to Zcash.</p>
 <h2 id=preparing-the-unsigned-transaction>Preparing the unsigned transaction</h2>
+<img class=img srcset="../img/2022-04-13_17-52-43.png 2x">
 <p>If the account does not have a secret key either because it was restored
 from viewing key or because it was converted to Cold Storage,
 the button Send is dimmed. Instead of signing and broadcasting a transaction,
@@ -217,8 +223,12 @@ the Send page prepares an unsigned transaction.</p>
 a USB key, or to the Cloud.</p>
 <p>The transaction file must be copied to the computer that has the <code>sign</code>
 application.</p>
-<img src=../img/IMG_0094.PNG>
+<img class=img src=../img/IMG_0094.PNG>
 <h2 id=sign>Sign</h2>
+<p>There are two options for signing the transaction. You can either use
+a command line tool (with no GUI) or use another phone/device with
+YWallet that you keep offline.</p>
+<h3 id=command-line-tool>Command Line Tool</h3>
 <p>You can build the <code>sign</code> app from its <a href=https://github.com/hhanh00/zcash-sync>source code</a></p>
 <p>To run the <code>sign</code> app, you need to create an <code>.env</code> file that has
 a line</p>
@@ -230,10 +240,14 @@ a line</p>
 </code></pre></div><p>For example,</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sign tx.json tx.raw
 </code></pre></div><p>Then copy <code>tx.raw</code> back to a USB drive (or Cloud storage)</p>
+<h3 id=offline-ywallet>Offline Ywallet</h3>
+<p>Use the &ldquo;Sign&rdquo; menu. It will ask you to open the unsigned transaction file
+and proceed to sign it. If the current account contains the secret key
+it will create a raw transaction and offer you to save it.</p>
 <h2 id=broadcast>Broadcast</h2>
-<p><img src=../img/IMG_0095.PNG>
-<img src=../img/IMG_0097.PNG>
-<img src=../img/IMG_0098.PNG>
+<p><img class=img src=../img/IMG_0095.PNG>
+<img class=img src=../img/IMG_0097.PNG>
+<img class=img src=../img/IMG_0098.PNG>
 </p>
 <ol>
 <li>Select &ldquo;Broadcast&rdquo; from the app menu</li>
