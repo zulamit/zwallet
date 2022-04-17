@@ -77,7 +77,16 @@ exclude some notes from being selected.&lt;/p>
 &lt;ol>
 &lt;li>Tap to select/deselect notes. Notes that are selected will &lt;strong>not&lt;/strong>
 be spent&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Send Options</title><link>https://hhanh00.github.io/zwallet/docs/advanced/advanced-send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/advanced-send/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Message List</title><link>https://hhanh00.github.io/zwallet/docs/messages/center/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/center/</guid><description>
+&lt;img class="img" srcset="../img/2022-04-16_21-36-54.png 2x">
+&lt;p>The message list is formatted as a regular inbox.&lt;/p>
+&lt;ol>
+&lt;li>Messages in red are outgoing, messages in green are incoming.&lt;/li>
+&lt;li>The subject of the message (or the first ~20 characters of the body)&lt;/li>
+&lt;li>The body of the message&lt;/li>
+&lt;li>Unread/Read indicator. Messages in bold are unread.&lt;/li>
+&lt;/ol>
+&lt;p>Tap on a message to zoom in.&lt;/p></description></item><item><title>Docs: Send Options</title><link>https://hhanh00.github.io/zwallet/docs/advanced/advanced-send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/advanced/advanced-send/</guid><description>
 &lt;img class="img" src="../img/IMG_0140.PNG">
 &lt;ol>
 &lt;li>Show/Hide advanced options&lt;/li>
@@ -112,6 +121,19 @@ a chart of your past account balance.&lt;/p>
 &lt;li>Total amount sent to the address&lt;/li>
 &lt;li>Tap and hold to show the exact balance at a given time&lt;/li>
 &lt;li>The time range can be adjusted on the Settings page&lt;/li>
+&lt;/ol></description></item><item><title>Docs: Message Details</title><link>https://hhanh00.github.io/zwallet/docs/messages/details/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/details/</guid><description>
+&lt;img class="img" srcset="../img/2022-04-16_21-37-49.png 2x">
+&lt;h2 id="navigation">Navigation&lt;/h2>
+&lt;ol>
+&lt;li>Go to the previous message in same thread (i.e. same subject)&lt;/li>
+&lt;li>Go to the previous message&lt;/li>
+&lt;li>Go to the next message&lt;/li>
+&lt;li>Go to the next message in same thread (i.e. same subject)&lt;/li>
+&lt;/ol>
+&lt;h2 id="reply">Reply&lt;/h2>
+&lt;ol start="5">
+&lt;li>If the message has a sender, click on this button to reply to it.
+It will open a send dialog box with the subject and recipient prepopulated.&lt;/li>
 &lt;/ol></description></item><item><title>Docs: Notes</title><link>https://hhanh00.github.io/zwallet/docs/account/notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/notes/</guid><description>
 &lt;p>The Note Tab shows your received notes.&lt;/p>
 &lt;h2 id="display-and-sorting">Display and Sorting&lt;/h2>
@@ -225,7 +247,16 @@ by long pressing the app icon.&lt;/p>
 fills the amount and memo.&lt;/li>
 &lt;li>When you scan a Payment URI with the iOS Camera app, it will offer to
 open the app.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Transactions</title><link>https://hhanh00.github.io/zwallet/docs/account/transactions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/transactions/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Send a Message</title><link>https://hhanh00.github.io/zwallet/docs/messages/send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/send/</guid><description>
+&lt;img class="img" srcset="../img/2022-04-16_21-34-25.png 2x">
+&lt;h2 id="send">Send&lt;/h2>
+&lt;p>Sending a message is done through the regular &amp;ldquo;Send YEC/ZEC&amp;rdquo; dialog box.&lt;/p>
+&lt;ol>
+&lt;li>Check if you want to include your address&lt;/li>
+&lt;li>Subject&lt;/li>
+&lt;li>Body&lt;/li>
+&lt;/ol>
+&lt;p>You can also attach some coins with the message.&lt;/p></description></item><item><title>Docs: Transactions</title><link>https://hhanh00.github.io/zwallet/docs/account/transactions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/transactions/</guid><description>
 &lt;p>The History Tab shows the transaction history.&lt;/p>
 &lt;p>&lt;img class="img" src="../img/IMG_0064.PNG">
 &lt;img class="img" src="../img/IMG_0065.PNG">
@@ -399,7 +430,13 @@ multiple recipients.&lt;/p>
 &lt;li>Contacts are replaced by their addresses&lt;/li>
 &lt;li>Notes can have an amount equal to 0&lt;/li>
 &lt;li>Multipay transactions can be empty&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Synchronization</title><link>https://hhanh00.github.io/zwallet/docs/account/sync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/sync/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Settings</title><link>https://hhanh00.github.io/zwallet/docs/messages/settings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/settings/</guid><description>
+&lt;img class="img" srcset="../img/2022-04-16_21-35-32.png 2x">
+&lt;h2 id="settings">Settings&lt;/h2>
+&lt;p>The only new setting for Messages is the option
+to include your address by default.
+If enabled, the send dialog box will have
+this option pre-checked.&lt;/p></description></item><item><title>Docs: Synchronization</title><link>https://hhanh00.github.io/zwallet/docs/account/sync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/sync/</guid><description>
 &lt;p>The app keeps up to date with the blockchain automatically. It checks
 the current status of the blockchain every 15s.&lt;/p>
 &lt;h2 id="rescan">Rescan&lt;/h2>

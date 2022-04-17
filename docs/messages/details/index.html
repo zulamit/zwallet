@@ -14,25 +14,27 @@
 <link rel=icon type=image/png href=/zwallet/favicons/android-96x96.png sizes=96x96>
 <link rel=icon type=image/png href=/zwallet/favicons/android-144x144.png sizes=144x144>
 <link rel=icon type=image/png href=/zwallet/favicons/android-192x192.png sizes=192x192>
-<title>Chart Range | ZWallet</title>
+<title>Message Details | ZWallet</title>
 <meta name=description content="
 
+Navigation
 
-Choose the chart time range. They all end at the current date.
-By default, charts span 1 year (365 days) and can be set to
-1 month (30 days), 3 …">
-<meta property="og:title" content="Chart Range">
-<meta property="og:description" content=" Choose the chart time range. They all end at the current date. By default, charts span 1 year (365 days) and can be set to 1 month (30 days), 3 months (90 days), and 6 months (180 days).  ">
+Go to the previous message in same thread (i.e. same subject)
+Go to the previous message
+Go to the next message
+Go to the next message …">
+<meta property="og:title" content="Message Details">
+<meta property="og:description" content="Navigation  Go to the previous message in same thread (i.e. same subject) Go to the previous message Go to the next message Go to the next message in same thread (i.e. same subject)  Reply If the message has a sender, click on this button to reply to it. It will open a send dialog box with the subject and recipient prepopulated.  ">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://hhanh00.github.io/zwallet/docs/settings/chart-range/"><meta property="article:section" content="docs">
+<meta property="og:url" content="https://hhanh00.github.io/zwallet/docs/messages/details/"><meta property="article:section" content="docs">
 <meta property="article:modified_time" content="2022-04-17T18:09:31+08:00">
-<meta itemprop=name content="Chart Range">
-<meta itemprop=description content=" Choose the chart time range. They all end at the current date. By default, charts span 1 year (365 days) and can be set to 1 month (30 days), 3 months (90 days), and 6 months (180 days).  ">
+<meta itemprop=name content="Message Details">
+<meta itemprop=description content="Navigation  Go to the previous message in same thread (i.e. same subject) Go to the previous message Go to the next message Go to the next message in same thread (i.e. same subject)  Reply If the message has a sender, click on this button to reply to it. It will open a send dialog box with the subject and recipient prepopulated.  ">
 <meta itemprop=dateModified content="2022-04-17T18:09:31+08:00">
-<meta itemprop=wordCount content="38">
+<meta itemprop=wordCount content="61">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Chart Range">
-<meta name=twitter:description content=" Choose the chart time range. They all end at the current date. By default, charts span 1 year (365 days) and can be set to 1 month (30 days), 3 months (90 days), and 6 months (180 days).  ">
+<meta name=twitter:title content="Message Details">
+<meta name=twitter:description content="Navigation  Go to the previous message in same thread (i.e. same subject) Go to the previous message Go to the next message Go to the next message in same thread (i.e. same subject)  Reply If the message has a sender, click on this button to reply to it. It will open a send dialog box with the subject and recipient prepopulated.  ">
 <link rel=preload href=/zwallet/scss/main.min.03e626fddd6a63583ea24f3a8de08e05527d6883af96172be8057ced956d40ca.css as=style>
 <link href=/zwallet/scss/main.min.03e626fddd6a63583ea24f3a8de08e05527d6883af96172be8057ced956d40ca.css rel=stylesheet integrity>
 <script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
@@ -109,13 +111,13 @@ By default, charts span 1 year (365 days) and can be set to
 <a href=/zwallet/docs/contact/save/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocscontactsave><span>Save to Blockchain</span></a>
 </li>
 </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-zwalletdocsmessages-li>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zwalletdocsmessages-li>
 <a href=/zwallet/docs/messages/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zwalletdocsmessages><span>Messages</span></a>
 <ul class="ul-2 foldable">
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsmessagescenter-li>
 <a href=/zwallet/docs/messages/center/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsmessagescenter><span>Message List</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsmessagesdetails-li>
-<a href=/zwallet/docs/messages/details/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsmessagesdetails><span>Message Details</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-zwalletdocsmessagesdetails-li>
+<a href=/zwallet/docs/messages/details/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsmessagesdetails><span class=td-sidebar-nav-active-item>Message Details</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsmessagessend-li>
 <a href=/zwallet/docs/messages/send/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsmessagessend><span>Send a Message</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocsmessagessettings-li>
@@ -147,7 +149,7 @@ By default, charts span 1 year (365 days) and can be set to
 <a href=/zwallet/docs/advanced/reset/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocsadvancedreset><span>Reset</span></a>
 </li>
 </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zwalletdocssettings-li>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-zwalletdocssettings-li>
 <a href=/zwallet/docs/settings/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zwalletdocssettings><span>Settings</span></a>
 <ul class="ul-2 foldable">
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocssettingsserver-li>
@@ -158,8 +160,8 @@ By default, charts span 1 year (365 days) and can be set to
 <a href=/zwallet/docs/settings/auto-shield/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocssettingsauto-shield><span>Auto-Shield</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocssettingscurrency-li>
 <a href=/zwallet/docs/settings/currency/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocssettingscurrency><span>Fiat Currency</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-zwalletdocssettingschart-range-li>
-<a href=/zwallet/docs/settings/chart-range/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-zwalletdocssettingschart-range><span class=td-sidebar-nav-active-item>Chart Range</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocssettingschart-range-li>
+<a href=/zwallet/docs/settings/chart-range/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocssettingschart-range><span>Chart Range</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zwalletdocssettingsmisc-li>
 <a href=/zwallet/docs/settings/misc/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zwalletdocssettingsmisc><span>Miscellaneous</span></a>
 </li>
@@ -175,7 +177,7 @@ By default, charts span 1 year (365 days) and can be set to
 </aside>
 <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a id=print href=https://hhanh00.github.io/zwallet/docs/settings/_print/><i class="fa fa-print fa-fw"></i> Print entire section</a>
+<a id=print href=https://hhanh00.github.io/zwallet/docs/messages/_print/><i class="fa fa-print fa-fw"></i> Print entire section</a>
 </div>
 </aside>
 <main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
@@ -185,22 +187,29 @@ By default, charts span 1 year (365 days) and can be set to
 <a href=https://hhanh00.github.io/zwallet/docs/>Documentation</a>
 </li>
 <li class=breadcrumb-item>
-<a href=https://hhanh00.github.io/zwallet/docs/settings/>Settings</a>
+<a href=https://hhanh00.github.io/zwallet/docs/messages/>Messages</a>
 </li>
 <li class="breadcrumb-item active" aria-current=page>
-<a href=https://hhanh00.github.io/zwallet/docs/settings/chart-range/>Chart Range</a>
+<a href=https://hhanh00.github.io/zwallet/docs/messages/details/>Message Details</a>
 </li>
 </ol>
 </nav>
 <div class=td-content>
-<h1>Chart Range</h1>
+<h1>Message Details</h1>
 <header class=article-meta>
 </header>
-<img class=img src=../img/IMG_0100_1.PNG>
+<img class=img srcset="../img/2022-04-16_21-37-49.png 2x">
+<h2 id=navigation>Navigation</h2>
 <ol>
-<li>Choose the chart time range. They all end at the current date.
-By default, charts span 1 year (365 days) and can be set to
-1 month (30 days), 3 months (90 days), and 6 months (180 days).</li>
+<li>Go to the previous message in same thread (i.e. same subject)</li>
+<li>Go to the previous message</li>
+<li>Go to the next message</li>
+<li>Go to the next message in same thread (i.e. same subject)</li>
+</ol>
+<h2 id=reply>Reply</h2>
+<ol start=5>
+<li>If the message has a sender, click on this button to reply to it.
+It will open a send dialog box with the subject and recipient prepopulated.</li>
 </ol>
 </div>
 </main>
