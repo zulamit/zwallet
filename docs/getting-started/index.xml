@@ -8,7 +8,7 @@ where only the basic UI elements are shown.&lt;/p>
 &lt;/ul>
 &lt;p>To show the rest of the UI, switch to &amp;ldquo;Advanced Mode&amp;rdquo; in the
 application settings&lt;/p>
-&lt;img class="img" srcset="../img/2022-04-05_9-31-05.png 2x"></description></item><item><title>Docs: Your first account</title><link>https://hhanh00.github.io/zwallet/docs/getting-started/first-account/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/getting-started/first-account/</guid><description>
+&lt;img class="img mb-4" srcset="../img/2022-04-05_9-31-05.png 2x"></description></item><item><title>Docs: Your first account</title><link>https://hhanh00.github.io/zwallet/docs/getting-started/first-account/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/getting-started/first-account/</guid><description>
 &lt;p>The first time you launch YWallet/ZWallet, the app will show the
 &amp;ldquo;About&amp;rdquo; page. Please read it and particularly the part about
 &lt;strong>Keeping a backup&lt;/strong> of your accounts. It is the one and only
@@ -22,7 +22,7 @@ way to make sure your coins are safe.&lt;/p>
 &lt;li>Press the button + in the bottom right corner. It opens the account
 creation and restoration page.&lt;/li>
 &lt;/ol>
-&lt;img class="img" srcset="../img/2022-04-04_1-01-22.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-04_1-01-22.png 2x">
 &lt;ol>
 &lt;li>Choose the currency&lt;/li>
 &lt;li>Give a name to your new account.&lt;/li>

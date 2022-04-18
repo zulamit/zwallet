@@ -78,8 +78,22 @@ exclude some notes from being selected.&lt;/p>
 &lt;li>Tap to select/deselect notes. Notes that are selected will &lt;strong>not&lt;/strong>
 be spent&lt;/li>
 &lt;/ol></description></item><item><title>Docs: Message List</title><link>https://hhanh00.github.io/zwallet/docs/messages/center/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/center/</guid><description>
-&lt;img class="img" srcset="../img/2022-04-16_21-36-54.png 2x">
-&lt;p>The message list is formatted as a regular inbox.&lt;/p>
+&lt;h2 id="message-list">Message List&lt;/h2>
+&lt;img class="img mb-4" srcset="../img/2022-04-18_23-54-58.png 2x">
+&lt;ol>
+&lt;li>Avatar of the Sender or Recipient. The color
+depends on their initial&lt;/li>
+&lt;li>Sender or Receiver and the direction (out/in)&lt;/li>
+&lt;li>Date/Time&lt;/li>
+&lt;li>Subject. Unread messages are shown in bold&lt;/li>
+&lt;li>Content&lt;/li>
+&lt;li>Tap to send a new message&lt;/li>
+&lt;/ol>
+&lt;h2 id="message-table">Message Table&lt;/h2>
+&lt;img class="img mb-4" srcset="../img/2022-04-16_21-36-54.png 2x">
+&lt;p>The Message Table is shown if you have selected it
+in the settings.&lt;/p>
+&lt;p>It is formatted as a regular inbox.&lt;/p>
 &lt;ol>
 &lt;li>Messages in red are outgoing, messages in green are incoming.&lt;/li>
 &lt;li>The subject of the message (or the first ~20 characters of the body)&lt;/li>
@@ -122,7 +136,7 @@ a chart of your past account balance.&lt;/p>
 &lt;li>Tap and hold to show the exact balance at a given time&lt;/li>
 &lt;li>The time range can be adjusted on the Settings page&lt;/li>
 &lt;/ol></description></item><item><title>Docs: Message Details</title><link>https://hhanh00.github.io/zwallet/docs/messages/details/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/details/</guid><description>
-&lt;img class="img" srcset="../img/2022-04-16_21-37-49.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-16_21-37-49.png 2x">
 &lt;h2 id="navigation">Navigation&lt;/h2>
 &lt;ol>
 &lt;li>Go to the previous message in same thread (i.e. same subject)&lt;/li>
@@ -248,7 +262,7 @@ fills the amount and memo.&lt;/li>
 &lt;li>When you scan a Payment URI with the iOS Camera app, it will offer to
 open the app.&lt;/li>
 &lt;/ul></description></item><item><title>Docs: Send a Message</title><link>https://hhanh00.github.io/zwallet/docs/messages/send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/send/</guid><description>
-&lt;img class="img" srcset="../img/2022-04-16_21-34-25.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-16_21-34-25.png 2x">
 &lt;h2 id="send">Send&lt;/h2>
 &lt;p>Sending a message is done through the regular &amp;ldquo;Send YEC/ZEC&amp;rdquo; dialog box.&lt;/p>
 &lt;ol>
@@ -431,7 +445,7 @@ multiple recipients.&lt;/p>
 &lt;li>Notes can have an amount equal to 0&lt;/li>
 &lt;li>Multipay transactions can be empty&lt;/li>
 &lt;/ul></description></item><item><title>Docs: Settings</title><link>https://hhanh00.github.io/zwallet/docs/messages/settings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/settings/</guid><description>
-&lt;img class="img" srcset="../img/2022-04-16_21-35-32.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-16_21-35-32.png 2x">
 &lt;h2 id="settings">Settings&lt;/h2>
 &lt;p>The only new setting for Messages is the option
 to include your address by default.
@@ -441,11 +455,11 @@ this option pre-checked.&lt;/p></description></item><item><title>Docs: Synchroni
 the current status of the blockchain every 15s.&lt;/p>
 &lt;h2 id="rescan">Rescan&lt;/h2>
 &lt;p>You can manually trigger a rescan.&lt;/p>
-&lt;img class="img" srcset="../img/2022-04-04_0-48-11.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-04_0-48-11.png 2x">
 &lt;p>Either from the first block, or from
 a given date (1).&lt;/p>
-&lt;img class="img" srcset="../img/2022-04-04_0-33-39.png 2x">
-&lt;img class="img" srcset="../img/2022-04-04_0-39-26.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-04_0-33-39.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-04_0-39-26.png 2x">
 &lt;h2 id="scan-progress-status">Scan Progress Status&lt;/h2>
 &lt;img class="img" src="../img/IMG_0055.PNG">
 &lt;ol>
@@ -476,7 +490,7 @@ that is isolated from the Internet.&lt;/p>
 &lt;p>&lt;a href="https://en.bitcoin.it/wiki/Cold_storage">Cold Storage in the context of Bitcoin&lt;/a>&lt;/p>
 &lt;p>The same concept is applicable to Zcash.&lt;/p>
 &lt;h2 id="preparing-the-unsigned-transaction">Preparing the unsigned transaction&lt;/h2>
-&lt;img class="img" srcset="../img/2022-04-13_17-52-43.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-13_17-52-43.png 2x">
 &lt;p>If the account does not have a secret key either because it was restored
 from viewing key or because it was converted to Cold Storage,
 the button Send is dimmed. Instead of signing and broadcasting a transaction,
@@ -530,7 +544,7 @@ where only the basic UI elements are shown.&lt;/p>
 &lt;/ul>
 &lt;p>To show the rest of the UI, switch to &amp;ldquo;Advanced Mode&amp;rdquo; in the
 application settings&lt;/p>
-&lt;img class="img" srcset="../img/2022-04-05_9-31-05.png 2x"></description></item><item><title>Docs: Watch Only</title><link>https://hhanh00.github.io/zwallet/docs/account/watch-only/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/watch-only/</guid><description>
+&lt;img class="img mb-4" srcset="../img/2022-04-05_9-31-05.png 2x"></description></item><item><title>Docs: Watch Only</title><link>https://hhanh00.github.io/zwallet/docs/account/watch-only/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/watch-only/</guid><description>
 &lt;p>You can turn a regular account into a watch-only account. This prevents
 you or anyone from spending from it. You will still be able to receive coins
 and monitor the balance.&lt;/p>
@@ -634,9 +648,9 @@ restart&lt;/li>
 &lt;li>Reselect your current account&lt;/li>
 &lt;li>Rescan&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img class="img" srcset="../img/2022-04-12_7-02-30.png 2x">
-&lt;img class="img" srcset="../img/2022-04-12_7-03-25.png 2x">
-&lt;img class="img" srcset="../img/2022-04-12_7-04-09.png 2x">
+&lt;p>&lt;img class="img mb-4" srcset="../img/2022-04-12_7-02-30.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-12_7-03-25.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-12_7-04-09.png 2x">
 &lt;/p></description></item><item><title>Docs: Your first account</title><link>https://hhanh00.github.io/zwallet/docs/getting-started/first-account/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/getting-started/first-account/</guid><description>
 &lt;p>The first time you launch YWallet/ZWallet, the app will show the
 &amp;ldquo;About&amp;rdquo; page. Please read it and particularly the part about
@@ -651,7 +665,7 @@ way to make sure your coins are safe.&lt;/p>
 &lt;li>Press the button + in the bottom right corner. It opens the account
 creation and restoration page.&lt;/li>
 &lt;/ol>
-&lt;img class="img" srcset="../img/2022-04-04_1-01-22.png 2x">
+&lt;img class="img mb-4" srcset="../img/2022-04-04_1-01-22.png 2x">
 &lt;ol>
 &lt;li>Choose the currency&lt;/li>
 &lt;li>Give a name to your new account.&lt;/li>
