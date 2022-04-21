@@ -12,6 +12,10 @@ nav_order: 0
 	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="{{< relref "/download" >}}">
 		Download <i class="fab fa-github ml-2 "></i>
 	</a>
+   
+   <p>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/3fhn7xV534A?modestbranding=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 	<p class="lead mt-5">Fast and Furious!</p>
 	{{< blocks/link-down color="info" >}}
 </div>
