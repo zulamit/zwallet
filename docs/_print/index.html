@@ -17,11 +17,12 @@
 <link rel=icon type=image/png href=/zwallet/favicons/android-144x144.png sizes=144x144>
 <link rel=icon type=image/png href=/zwallet/favicons/android-192x192.png sizes=192x192>
 <title>Documentation | ZWallet</title>
-<meta name=description content="At a glance
+<meta name=description content="Summary
 
 Fastest synchronization of all the wallets on the market
-Supports every feature of shielded y/zcash
-Track your wallet performance and …">
+Private Message Center
+Supports every feature of ycash and zcash
+Track your wallet …">
 <meta property="og:title" content="Documentation">
 <meta property="og:description" content>
 <meta property="og:type" content="website">
@@ -118,14 +119,49 @@ This is the multi-page printable view of this section.
 <li>7: <a href=#pg-bf73365d45cbeba80db44f1ed292b48e>Release Notes</a></li>
 </ul>
 <div class=content>
-<h2 id=at-a-glance>At a glance</h2>
+<h2 id=summary>Summary</h2>
 <ul>
 <li>Fastest synchronization of all the wallets on the market</li>
-<li>Supports every feature of <em>shielded y/zcash</em></li>
+<li>Private Message Center</li>
+<li>Supports every feature of ycash and zcash</li>
 <li>Track your wallet performance and expenditures</li>
 <li>Watch-only and Cold Wallet</li>
 </ul>
 <p><a href=/zwallet/features/>More features</a></p>
+<h2 id=screenshots>Screenshots</h2>
+<p><img class="img mb-4" srcset="../img/2022-04-21_13-59-56.png 4x">
+<img class="img mb-4" srcset="../img/2022-04-21_14-03-00.png 4x">
+<img class="img mb-4" srcset="../img/2022-04-21_14-05-34.png 4x">
+<img class="img mb-4" srcset="../img/2022-04-21_14-10-40.png 4x">
+<img class="img mb-4" srcset="../img/2022-04-21_14-11-20.png 4x">
+<img class="img mb-4" srcset="../img/2022-04-21_14-12-41.png 4x">
+</p>
+<h2 id=backup-reminder-very-important>BACKUP REMINDER (VERY IMPORTANT!)</h2>
+<p><strong>ALWAYS KEEP A BACKUP</strong> of your account keys in a safe place.</p>
+<ul>
+<li>This wallet is non-custodian and no one else has your account data. Bad things can happen!</li>
+<li>Make sure you have the recovery backup available before you upgrade</li>
+</ul>
+<blockquote>
+<p>The best backup is the one you have and never used. The worst backup is the one you need and never made.</p>
+</blockquote>
+<h2 id=10-wallet-tips>10 Wallet Tips</h2>
+<ol>
+<li>YWallet is available on Mobile (Android & iOS) and desktop
+(Windows, Mac & Linux): <a href=../download>Download</a></li>
+<li>Keep your contacts in the address book: <a href=./contact>Contacts</a>. It will help
+identify addresses in the transaction history.</li>
+<li>Maintain both Ycash and Zcash accounts. Your accounts are
+independent and can have different seeds and keys. <a href=./account>Accounts</a></li>
+<li>The <a href=./messages/center>Message</a> tab is a convenient way to check your messages in one place.</li>
+<li>Tap QR code to switch between shielded and transparent address</li>
+<li>If you want to merge the balance of several accounts, use diversified addresses instead of creating multiple shielded addresses</li>
+<li>Keep a few notes ready to be spent to avoid having to wait for confirmations.
+<a href=./advanced/coin-control>Coin Control</a> and <a href=./advanced/advanced-send>Split Notes</a></li>
+<li>If you are trading, check out the Wallet P/L charts</li>
+<li>You can transfer between accounts by using their names instead of their addresses</li>
+<li>You can navigate prev/next through the <a href=./account/transactions>transaction details</a></li>
+</ol>
 <h2 id=getting-started>Getting Started</h2>
 <p>Please follow this <a href=getting-started>link</a></p>
 <h2 id=faq>FAQ</h2>
@@ -756,7 +792,7 @@ be spent</li>
 <li>Enable/Disable rounding to 0.001 coin. If rounding is disabled,
 the app uses zats: 1/100,000,000 of a coin</li>
 <li>If checked, the transaction will use the balance in the transparent address too</li>
-<li>The maximum amount per output note. If this is less than the amount
+<li><strong>Split Notes</strong>: The maximum amount per output note. If this is less than the amount
 sent, the app will create several notes. The change is not subject to
 this cap</li>
 </ol>
