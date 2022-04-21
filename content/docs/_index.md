@@ -3,14 +3,49 @@ title: Documentation
 type: docs
 ---
 
-## At a glance
+## Summary
 
 - Fastest synchronization of all the wallets on the market
-- Supports every feature of *shielded y/zcash*
+- Private Message Center
+- Supports every feature of ycash and zcash
 - Track your wallet performance and expenditures
 - Watch-only and Cold Wallet
 
 [More features]({{< relref "/features" >}})
+
+## Screenshots
+
+{{< img3 2022-04-21_13-59-56.png >}}
+{{< img3 2022-04-21_14-03-00.png >}}
+{{< img3 2022-04-21_14-05-34.png >}}
+{{< img3 2022-04-21_14-10-40.png >}}
+{{< img3 2022-04-21_14-11-20.png >}}
+{{< img3 2022-04-21_14-12-41.png >}}
+
+## BACKUP REMINDER (VERY IMPORTANT!)
+
+**ALWAYS KEEP A BACKUP** of your account keys in a safe place. 
+- This wallet is non-custodian and no one else has your account data. Bad things can happen! 
+- Make sure you have the recovery backup available before you upgrade
+
+> The best backup is the one you have and never used. The worst backup is the one you need and never made.
+
+## 10 Wallet Tips
+
+1. YWallet is available on Mobile (Android & iOS) and desktop
+(Windows, Mac & Linux): [Download](../download)
+2. Keep your contacts in the address book: [Contacts](./contact). It will help
+identify addresses in the transaction history.
+3. Maintain both Ycash and Zcash accounts. Your accounts are
+independent and can have different seeds and keys. [Accounts](./account)
+4. The [Message](./messages/center) tab is a convenient way to check your messages in one place.
+4. Tap QR code to switch between shielded and transparent address
+5. If you want to merge the balance of several accounts, use diversified addresses instead of creating multiple shielded addresses
+6. Keep a few notes ready to be spent to avoid having to wait for confirmations.
+[Coin Control](./advanced/coin-control) and [Split Notes](./advanced/advanced-send)
+7. If you are trading, check out the Wallet P/L charts
+8. You can transfer between accounts by using their names instead of their addresses
+9. You can navigate prev/next through the [transaction details](./account/transactions)
 
 ## Getting Started
 

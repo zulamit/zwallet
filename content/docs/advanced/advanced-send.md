@@ -12,7 +12,7 @@ weight: 1
 3. Enable/Disable rounding to 0.001 coin. If rounding is disabled,
 the app uses zats: 1/100,000,000 of a coin
 4. If checked, the transaction will use the balance in the transparent address too
-5. The maximum amount per output note. If this is less than the amount
+5. **Split Notes**: The maximum amount per output note. If this is less than the amount
 sent, the app will create several notes. The change is not subject to
 this cap
 
