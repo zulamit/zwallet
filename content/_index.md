@@ -13,8 +13,7 @@ nav_order: 0
 		Download <i class="fab fa-github ml-2 "></i>
 	</a>
    
-   <p>
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/3fhn7xV534A?modestbranding=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <div class="youtube-player" data-id="3fhn7xV534A"></div>
 
 	<p class="lead mt-5">Fast and Furious!</p>
 	{{< blocks/link-down color="info" >}}
@@ -99,3 +98,6 @@ Watch-only and Cold Wallet
    
    **Do not share your seed phrase with other people!**
 {{< /blocks/section >}}
+
+<link href="youtube.css" rel=stylesheet integrity>
+<script src="youtube.js"></script>
