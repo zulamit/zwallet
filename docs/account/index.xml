@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Accounts</title><link>https://hhanh00.github.io/zwallet/docs/account/</link><description>Recent content in Accounts on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://hhanh00.github.io/zwallet/docs/account/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Account Manager</title><link>https://hhanh00.github.io/zwallet/docs/account/manager/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/manager/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Accounts</title><link>https://ywallet.app/docs/account/</link><description>Recent content in Accounts on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://ywallet.app/docs/account/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Account Manager</title><link>https://ywallet.app/docs/account/manager/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/account/manager/</guid><description>
 &lt;p>Open the account manager by selecting &amp;ldquo;Accounts&amp;rdquo; in the app menu.&lt;/p>
 &lt;img class="img" src="../img/IMG_0057.PNG">
 &lt;ol>
@@ -13,7 +13,7 @@
 &lt;p>To return to the account page, select an account by tapping on its name. Or press the back button,
 if you don&amp;rsquo;t want to change the current selection.&lt;/p>
 &lt;h2 id="remarks">Remarks&lt;/h2>
-&lt;p>There needs to be at least one account. The last account cannot be deleted&lt;/p></description></item><item><title>Docs: Backup Restore</title><link>https://hhanh00.github.io/zwallet/docs/account/restore/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/restore/</guid><description>
+&lt;p>There needs to be at least one account. The last account cannot be deleted&lt;/p></description></item><item><title>Docs: Backup Restore</title><link>https://ywallet.app/docs/account/restore/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/account/restore/</guid><description>
 &lt;h2 id="backup">Backup&lt;/h2>
 &lt;p>Backups are &lt;strong>very important&lt;/strong> and must be taken unless you don&amp;rsquo;t mind losing access to the account
 and the coins it contains.&lt;/p>
@@ -42,7 +42,7 @@ If you need to recall that page, open the app menu and select &amp;ldquo;Backup&
 the app will ask you if you want to rescan the blockchain if needed.&lt;/p>
 &lt;blockquote>
 &lt;p>Scanning updates every account. You don&amp;rsquo;t need to rescan each new account individually&lt;/p>
-&lt;/blockquote></description></item><item><title>Docs: Notes</title><link>https://hhanh00.github.io/zwallet/docs/account/notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/notes/</guid><description>
+&lt;/blockquote></description></item><item><title>Docs: Notes</title><link>https://ywallet.app/docs/account/notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/account/notes/</guid><description>
 &lt;p>The Note Tab shows your received notes.&lt;/p>
 &lt;h2 id="display-and-sorting">Display and Sorting&lt;/h2>
 &lt;img class="img" src="../img/IMG_0058.PNG">
@@ -72,7 +72,7 @@ the app will ask you if you want to rescan the blockchain if needed.&lt;/p>
 &lt;li>Go to Last Page&lt;/li>
 &lt;li>Adjust the Number of rows per page.
 You may have to scroll the footer to the left if your screen is too small.&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Payment URI</title><link>https://hhanh00.github.io/zwallet/docs/account/payment_uri/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/payment_uri/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Payment URI</title><link>https://ywallet.app/docs/account/payment_uri/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/account/payment_uri/</guid><description>
 &lt;img class="img" src="../img/IMG_0143.PNG">
 &lt;p>The Receive/Payment URI page is for making QR codes that encode&lt;/p>
 &lt;ol>
@@ -94,7 +94,7 @@ by long pressing the app icon.&lt;/p>
 fills the amount and memo.&lt;/li>
 &lt;li>When you scan a Payment URI with the iOS Camera app, it will offer to
 open the app.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Transactions</title><link>https://hhanh00.github.io/zwallet/docs/account/transactions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/transactions/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Transactions</title><link>https://ywallet.app/docs/account/transactions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/account/transactions/</guid><description>
 &lt;p>The History Tab shows the transaction history.&lt;/p>
 &lt;p>&lt;img class="img" src="../img/IMG_0064.PNG">
 &lt;img class="img" src="../img/IMG_0065.PNG">
@@ -132,7 +132,7 @@ You may have to scroll the footer to the left if your screen is too small.&lt;/l
 &lt;li>Incoming transactions are shown in green. Outgoing transactions are
 shown in red&lt;/li>
 &lt;li>Larger transactions are shown in heavier typeface&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Synchronization</title><link>https://hhanh00.github.io/zwallet/docs/account/sync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/sync/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Synchronization</title><link>https://ywallet.app/docs/account/sync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/account/sync/</guid><description>
 &lt;p>The app keeps up to date with the blockchain automatically. It checks
 the current status of the blockchain every 15s.&lt;/p>
 &lt;h2 id="rescan">Rescan&lt;/h2>
@@ -150,7 +150,7 @@ a given date (1).&lt;/p>
 &lt;li>The Estimated remaining time of the full scan&lt;/li>
 &lt;/ol>
 &lt;p>When the app is synchronized with the current block, it just displays
-the block height.&lt;/p></description></item><item><title>Docs: Watch Only</title><link>https://hhanh00.github.io/zwallet/docs/account/watch-only/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/account/watch-only/</guid><description>
+the block height.&lt;/p></description></item><item><title>Docs: Watch Only</title><link>https://ywallet.app/docs/account/watch-only/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/account/watch-only/</guid><description>
 &lt;p>You can turn a regular account into a watch-only account. This prevents
 you or anyone from spending from it. You will still be able to receive coins
 and monitor the balance.&lt;/p>

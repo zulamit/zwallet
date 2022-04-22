@@ -1,10 +1,10 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Settings</title><link>https://hhanh00.github.io/zwallet/docs/settings/</link><description>Recent content in Settings on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://hhanh00.github.io/zwallet/docs/settings/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Server</title><link>https://hhanh00.github.io/zwallet/docs/settings/server/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/server/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Settings</title><link>https://ywallet.app/docs/settings/</link><description>Recent content in Settings on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://ywallet.app/docs/settings/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Server</title><link>https://ywallet.app/docs/settings/server/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/settings/server/</guid><description>
 &lt;img class="img" src="../img/IMG_0099.PNG">
 &lt;p>Choose the server that the wallet connects to&lt;/p>
 &lt;ol>
 &lt;li>Lightwalletd is the server deployment sponsored by the zcash organization&lt;/li>
 &lt;li>Enter the URL of your own deployment. For example, &lt;code>https://lwd.example.com:9067&lt;/code>&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Theme</title><link>https://hhanh00.github.io/zwallet/docs/settings/theme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/theme/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Theme</title><link>https://ywallet.app/docs/settings/theme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/settings/theme/</guid><description>
 &lt;img class="img" src="../img/IMG_0099_1.PNG">
 &lt;ol>
 &lt;li>Select the theme color&lt;/li>
@@ -41,7 +41,7 @@
 &lt;h3 id="purple">Purple&lt;/h3>
 &lt;p>&lt;img class="img" src="../img/theme/IMG_0114.PNG">
 &lt;img class="img" src="../img/theme/IMG_0115.PNG">
-&lt;/p></description></item><item><title>Docs: Auto-Shield</title><link>https://hhanh00.github.io/zwallet/docs/settings/auto-shield/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/auto-shield/</guid><description>
+&lt;/p></description></item><item><title>Docs: Auto-Shield</title><link>https://ywallet.app/docs/settings/auto-shield/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/settings/auto-shield/</guid><description>
 &lt;img class="img" src="../img/IMG_0141.PNG">
 &lt;ol>
 &lt;li>Auto shield your transparent balance when it is higher than this value.
@@ -53,7 +53,7 @@ The app will create a separate transaction&lt;/li>
 &lt;li>A value of 0 for option 1 means no automatic shielding&lt;/li>
 &lt;li>You can also shield your balance manually at any time&lt;/li>
 &lt;li>Option 2 is similar to ZecWallet approach of handling transparent balance&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Fiat Currency</title><link>https://hhanh00.github.io/zwallet/docs/settings/currency/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/currency/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Fiat Currency</title><link>https://ywallet.app/docs/settings/currency/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/settings/currency/</guid><description>
 &lt;img class="img" src="../img/IMG_0099_3.PNG">
 &lt;ol>
 &lt;li>Choose the reference Fiat/Crypto currency
@@ -119,13 +119,13 @@ among&lt;/li>
 &amp;ldquo;xag&amp;rdquo;,
 &amp;ldquo;xau&amp;rdquo;,
 &amp;ldquo;bits&amp;rdquo;,
-&amp;ldquo;sats&amp;rdquo;&lt;/p></description></item><item><title>Docs: Chart Range</title><link>https://hhanh00.github.io/zwallet/docs/settings/chart-range/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/chart-range/</guid><description>
+&amp;ldquo;sats&amp;rdquo;&lt;/p></description></item><item><title>Docs: Chart Range</title><link>https://ywallet.app/docs/settings/chart-range/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/settings/chart-range/</guid><description>
 &lt;img class="img" src="../img/IMG_0100_1.PNG">
 &lt;ol>
 &lt;li>Choose the chart time range. They all end at the current date.
 By default, charts span 1 year (365 days) and can be set to
 1 month (30 days), 3 months (90 days), and 6 months (180 days).&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Miscellaneous</title><link>https://hhanh00.github.io/zwallet/docs/settings/misc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/settings/misc/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Miscellaneous</title><link>https://ywallet.app/docs/settings/misc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/settings/misc/</guid><description>
 &lt;p>&lt;img class="img" src="../img/IMG_0100_2.PNG">
 &lt;img class="img" src="../img/IMG_0124.PNG">
 &lt;/p>

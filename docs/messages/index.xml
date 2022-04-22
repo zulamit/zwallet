@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Messages</title><link>https://hhanh00.github.io/zwallet/docs/messages/</link><description>Recent content in Messages on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://hhanh00.github.io/zwallet/docs/messages/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Message List</title><link>https://hhanh00.github.io/zwallet/docs/messages/center/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/center/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZWallet – Messages</title><link>https://ywallet.app/docs/messages/</link><description>Recent content in Messages on ZWallet</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://ywallet.app/docs/messages/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Message List</title><link>https://ywallet.app/docs/messages/center/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/messages/center/</guid><description>
 &lt;h2 id="message-list">Message List&lt;/h2>
 &lt;img class="img mb-4" srcset="../img/2022-04-18_23-54-58.png 2x">
 &lt;ol>
@@ -21,7 +21,7 @@ in the settings.&lt;/p>
 &lt;li>The body of the message&lt;/li>
 &lt;li>Unread/Read indicator. Messages in bold are unread.&lt;/li>
 &lt;/ol>
-&lt;p>Tap on a message to zoom in.&lt;/p></description></item><item><title>Docs: Message Details</title><link>https://hhanh00.github.io/zwallet/docs/messages/details/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/details/</guid><description>
+&lt;p>Tap on a message to zoom in.&lt;/p></description></item><item><title>Docs: Message Details</title><link>https://ywallet.app/docs/messages/details/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/messages/details/</guid><description>
 &lt;img class="img mb-4" srcset="../img/2022-04-16_21-37-49.png 2x">
 &lt;h2 id="navigation">Navigation&lt;/h2>
 &lt;ol>
@@ -34,7 +34,7 @@ in the settings.&lt;/p>
 &lt;ol start="5">
 &lt;li>If the message has a sender, click on this button to reply to it.
 It will open a send dialog box with the subject and recipient prepopulated.&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Send a Message</title><link>https://hhanh00.github.io/zwallet/docs/messages/send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/send/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Send a Message</title><link>https://ywallet.app/docs/messages/send/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/messages/send/</guid><description>
 &lt;img class="img mb-4" srcset="../img/2022-04-16_21-34-25.png 2x">
 &lt;h2 id="send">Send&lt;/h2>
 &lt;p>Sending a message is done through the regular &amp;ldquo;Send YEC/ZEC&amp;rdquo; dialog box.&lt;/p>
@@ -43,7 +43,7 @@ It will open a send dialog box with the subject and recipient prepopulated.&lt;/
 &lt;li>Subject&lt;/li>
 &lt;li>Body&lt;/li>
 &lt;/ol>
-&lt;p>You can also attach some coins with the message.&lt;/p></description></item><item><title>Docs: Settings</title><link>https://hhanh00.github.io/zwallet/docs/messages/settings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hhanh00.github.io/zwallet/docs/messages/settings/</guid><description>
+&lt;p>You can also attach some coins with the message.&lt;/p></description></item><item><title>Docs: Settings</title><link>https://ywallet.app/docs/messages/settings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ywallet.app/docs/messages/settings/</guid><description>
 &lt;img class="img mb-4" srcset="../img/2022-04-16_21-35-32.png 2x">
 &lt;h2 id="settings">Settings&lt;/h2>
 &lt;p>The only new setting for Messages is the option
