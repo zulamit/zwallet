@@ -3,7 +3,7 @@ layout: default
 title: Y/ZWallet
 nav_order: 0
 ---
-{{< blocks/cover title="Z/YWallet: Wallets for Z/YCash" image_anchor="top" height="full" color="blue" >}}
+{{< blocks/cover title="YWallet: Wallets for Z/YCash" image_anchor="top" height="full" color="blue" >}}
 
 <div class="mx-auto">
 	<a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/docs" >}}">
@@ -44,19 +44,20 @@ Watch-only and Cold Wallet
   
 2. How fast is the synchronization exactly?
 
-   It depends on the hardware but for average phones, Y/ZWallet scans the entire blockchain
+   It depends on the hardware but for average phones, YWallet scans the entire blockchain
    (as of Sep 2021) in around 1-3 minutes. In the end, your account balances are 
    fully available to spend. The reference wallet SDK is 100x slower.
    
-3. Why the name Y/ZWallet and WarpWallet? 
+3. Was there a ZWallet and WarpWallet? 
 
-   There are different versions of the app for Ycash and Zcash. The app was
+   There used to be different versions of the app for Ycash and Zcash. The app was
    initially built for Zcash and was called ZWallet. Then it was ported to Ycash
    and named YWallet.
    Unfortunately, the name ZWallet is taken on the Apple Store and the app
    had to be rebranded WarpWallet.
    
-   A single version that supports both coins may be implemented in the future.
+   Now we have a single version that works for both Ycash and Zcash and the app
+   ZWallet is discontinued.
    
 4. Is it open source?
    

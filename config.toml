@@ -1,6 +1,6 @@
 baseURL = "https://ywallet.app/"
 #baseURL = "/"
-title = "ZWallet"
+title = "YWallet"
 
 # Language settings
 contentDir = "content"
