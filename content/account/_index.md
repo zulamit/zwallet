@@ -4,6 +4,7 @@ title: Accounts
 weight: 20
 has_children: true
 chapter: true
+pre: <i class="fas fa-piggy-bank"></i>&ensp;
 ---
 
 # Accounts

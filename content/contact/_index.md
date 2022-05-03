@@ -4,6 +4,7 @@ title: Contacts
 weight: 40
 has_children: true
 chapter: true
+pre: <i class="fas fa-address-book"></i>&ensp;
 ---
 
 # Contacts

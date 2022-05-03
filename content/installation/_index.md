@@ -1,6 +1,7 @@
 ---
 title: Install
 weight: 1
+pre: <i class="fas fa-download"></i>&ensp;
 ---
 
 ## Mobile App Stores
@@ -13,6 +14,7 @@ weight: 1
 - MacOS: [DMG](https://github.com/hhanh00/zwallet/releases/download/v1.2.4/ywallet.dmg)
 - Windows: [ZIP](https://github.com/hhanh00/zwallet/releases/download/v1.2.4/ywallet.zip) or [Store](https://www.microsoft.com/en-us/p/ywallet/9pjz924hs2s6)
 - Linux: [Flatpak](https://github.com/hhanh00/zwallet/releases/download/v1.2.4/ywallet.flatpak)
+
 
 {{% notice note %}}
 ZWallet (the Zcash wallet version) is no longer updated since YWallet now supports both Zcash and Ycash. 

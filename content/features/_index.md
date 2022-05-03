@@ -1,6 +1,7 @@
 ---
 title: Features
 weight: 5
+pre: <i class="fas fa-list"></i>&ensp;
 ---
 
 ## Main Features

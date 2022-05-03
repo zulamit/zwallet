@@ -8,7 +8,6 @@ theme = "hugo-theme-learn"
 themeVariant = "blue"
 showVisitedLinks = true
 disableLandingPageButton = true
-custom_css = ["main.css"]
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]

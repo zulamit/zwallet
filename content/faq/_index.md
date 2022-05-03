@@ -1,6 +1,7 @@
 ---
 title: FAQ
 weight: 80
+pre: <i class="fas fa-question"></i>&ensp;
 ---
 
 1. Does it support transparent addresses?

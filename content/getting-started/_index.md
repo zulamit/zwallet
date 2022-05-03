@@ -4,6 +4,7 @@ title: Getting Started
 weight: 10
 has_children: true
 chapter: true
+pre: <i class="fas fa-play"></i>&ensp;
 ---
 
 # Getting Started
