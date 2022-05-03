@@ -22,4 +22,8 @@ if you don't want to change the current selection.
 
 ## Remarks
 
-There needs to be at least one account. The last account cannot be deleted
+The account that has its name in bold face is the default account
+for its currency. When using the dashboard shortcuts, funds are
+sent or received from the default account.
+Moreover, the default account is used to pay for transaction fees
+when saving contacts to the blockchain.

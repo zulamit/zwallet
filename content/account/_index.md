@@ -10,4 +10,4 @@ chapter: true
 
 Accounts hold your coins
 
-{{< img_index IMG_0057.PNG >}}
+{{< img_index 2022-05-03_12-57-33.png >}}

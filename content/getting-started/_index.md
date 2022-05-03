@@ -8,5 +8,5 @@ chapter: true
 
 # Getting Started
 
-{{< img_index IMG_0041.PNG >}}
+{{< img_index 2022-05-03_12-54-28.png >}}
 

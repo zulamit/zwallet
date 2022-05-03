@@ -12,8 +12,9 @@ and the coins it contains.
 
 Fortunately, it is very easy to make a backup.
 
-> The account backup is the 24 words (in sequence) displayed on the Backup page (**seed phrase**)
-
+{{% notice note %}}
+The account backup is the 24 words (in sequence) displayed on the Backup page (**seed phrase**)
+{{% /notice %}}
 {{< img IMG_0071.PNG >}}
 
 When you create a new account, the app will show you the Backup page automatically.
@@ -24,6 +25,12 @@ The content of the Backup page varies depending on the type of account:
 - If you create a new account, the backup is the seed phrase
 - If you restore the account, the backup is the information you provide
 - If you make the account watch-only, the backup is the viewing key
+
+YWallet will also show you:
+
+- the secret key: It can be used in wallets that do not support ZIP-32 (Hierarchical Wallets)
+- the viewing key: It allows watch-only accounts. Funds cannot be
+spent from them
 
 ## Restore
 

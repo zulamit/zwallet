@@ -2,7 +2,7 @@
 layout: default
 title: Add/Edit/Delete
 parent: Contacts
-weight: 1
+weight: 10
 ---
 
 {{< img IMG_0084.PNG >}}
