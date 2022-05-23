@@ -11,7 +11,7 @@ pre: <i class="fas fa-download"></i>&ensp;
 
 ## Desktop Binaries
 
-- MacOS: [DMG](https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.dmg)
+- MacOS: [Intel Silicon](https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.dmg), [Apple Silicon](https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet-m1.dmg)
 - Windows: [ZIP](https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.zip) or [Store](https://www.microsoft.com/en-us/p/ywallet/9pjz924hs2s6)
 - Linux: [Flatpak](https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.flatpak)
 
