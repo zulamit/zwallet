@@ -4,7 +4,7 @@ title: Messages
 weight: 30
 has_children: true
 chapter: true
-pre: <i class="fas fa-envelope"></i>&ensp;
+pre: <svg class="icon"><use xlink:href="/sprite.svg#envelope"></use></svg>
 ---
 
 # Messages

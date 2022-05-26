@@ -1,7 +1,7 @@
 ---
 title: FAQ
 weight: 80
-pre: <i class="fas fa-question"></i>&ensp;
+pre: <svg class="icon"><use xlink:href="/sprite.svg#question"></use></svg>
 ---
 
 1. Does it support transparent addresses?

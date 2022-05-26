@@ -1,7 +1,7 @@
 ---
 title: Install
 weight: 1
-pre: <i class="fas fa-download"></i>&ensp;
+pre: <svg class="icon"><use xlink:href="/sprite.svg#download"></use></svg>
 ---
 
 ## Mobile App Stores

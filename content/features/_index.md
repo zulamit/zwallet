@@ -1,7 +1,7 @@
 ---
 title: Features
 weight: 5
-pre: <i class="fas fa-list"></i>&ensp;
+pre: <svg class="icon"><use xlink:href="/sprite.svg#list"></use></svg>
 ---
 
 ## Main Features

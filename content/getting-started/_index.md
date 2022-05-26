@@ -4,7 +4,7 @@ title: Getting Started
 weight: 10
 has_children: true
 chapter: true
-pre: <i class="fas fa-play"></i>&ensp;
+pre: <svg class="icon"><use xlink:href="/sprite.svg#play"></use></svg>
 ---
 
 # Getting Started

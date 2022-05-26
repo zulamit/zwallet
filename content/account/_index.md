@@ -4,7 +4,7 @@ title: Accounts
 weight: 20
 has_children: true
 chapter: true
-pre: <i class="fas fa-piggy-bank"></i>&ensp;
+pre: <svg class="icon"><use xlink:href="/sprite.svg#piggy-bank"></use></svg>
 ---
 
 # Accounts
