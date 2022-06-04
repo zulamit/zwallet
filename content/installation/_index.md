@@ -20,6 +20,11 @@ pre: <svg class="icon"><use xlink:href="/sprite.svg#download"></use></svg>
 ZWallet (the Zcash wallet version) is no longer updated since YWallet now supports both Zcash and Ycash. 
 {{% /notice %}} 
 
+{{% notice note %}}
+Desktop versions are 1.2.5 because version 1.2.6 only has changes for mobile.
+{{% /notice %}} 
+
+
 {{<imgcaption android.jpg Android "https://play.google.com/store/apps/details?id=me.hanh.ywallet">}}
 {{<imgcaption iphone.png Iphone "https://apps.apple.com/us/app/ywallet/id1583859229">}}
 {{<imgcaption macos.png MacOS "https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.dmg">}}

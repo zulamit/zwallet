@@ -6,7 +6,7 @@ weight: 6
 ---
 
 {{< img IMG_0100_2.PNG >}}
-{{< img IMG_0124.PNG >}}
+{{< img2 2022-06-04_14-34-48.png >}}
 
 1. When checked, the app retrieves your transaction details (address & memo).
 It needs to send the transaction ID to the server. Therefore, the server
@@ -14,6 +14,7 @@ can know which transactions belong to you
 2. When checked, your account balance will be hidden on the account page if 
 your device is tilted forward or is put down
 3. When checked, sending coins require pin or biometrics authentication
+4. When checked, opening the app require pin or biometrics authentication
 
 ## Remarks
 
