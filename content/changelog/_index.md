@@ -11,3 +11,26 @@ pre: <svg class="icon"><use xlink:href="/sprite.svg#wrench"></use></svg>
 ### 1.2.5
 
 - Support for the NU-5 transaction format
+- Update to Flutter 3.0
+
+### 1.2.3-1.2.4
+
+- Message Center
+- Offline signing
+- MSIX installer
+
+### 1.2.2
+
+- Autocreate first account
+- Update dependencies
+
+### 1.2.1
+
+- Desktop Versions
+- Sub-Accounts ZIP 32
+- Optimize Data Refresh
+- Rescan from Height
+
+## 1.2.0
+
+- Unification Ycash/Zcash
