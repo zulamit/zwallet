@@ -26,14 +26,34 @@ that is isolated from the Internet.
 
 The same concept is applicable to Zcash.
 
-## Preparing the unsigned transaction
+## QR codes or Files
 
-{{< img2 2022-04-13_17-52-43.png >}}
+{{< img2 2022-06-21_17-27-37.png >}}
+
+- Choose QR codes if your signing device and your cold wallets have
+cameras and are in close proximity,
+- Use files otherwise
+
+## Preparing the unsigned transaction
 
 If the account does not have a secret key either because it was restored
 from viewing key or because it was converted to Cold Storage,
 the button Send is dimmed. Instead of signing and broadcasting a transaction,
 the Send page prepares an unsigned transaction.
+
+### QR Code
+
+If you enabled the "Use QR codes for offline signing",
+you will get an animated QR code:
+
+{{< img2 2022-06-21_17-26-12.png >}}
+
+{{%notice note%}}
+The transaction is too large to fit in a single QR code. YWallet uses
+animated QR codes with error correction (RaptorQ).
+{{%/notice %}}
+
+### Files
 
 Depending on your phone OS, you can save the unsigned transaction to
 a USB key, or to the Cloud.
@@ -48,6 +68,11 @@ application.
 There are two options for signing the transaction. You can either use
 a command line tool (with no GUI) or use another phone/device with 
 YWallet that you keep offline.
+
+{{%notice note%}}
+We recommend using another phone as the signer. Please, make sure that it was
+factory reset and that it was never connected to the Internet.
+{{%/notice %}}
 
 ### Command Line Tool
 
@@ -80,11 +105,19 @@ sign tx.json tx.raw
 
 Then copy `tx.raw` back to a USB drive (or Cloud storage)
 
-### Offline Ywallet
+## Offline Ywallet
+
+{{< img2 2022-06-21_17-55-21.png >}}
 
 Use the "Sign" menu. It will ask you to open the unsigned transaction file
 and proceed to sign it. If the current account contains the secret key
 it will create a raw transaction and offer you to save it.
+
+### QR Code
+
+Point your camera and scan the animated QR code. Every time a QR code is captured,
+your phone will make a little "click". Once all the data is read, the wallet
+will sign the transaction and produce an animated QR code for it.
 
 ## Broadcast
 
@@ -93,10 +126,23 @@ it will create a raw transaction and offer you to save it.
 {{< img IMG_0098.PNG >}}
 
 1. Select "Broadcast" from the app menu
-2. Pick up the raw transaction file from the storage
+2. Pick up the raw transaction file from the storage (or point your camera
+to scan the animated QR code)
 3. Wait for the transaction id
 
 ## Remarks
 
 - USB drive is safer than Cloud storage but in any case, the files
 do not contain any information that could be used to reveal your secret key
+- Do not send the unsigned transaction without authentication over a unsecure
+channel. An attacker could *modify* the payment information and make the signer
+sign a different transaction!
+
+{{%notice warning %}}
+You should use GPG to encrypt and sign your transaction if you
+transmit it over an unsecure channel.
+{{%/notice %}}
+
+## Demo
+
+[Youtube video](https://www.youtube.com/watch?v=Z5yXXHjjWNQ&t=547s)

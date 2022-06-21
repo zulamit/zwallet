@@ -4,6 +4,17 @@ weight: 80
 pre: <svg class="icon"><use xlink:href="/sprite.svg#wrench"></use></svg>
 ---
 
+### 1.2.8
+
+- New [WarpSync backend](https://github.com/hhanh00/zcash-sync.git)
+- Payment and Sync animations and sounds
+- Cold Signing through RaptorQ animated QR codes
+
+### 1.2.7
+
+- Automatic Scan of transparent accounts in order
+to recover funds from legacy wallets
+
 ### 1.2.6
 
 - Option to protect the app launch with a pin code / fingerprint
