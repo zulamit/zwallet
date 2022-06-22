@@ -117,7 +117,14 @@ it will create a raw transaction and offer you to save it.
 
 Point your camera and scan the animated QR code. Every time a QR code is captured,
 your phone will make a little "click". Once all the data is read, the wallet
-will sign the transaction and produce an animated QR code for it.
+will display the details of the transaction.
+
+{{< img2 2022-06-22_8-42-42.png >}}
+
+
+Make sure that the information is valid.
+
+Then tap to Sign the transaction and produce an animated QR code for it.
 
 ## Broadcast
 
