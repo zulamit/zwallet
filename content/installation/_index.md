@@ -11,17 +11,13 @@ pre: <svg class="icon"><use xlink:href="/sprite.svg#download"></use></svg>
 
 ## Desktop Binaries
 <a href="https://www.microsoft.com/en-us/p/ywallet/9pjz924hs2s6"><img class="download-badge" src="../microsoft-store-badge.svg"></a>
-- Windows: [ZIP](https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.zip)
-- MacOS: [Intel Silicon](https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.dmg), [Apple Silicon](https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet-m1.dmg)
-- Linux: [Flatpak](https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.flatpak)
+- Windows: [ZIP](https://github.com/hhanh00/zwallet/releases/download/v1.2.8/ywallet.zip)
+- MacOS: [Intel Silicon](https://github.com/hhanh00/zwallet/releases/download/v1.2.8/ywallet.dmg), [Apple Silicon](https://github.com/hhanh00/zwallet/releases/download/v1.2.8/ywallet-m1.dmg)
+- Linux: [Flatpak](https://github.com/hhanh00/zwallet/releases/download/v1.2.8/ywallet.flatpak)
 
 
 {{% notice note %}}
 ZWallet (the Zcash wallet version) is no longer updated since YWallet now supports both Zcash and Ycash. 
-{{% /notice %}} 
-
-{{% notice note %}}
-Desktop versions are 1.2.5 because version 1.2.6 only has changes for mobile.
 {{% /notice %}} 
 
 
