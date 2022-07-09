@@ -2441,6 +2441,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Invalid Key`
+  String get invalidKey {
+    return Intl.message(
+      'Invalid Key',
+      name: 'invalidKey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address Index`
+  String get addressIndex {
+    return Intl.message(
+      'Address Index',
+      name: 'addressIndex',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Address`
+  String get newAddress {
+    return Intl.message(
+      'New Address',
+      name: 'newAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Alternate Address of {name}`
+  String secondaryAddressOf(Object name) {
+    return Intl.message(
+      'Alternate Address of $name',
+      name: 'secondaryAddressOf',
+      desc: '',
+      args: [name],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

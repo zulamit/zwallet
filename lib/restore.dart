@@ -9,10 +9,11 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'backup.dart';
 import 'main.dart';
 import 'generated/l10n.dart';
+import 'rescan.dart';
 
 class AddAccountPage extends StatefulWidget {
-  final bool dismissible;
-  AddAccountPage({this.dismissible = true});
+  final bool firstAccount;
+  AddAccountPage({this.firstAccount = false});
 
   @override
   State<StatefulWidget> createState() => _AddAccountPageState();
@@ -22,11 +23,18 @@ class _AddAccountPageState extends State<AddAccountPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _accountIndexController = TextEditingController(text: "0");
+  final _addressIndexController = TextEditingController(text: "0");
   final _keyController = TextEditingController();
   var _restore = false;
-  var _validKey = true;
   var _coin = 1;
   var _showIndex = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.firstAccount)
+      _nameController.text = "Main";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +103,11 @@ class _AddAccountPageState extends State<AddAccountPage> {
                                   minLines: 4,
                                   maxLines: 4,
                                   controller: _keyController,
+                                  validator: (String? key) {
+                                    if (!_checkKey(key))
+                                      return s.invalidKey;
+                                    return null;
+                                  },
                                   onChanged: _checkKey,
                                 )),
                                 GestureDetector(
@@ -119,8 +132,23 @@ class _AddAccountPageState extends State<AddAccountPage> {
                                 return null;
                               },
                             ),
+                          if (_restore && _showIndex)
+                            TextFormField(
+                              decoration:
+                              InputDecoration(labelText: s.addressIndex),
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              controller: _addressIndexController,
+                              validator: (String? name) {
+                                if (name == null || name.isEmpty)
+                                  return s.accountNameIsRequired;
+                                return null;
+                              },
+                            ),
                           ButtonBar(children: [
-                            if (widget.dismissible) ElevatedButton.icon(
+                            if (!widget.firstAccount) ElevatedButton.icon(
                                 icon: Icon(Icons.cancel),
                                 label: Text(s.cancel),
                                 onPressed: () {
@@ -149,15 +177,17 @@ class _AddAccountPageState extends State<AddAccountPage> {
     final form = _formKey.currentState!;
     String key = _keyController.text;
     int accountIndex = int.parse(_accountIndexController.text);
+    int addressIndex = int.parse(_addressIndexController.text);
     final index = _keyRe.firstMatch(key);
     if (index != null) {
       key = index.group(1)!;
       accountIndex = int.parse(index.group(2)!);
+      addressIndex = int.parse(index.group(3)!);
     }
 
     if (form.validate()) {
       final account =
-          WarpApi.newAccount(_coin, _nameController.text, key, accountIndex);
+          WarpApi.newAccount(_coin, _nameController.text, key, accountIndex, addressIndex);
       if (account < 0) {
         showDialog(
             context: context,
@@ -175,29 +205,35 @@ class _AddAccountPageState extends State<AddAccountPage> {
                     ]));
       } else {
         await accounts.refresh();
-        if (active.id == 0)
-          active.setActiveAccount(_coin, account);
+        await active.setActiveAccount(_coin, account);
+        final nav = Navigator.of(context);
         if (_keyController.text != "") {
           syncStatus.setAccountRestored(true);
-          Navigator.of(context).pop();
+          if (widget.firstAccount) {
+            final height = await rescanDialog(context);
+            if (height != null)
+              syncStatus.rescan(context, height);
+            nav.pushReplacementNamed('/account');
+          }
+          else
+            nav.pop();
         } else {
-          Navigator.of(context).pushReplacementNamed('/backup',
+          nav.pushReplacementNamed('/backup',
               arguments: AccountId(_coin, account)); // Need coin type
         }
       }
     }
   }
 
-  _checkKey(key) {
-    setState(() {
-      final index = _keyRe.firstMatch(key);
-      if (index != null) {
-        key = index.group(1)!;
-      }
-      final keyType = WarpApi.validKey(_coin, key);
-      _validKey = key == "" || keyType >= 0;
-      // _isVK = keyType == 2;
-    });
+  _checkKey(String? key) {
+    if (key == null) return false;
+    final index = _keyRe.firstMatch(key);
+    if (index != null) {
+      key = index.group(1)!;
+    }
+    final keyType = WarpApi.validKey(_coin, key);
+    final validKey = key == "" || keyType >= 0;
+    return validKey;
   }
 
   void _onScan() async {
@@ -216,4 +252,4 @@ class _AddAccountPageState extends State<AddAccountPage> {
   }
 }
 
-final _keyRe = RegExp(r"(.*) \[(\d+)\]$");
+final _keyRe = RegExp(r"(.*) \[(\d+)/(\d+)\]$");

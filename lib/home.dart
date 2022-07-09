@@ -158,8 +158,6 @@ class HomeInnerState extends State<HomeInnerPage> with SingleTickerProviderState
     );
 
     return Observer(builder: (context) {
-      print("REBUILD");
-
       final _1 = active.dataEpoch;
       final unread = active.unread;
       final messageTab = unread != 0 ?

@@ -235,5 +235,9 @@
   "restoreAnAccount": "Restaurar una Cuenta?",
   "welcomeToYwallet": "Bienvenido a YWallet",
   "thePrivateWalletMessenger": "La Cartera & Mensajero Privado",
-  "newAccount": "Nueva Cuenta"
+  "newAccount": "Nueva Cuenta",
+  "invalidKey": "Tecla inválida",
+  "addressIndex": "Address Index",
+  "newAddress": "New Address",
+  "secondaryAddressOf": "Secondary Address of {name}"
 }

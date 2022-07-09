@@ -42,27 +42,29 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m9(height) => "Escaneo solicitado desde ${height}…";
 
-  static String m10(ticker) => "Enviar ${ticker}";
+  static String m10(name) => "Secondary Address of ${name}";
 
-  static String m11(ticker) => "Enviar ${ticker} a…";
+  static String m11(ticker) => "Enviar ${ticker}";
 
-  static String m12(app) => "Enviado desde ${app}";
+  static String m12(ticker) => "Enviar ${ticker} a…";
 
-  static String m13(amount, ticker, count) =>
+  static String m13(app) => "Enviado desde ${app}";
+
+  static String m14(amount, ticker, count) =>
       "Enviando un total de ${amount} ${ticker} a ${count} direcciones";
 
-  static String m14(aZEC, ticker, address) =>
+  static String m15(aZEC, ticker, address) =>
       "Enviado ${aZEC} ${ticker} a ${address}";
 
-  static String m15(index, name) => "Subcuenta ${index} de ${name}";
+  static String m16(index, name) => "Subcuenta ${index} de ${name}";
 
-  static String m16(name) => "Subcuenta de ${name}";
+  static String m17(name) => "Subcuenta de ${name}";
 
-  static String m17(text) => "${text} copiado al portapapeles";
+  static String m18(text) => "${text} copiado al portapapeles";
 
-  static String m18(txid) => "TX ID: ${txid}";
+  static String m19(txid) => "TX ID: ${txid}";
 
-  static String m19(currency) => "Utilizar ${currency}";
+  static String m20(currency) => "Utilizar ${currency}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -92,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "address": MessageLookupByLibrary.simpleMessage("Dirección"),
         "addressCopiedToClipboard": MessageLookupByLibrary.simpleMessage(
             "Dirección copiada al portapapeles"),
+        "addressIndex": MessageLookupByLibrary.simpleMessage("Address Index"),
         "addressIsEmpty":
             MessageLookupByLibrary.simpleMessage("Dirección está vacía"),
         "advanced": MessageLookupByLibrary.simpleMessage("Avanzado"),
@@ -210,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Include My Address in Memo"),
         "invalidAddress":
             MessageLookupByLibrary.simpleMessage("Dirección no es válida"),
+        "invalidKey": MessageLookupByLibrary.simpleMessage("Tecla inválida"),
         "key": MessageLookupByLibrary.simpleMessage("Llave"),
         "largestSpendingLastMonth":
             MessageLookupByLibrary.simpleMessage("Pago Más Grande Mes Pasado"),
@@ -242,6 +246,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "na": MessageLookupByLibrary.simpleMessage("N/A"),
         "nameIsEmpty": MessageLookupByLibrary.simpleMessage("Nombre vacio"),
         "newAccount": MessageLookupByLibrary.simpleMessage("Nueva Cuenta"),
+        "newAddress": MessageLookupByLibrary.simpleMessage("New Address"),
         "newSnapAddress":
             MessageLookupByLibrary.simpleMessage("Nueva Dirección Instantánea"),
         "newSubAccount":
@@ -320,6 +325,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "scanStartingMomentarily": MessageLookupByLibrary.simpleMessage(
             "Escaneo comenzando momentáneamente "),
         "secondary": MessageLookupByLibrary.simpleMessage("Secundario"),
+        "secondaryAddressOf": m10,
         "secretKey": MessageLookupByLibrary.simpleMessage("Llave Secreta"),
         "secretShare": MessageLookupByLibrary.simpleMessage("Secret Share"),
         "seed": MessageLookupByLibrary.simpleMessage("Semilla"),
@@ -329,12 +335,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Seleccionar Notas a EXCLUIR de los pagos"),
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),
-        "sendCointicker": m10,
-        "sendCointickerTo": m11,
-        "sendFrom": m12,
+        "sendCointicker": m11,
+        "sendCointickerTo": m12,
+        "sendFrom": m13,
         "sender": MessageLookupByLibrary.simpleMessage("Remitente"),
-        "sendingATotalOfAmountCointickerToCountRecipients": m13,
-        "sendingAzecCointickerToAddress": m14,
+        "sendingATotalOfAmountCointickerToCountRecipients": m14,
+        "sendingAzecCointickerToAddress": m15,
         "server": MessageLookupByLibrary.simpleMessage("Servidor"),
         "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
         "shieldTranspBalance":
@@ -356,8 +362,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "spendableBalance":
             MessageLookupByLibrary.simpleMessage("Saldo Gastable"),
         "splitAccount": MessageLookupByLibrary.simpleMessage("Split Account"),
-        "subAccountIndexOf": m15,
-        "subAccountOf": m16,
+        "subAccountIndexOf": m16,
+        "subAccountOf": m17,
         "subject": MessageLookupByLibrary.simpleMessage("Subject"),
         "synching": MessageLookupByLibrary.simpleMessage("Sincronizando"),
         "table": MessageLookupByLibrary.simpleMessage("Lista"),
@@ -372,7 +378,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Pinchar QR para Dirección Transparente"),
         "tapTransactionForDetails": MessageLookupByLibrary.simpleMessage(
             "Toque Transacción para detalles"),
-        "textCopiedToClipboard": m17,
+        "textCopiedToClipboard": m18,
         "thePrivateWalletMessenger": MessageLookupByLibrary.simpleMessage(
             "La Cartera & Mensajero Privado"),
         "theme": MessageLookupByLibrary.simpleMessage("Tema"),
@@ -395,7 +401,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Detalles de transacción"),
         "transactionHistory":
             MessageLookupByLibrary.simpleMessage("Historia de transacciones"),
-        "txId": m18,
+        "txId": m19,
         "underConfirmed":
             MessageLookupByLibrary.simpleMessage("Confirmaciones Insuficiente"),
         "unshielded": MessageLookupByLibrary.simpleMessage("Sin blindaje"),
@@ -406,7 +412,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "unsignedTx": MessageLookupByLibrary.simpleMessage("No firmado Tx"),
         "useQrForOfflineSigning": MessageLookupByLibrary.simpleMessage(
             "Use QR para firmar sin conexión"),
-        "useSettingscurrency": m19,
+        "useSettingscurrency": m20,
         "useTransparentBalance":
             MessageLookupByLibrary.simpleMessage("Usar Saldo Transp"),
         "useUa": MessageLookupByLibrary.simpleMessage("Usar UA"),

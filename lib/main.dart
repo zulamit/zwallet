@@ -162,9 +162,7 @@ class LoadProgressState extends State<LoadProgress> {
         child: SizedBox(height: 240, width: 200, child:
         Column(
             children: [
-              GestureDetector(
-                onLongPress: exportDb,
-                child: Image(image: AssetImage('assets/icon.png'), height: 64)),
+              Image.asset('assets/icon.png', height: 64),
               Padding(padding: EdgeInsets.all(16)),
               Text(S.of(context).loading, style: Theme.of(context).textTheme.headline4),
               Padding(padding: EdgeInsets.all(16)),
@@ -219,7 +217,7 @@ void main() {
                 '/welcome': (context) => WelcomePage(),
                 '/account': (context) => HomePage(),
                 '/add_account': (context) => AddAccountPage(),
-                '/add_first_account': (context) => AddAccountPage(dismissible: false),
+                '/add_first_account': (context) => AddAccountPage(firstAccount: true),
                 '/send': (context) =>
                     SendPage(routeSettings.arguments as SendPageArgs?),
                 '/receive': (context) =>
