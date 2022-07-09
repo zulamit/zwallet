@@ -27,19 +27,6 @@ class NativeLibrary {
   late final _dart_dummy_export _dummy_export =
       _dummy_export_ptr.asFunction<_dart_dummy_export>();
 
-  void deallocate_str(
-    ffi.Pointer<ffi.Int8> s,
-  ) {
-    return _deallocate_str(
-      s,
-    );
-  }
-
-  late final _deallocate_str_ptr =
-      _lookup<ffi.NativeFunction<_c_deallocate_str>>('deallocate_str');
-  late final _dart_deallocate_str _deallocate_str =
-      _deallocate_str_ptr.asFunction<_dart_deallocate_str>();
-
   void dart_post_cobject(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -52,6 +39,19 @@ class NativeLibrary {
       _lookup<ffi.NativeFunction<_c_dart_post_cobject>>('dart_post_cobject');
   late final _dart_dart_post_cobject _dart_post_cobject =
       _dart_post_cobject_ptr.asFunction<_dart_dart_post_cobject>();
+
+  void deallocate_str(
+    ffi.Pointer<ffi.Int8> s,
+  ) {
+    return _deallocate_str(
+      s,
+    );
+  }
+
+  late final _deallocate_str_ptr =
+      _lookup<ffi.NativeFunction<_c_deallocate_str>>('deallocate_str');
+  late final _dart_deallocate_str _deallocate_str =
+      _deallocate_str_ptr.asFunction<_dart_deallocate_str>();
 
   int get_error() {
     return _get_error();
@@ -140,13 +140,15 @@ class NativeLibrary {
     int coin,
     ffi.Pointer<ffi.Int8> name,
     ffi.Pointer<ffi.Int8> data,
-    int index,
+    int sindex,
+    int aindex,
   ) {
     return _new_account(
       coin,
       name,
       data,
-      index,
+      sindex,
+      aindex,
     );
   }
 
@@ -157,11 +159,11 @@ class NativeLibrary {
 
   int new_sub_account(
     ffi.Pointer<ffi.Int8> name,
-    int index,
+    int sindex,
   ) {
     return _new_sub_account(
       name,
-      index,
+      sindex,
     );
   }
 
@@ -169,6 +171,23 @@ class NativeLibrary {
       _lookup<ffi.NativeFunction<_c_new_sub_account>>('new_sub_account');
   late final _dart_new_sub_account _new_sub_account =
       _new_sub_account_ptr.asFunction<_dart_new_sub_account>();
+
+  int new_sub_address(
+    ffi.Pointer<ffi.Int8> name,
+    int sindex,
+    int aindex,
+  ) {
+    return _new_sub_address(
+      name,
+      sindex,
+      aindex,
+    );
+  }
+
+  late final _new_sub_address_ptr =
+      _lookup<ffi.NativeFunction<_c_new_sub_address>>('new_sub_address');
+  late final _dart_new_sub_address _new_sub_address =
+      _new_sub_address_ptr.asFunction<_dart_new_sub_address>();
 
   int warp(
     int coin,
@@ -618,10 +637,10 @@ class NativeLibrary {
       _merge_data_ptr.asFunction<_dart_merge_data>();
 
   ffi.Pointer<ffi.Int8> get_tx_summary(
-    ffi.Pointer<ffi.Int8> drop,
+    ffi.Pointer<ffi.Int8> tx,
   ) {
     return _get_tx_summary(
-      drop,
+      tx,
     );
   }
 
@@ -631,17 +650,11 @@ class NativeLibrary {
       _get_tx_summary_ptr.asFunction<_dart_get_tx_summary>();
 }
 
+const int QR_DATA_SIZE = 256;
+
 typedef _c_dummy_export = ffi.Void Function();
 
 typedef _dart_dummy_export = void Function();
-
-typedef _c_deallocate_str = ffi.Void Function(
-  ffi.Pointer<ffi.Int8> s,
-);
-
-typedef _dart_deallocate_str = void Function(
-  ffi.Pointer<ffi.Int8> s,
-);
 
 typedef _c_dart_post_cobject = ffi.Void Function(
   ffi.Pointer<ffi.Void> ptr,
@@ -649,6 +662,14 @@ typedef _c_dart_post_cobject = ffi.Void Function(
 
 typedef _dart_dart_post_cobject = void Function(
   ffi.Pointer<ffi.Void> ptr,
+);
+
+typedef _c_deallocate_str = ffi.Void Function(
+  ffi.Pointer<ffi.Int8> s,
+);
+
+typedef _dart_deallocate_str = void Function(
+  ffi.Pointer<ffi.Int8> s,
 );
 
 typedef _c_get_error = ffi.Int8 Function();
@@ -703,24 +724,38 @@ typedef _c_new_account = ffi.Uint32 Function(
   ffi.Uint8 coin,
   ffi.Pointer<ffi.Int8> name,
   ffi.Pointer<ffi.Int8> data,
-  ffi.Int32 index,
+  ffi.Int32 sindex,
+  ffi.Int32 aindex,
 );
 
 typedef _dart_new_account = int Function(
   int coin,
   ffi.Pointer<ffi.Int8> name,
   ffi.Pointer<ffi.Int8> data,
-  int index,
+  int sindex,
+  int aindex,
 );
 
 typedef _c_new_sub_account = ffi.Uint32 Function(
   ffi.Pointer<ffi.Int8> name,
-  ffi.Int32 index,
+  ffi.Int32 sindex,
 );
 
 typedef _dart_new_sub_account = int Function(
   ffi.Pointer<ffi.Int8> name,
-  int index,
+  int sindex,
+);
+
+typedef _c_new_sub_address = ffi.Uint32 Function(
+  ffi.Pointer<ffi.Int8> name,
+  ffi.Int32 sindex,
+  ffi.Int32 aindex,
+);
+
+typedef _dart_new_sub_address = int Function(
+  ffi.Pointer<ffi.Int8> name,
+  int sindex,
+  int aindex,
 );
 
 typedef _c_warp = ffi.Uint8 Function(
@@ -998,9 +1033,9 @@ typedef _dart_merge_data = ffi.Pointer<ffi.Int8> Function(
 );
 
 typedef _c_get_tx_summary = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> drop,
+  ffi.Pointer<ffi.Int8> tx,
 );
 
 typedef _dart_get_tx_summary = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> drop,
+  ffi.Pointer<ffi.Int8> tx,
 );

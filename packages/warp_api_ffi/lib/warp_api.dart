@@ -56,13 +56,17 @@ class WarpApi {
     warp_api_lib.reset_app();
   }
 
-  static int newAccount(int coin, String name, String key, int index) {
+  static int newAccount(int coin, String name, String key, int sindex, int aindex) {
     return warp_api_lib.new_account(coin,
-        name.toNativeUtf8().cast<Int8>(), key.toNativeUtf8().cast<Int8>(), index);
+        name.toNativeUtf8().cast<Int8>(), key.toNativeUtf8().cast<Int8>(), sindex, aindex);
   }
 
-  static int newSubAccount(String name, int index) {
-    return warp_api_lib.new_sub_account(name.toNativeUtf8().cast<Int8>(), index);
+  static int newSubAccount(String name, int sindex) {
+    return warp_api_lib.new_sub_account(name.toNativeUtf8().cast<Int8>(), sindex);
+  }
+
+  static int newSubAddress(String name, int sindex, int aindex) {
+    return warp_api_lib.new_sub_address(name.toNativeUtf8().cast<Int8>(), sindex, aindex);
   }
 
   static void skipToLastHeight(int coin) {

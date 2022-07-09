@@ -237,7 +237,29 @@ class AccountManagerState extends State<AccountManagerPage> {
       await accounts.refresh();
     }
   }
-  
+
+  _onNewSubaddress() async {
+    final s = S.of(context);
+    if (active.id == 0) {
+      showSnackBar(s.noActiveAccount);
+      return;
+    }
+    final newName = s.secondaryAddressOf(active.account.name);
+    _accountNameController.text = newName;
+    final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+            title: Text(s.newAddress),
+            content: TextField(controller: _accountNameController),
+            actions: confirmButtons(context, () {
+              Navigator.of(context).pop(true);
+            })));
+    if (confirmed == true) {
+      WarpApi.newSubAddress(_accountNameController.text, -1, -1);
+      await accounts.refresh();
+    }
+  }
+
   _onFullBackup() {
     Navigator.of(context).pushNamed('/fullBackup');
   }
