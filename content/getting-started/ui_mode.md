@@ -3,7 +3,7 @@ layout: default
 title: UI Mode
 parent: Getting Started
 nav_order: 2
-weight: 5
+weight: 15
 ---
 
 By default, Ywallet runs in "Simple Mode"
