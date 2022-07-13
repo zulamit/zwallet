@@ -6,7 +6,7 @@ nav_order: 1
 weight: 10
 ---
 
-When the application starts for the first or when there aren't any accounts,
+When the application starts for the first time or when there aren't any accounts,
 it will show the welcome page.
 
 {{< img 2022-07-12_10-07-25.png >}}

@@ -23,6 +23,6 @@ ZWallet (the Zcash wallet version) is no longer updated since YWallet now suppor
 
 {{<imgcaption android.jpg Android "https://play.google.com/store/apps/details?id=me.hanh.ywallet">}}
 {{<imgcaption iphone.png Iphone "https://apps.apple.com/us/app/ywallet/id1583859229">}}
-{{<imgcaption macos.png MacOS "https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.dmg">}}
-{{<imgcaption windows.png Windows "https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.zip">}}
-{{<imgcaption linux.png Linux "https://github.com/hhanh00/zwallet/releases/download/v1.2.5/ywallet.flatpak">}}
+{{<imgcaption macos.png MacOS "https://github.com/hhanh00/zwallet/releases/download/v1.2.9/ywallet.dmg">}}
+{{<imgcaption windows.png Windows "https://github.com/hhanh00/zwallet/releases/download/v1.2.9/ywallet.zip">}}
+{{<imgcaption linux.png Linux "https://github.com/hhanh00/zwallet/releases/download/v1.2.9/ywallet.flatpak">}}
