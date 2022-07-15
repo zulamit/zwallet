@@ -27,25 +27,27 @@ same seed, you can tell it to use additional account indexes.
 
 The first account is at index 0.
 
-To create a sub-account for the current selected account, long press
+To create a sub-account for the current selected account, *long press*
 the '+' button, and select "New Sub-account".
 
-{{< img Screenshot_20220403-144441.jpg >}}
+{{< img 2022-07-15_10-02-45.png >}}
 
 You'll be asked to provide a new name:
 
-{{< img Screenshot_20220403-144452.jpg >}}
+{{< img 2022-07-15_9-50-20.png >}}
 
-You can repeat this operation multiple times if you need more 
+You can increase the "Count" number if you need more 
 sub-accounts.
 
-Important Note: Ywallet recommends using a seed per account and not 
-using sub-accounts. This feature is intended in case you want
-to recover accounts from other wallets that use this feature.
+{{%notice info%}}
+Ywallet recommends using a seed per account and not 
+using sub-accounts. This feature is intended for cases when you need
+to recover accounts from other wallets.
 Since shielded addresses are not visible on the blockchain,
-there is no advantage in using more than one. 
-In case you want to give a unique address, diversified addresses
-(or snap addresses in Ywallet) offer a better solution.
+there is no advantage in using more than one address. 
+In case you want to give out a unique address, diversified addresses
+(or snap addresses in Ywallet) offer a better scalable solution.
+{{%/notice %}}
 
 ## Backup
 
