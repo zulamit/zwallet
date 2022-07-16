@@ -49,6 +49,15 @@ In case you want to give out a unique address, diversified addresses
 (or snap addresses in Ywallet) offer a better scalable solution.
 {{%/notice %}}
 
+## Scan Transparent Addresses
+
+If you have funds in transparent sub accounts, Ywallet can
+automatically find them for you. Use the Scan Accounts button
+and Ywallet will scan the transparent addresses at sequential
+indices starting from 1. It will stop when there are 10 (gap limit)
+consecutive addresses without funds. The Gap Limit can be
+adjusted in the settings.
+
 ## Backup
 
 The backup of a sub-account contains the account index. This index
