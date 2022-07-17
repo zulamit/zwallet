@@ -2,7 +2,7 @@
 layout: default
 title: Reset
 parent: Advanced Usage
-weight: 7
+weight: 15
 ---
 
 After a major upgrade, the app may exhibit incorrect behavior.

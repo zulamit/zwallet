@@ -2,7 +2,7 @@
 layout: default
 title: Batch Save/Load
 parent: Advanced Usage
-weight: 7
+weight: 10
 ---
 
 ## Save all your Accounts
