@@ -4,6 +4,22 @@ weight: 80
 pre: <svg class="icon"><use xlink:href="/sprite.svg#wrench"></use></svg>
 ---
 
+### 1.2.11
+
+- [Custom Derivation Path for taddrs]({{<relref "custom_path">}})
+- [Accessibility Improvements]({{<relref "account-summary#synchronization">}})
+
+### 1.2.10
+
+- [Autoconnect to best server]({{<relref "server">}})
+- [Create multiple subaccounts at once]({{<relref "sub-account#sub-accounts">}})
+
+### 1.2.9
+
+- [New Welcome Page]({{<relref "first-account">}})
+- Variable Length Block Chunks
+- Resumable WarpSync
+
 ### 1.2.8
 
 - New [WarpSync backend](https://github.com/hhanh00/zcash-sync.git)
