@@ -27,6 +27,18 @@ On Windows,
 zecwallet-cli.exe --nosync export > wallet.zwl
 ```
 
+On MacOs,
+- Download zecwallet-lite-cli from github: https://github.com/adityapk00/zecwallet-light-cli/releases/download/v1.7.20/macOS-zecwallet-cli-v1.7.20.zip
+- Double click on the file once downloaded, it will open it in “Finder”,
+- Double click on “zecwallet-cli”, it will prompt a warning: “Bla bla unix app from the internet… Are you sure you want to open it?”,
+Click “Open”
+- It will open a “Terminal” automatically for you and run the app
+- The app will start scanning but you don’t want that.
+- So press “Ctrl+C” and it will stop, leaving the terminal opened.
+- Drag and drop the icon of “zecwallet-cli” from the finder into the terminal window, this will insert the full path to the program. But do not type return or it will start again.
+- Add ` --nosync export > wallet.zwl` (exactly, capitalization and space matter), then press return. This tells the program to skip syncing and to export the private keys into a file named wallet.zwl.
+- Navigate to your home directory in Finder and you should find a wallet.zwl file.
+
 ## Import your ZWL key file
 
 - In YWallet, go to the account manager, and *long-press*
