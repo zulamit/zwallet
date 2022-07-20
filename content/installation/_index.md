@@ -11,9 +11,9 @@ pre: <svg class="icon"><use xlink:href="/sprite.svg#download"></use></svg>
 
 ## Desktop Binaries
 <a href="https://www.microsoft.com/en-us/p/ywallet/9pjz924hs2s6"><img class="download-badge" src="../microsoft-store-badge.svg"></a>
-- Windows: [ZIP](https://github.com/hhanh00/zwallet/releases/download/v1.2.10/ywallet.zip)
-- MacOS: [Intel Silicon](https://github.com/hhanh00/zwallet/releases/download/v1.2.10/ywallet.dmg), [Apple Silicon](https://github.com/hhanh00/zwallet/releases/download/v1.2.10/ywallet-m1.dmg)
-- Linux: [Flatpak](https://github.com/hhanh00/zwallet/releases/download/v1.2.10/ywallet.flatpak)
+- Windows: [ZIP](https://github.com/hhanh00/zwallet/releases/download/v1.2.11/ywallet.zip)
+- MacOS: [Intel Silicon](https://github.com/hhanh00/zwallet/releases/download/v1.2.11/ywallet.dmg), [Apple Silicon](https://github.com/hhanh00/zwallet/releases/download/v1.2.11/ywallet-m1.dmg)
+- Linux: [Flatpak](https://github.com/hhanh00/zwallet/releases/download/v1.2.11/ywallet.flatpak)
 
 
 {{% notice note %}}
@@ -23,6 +23,6 @@ ZWallet (the Zcash wallet version) is no longer updated since YWallet now suppor
 
 {{<imgcaption android.jpg Android "https://play.google.com/store/apps/details?id=me.hanh.ywallet">}}
 {{<imgcaption iphone.png Iphone "https://apps.apple.com/us/app/ywallet/id1583859229">}}
-{{<imgcaption macos.png MacOS "https://github.com/hhanh00/zwallet/releases/download/v1.2.10/ywallet.dmg">}}
-{{<imgcaption windows.png Windows "https://github.com/hhanh00/zwallet/releases/download/v1.2.10/ywallet.zip">}}
-{{<imgcaption linux.png Linux "https://github.com/hhanh00/zwallet/releases/download/v1.2.10/ywallet.flatpak">}}
+{{<imgcaption macos.png MacOS "https://github.com/hhanh00/zwallet/releases/download/v1.2.11/ywallet.dmg">}}
+{{<imgcaption windows.png Windows "https://github.com/hhanh00/zwallet/releases/download/v1.2.11/ywallet.zip">}}
+{{<imgcaption linux.png Linux "https://github.com/hhanh00/zwallet/releases/download/v1.2.11/ywallet.flatpak">}}
