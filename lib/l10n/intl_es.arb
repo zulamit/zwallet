@@ -242,5 +242,8 @@
   "auto": "Auto",
   "count": "Cuenta",
   "close": "Cambiar la Clave",
-  "changeTransparentKey": "Change Transparent Key"
+  "changeTransparentKey": "Change Transparent Key",
+  "cancelScan": "Cancelar Escaneo",
+  "resumeScan": "Reanudar Escaneo",
+  "syncPaused": "Escaneo en pausa"
 }
