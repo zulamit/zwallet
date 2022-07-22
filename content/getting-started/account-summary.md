@@ -28,21 +28,6 @@ afterward
 - If the device is tilted forward, the page switches to "Receive Mode"
 - You can choose the Fiat currency on the settings page
 
-## Synchronization
-
-During Rescan or Catchup, the blockheight will cycle between
-the following information:
-- current height / latest height
-- synchronization %
-- number of blocks remaining
-- timestamp of latest block processed
-- ETA
-
-{{%notice note%}}
-Tapping on the display will alternate between cycling and
-a fixed display.
-{{%/notice%}}
-
 ## Receive Mode
 
 {{< img IMG_0039.PNG >}}

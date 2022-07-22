@@ -6,7 +6,7 @@ pre: <svg class="icon"><use xlink:href="/sprite.svg#wrench"></use></svg>
 
 ### 1.2.12
 
-- Pause/Resume Sync
+- [Pause/Resume Sync]({{<relref "synchronization#pauseresume">}})
 
 ### 1.2.11
 
