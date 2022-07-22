@@ -12,7 +12,7 @@ pre: <svg class="icon"><use xlink:href="/sprite.svg#wrench"></use></svg>
 
 - [Custom Derivation Path for taddrs]({{<relref "custom_path">}})
 - [Import from ZWL]({{<relref "zwl">}})
-- [Accessibility Improvements]({{<relref "account-summary#synchronization">}})
+- [Accessibility Improvements]({{<relref "synchronization">}})
 
 ### 1.2.10
 
