@@ -4,6 +4,10 @@ weight: 80
 pre: <svg class="icon"><use xlink:href="/sprite.svg#wrench"></use></svg>
 ---
 
+### 1.2.12
+
+- Pause/Resume Sync
+
 ### 1.2.11
 
 - [Custom Derivation Path for taddrs]({{<relref "custom_path">}})
