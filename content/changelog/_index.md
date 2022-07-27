@@ -7,6 +7,8 @@ pre: <svg class="icon"><use xlink:href="/sprite.svg#wrench"></use></svg>
 ### 1.2.12
 
 - [Pause/Resume Sync]({{<relref "synchronization#pauseresume">}})
+- [Import Transparent Private Keys]({{<relref "custom_path#private-key">}})
+- [Key Derivation Tool]({{<relref "keytool">}})
 
 ### 1.2.11
 

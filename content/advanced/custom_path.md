@@ -47,6 +47,11 @@ the path is typically:
 
 for wallets that follow the BIP-44 spec.
 
+## Private Key
+
+Alternatively, you can input a private key that
+follows the Bitcoin Wallet Import Format.
+
 ## How to
 
 - Import an account using the seed phrase
