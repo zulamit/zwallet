@@ -10,6 +10,8 @@ detects that it does not have the latest block data.
 
 You can also manually trigger a rescan through the application menu.
 
+## Statistics
+
 During Rescan or Catchup, the blockheight will cycle between
 the following information:
 - current height / latest height
@@ -27,11 +29,32 @@ the following information:
 - ETA (Estimated Time Remaining to complete the scan)
 {{%img 2022-07-22_16-23-45.png %}}
 
+- Bytes downloaded from the server
+{{%img 2022-08-16_23-09-52.png %}}
+
+- Number of transaction outputs decrypted
+{{%img 2022-08-16_23-09-33.png %}}
+
 
 {{%notice note%}}
 Tapping on the display will alternate between cycling and
 a fixed display.
 {{%/notice%}}
+
+## Remarks
+
+- You can use the "Bytes downloaded from the server" statistics
+to monitor the status of the remote server. If there is no
+progress for more than a minute, it is a good indication that
+the server is not responding.
+
+- "Number of transaction outputs decrypted" shows how many
+trial decryption YWallet has done so far. Synchronization
+speed is significantly reduced by trial decryptions.
+
+- If these two statistics reset to 0, the server has disconnected.
+YWallet will automatically reconnect but there may be some network 
+issue.
 
 ## Pause/Resume
 
