@@ -154,7 +154,7 @@
   "help": "Ayuda",
   "receive": "Recibir {ticker}",
   "pnlHistory": "Historia de G&P",
-  "useTransparentBalance": "Usar saldo transp",
+  "useTransparentBalance": "Usar saldo transparente",
   "themeEditor": "Editor de temas",
   "color": "Color",
   "accentColor": "Color de acento",
@@ -172,7 +172,7 @@
   "copy": "Copiar",
   "textCopiedToClipboard": "{text} copiado al portapapeles",
   "multipleAddresses": "Múltiples direcciones",
-  "addnew": "AGGREGAR",
+  "addnew": "Agregar",
   "applicationReset": "Restablecer la aplicación",
   "confirmResetApp": "¿Seguro que quieres restablecer la aplicación? Sus cuentas NO serán eliminadas",
   "reset": "RESTABLECER",
@@ -241,6 +241,6 @@
   "inputBarcodeValue": "Escriba el Código de barras",
   "auto": "Auto",
   "count": "Cuenta",
-  "close": "Cambiar la Clave",
+  "close": "Cerrar",
   "changeTransparentKey": "Cambiar la clave transparente"
 }
